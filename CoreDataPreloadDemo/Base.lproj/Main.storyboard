@@ -35,11 +35,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klR-Jz-Eyd">
-                                            <rect key="frame" x="502" y="8" width="90" height="39"/>
+                                            <rect key="frame" x="502" y="8" width="90" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="KdW-ZA-0Rs"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="28"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="verb" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ2-q8-CFK">
+                                            <rect key="frame" x="502" y="34" width="90" height="21"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -61,6 +67,7 @@
                                     <outlet property="detailLabel" destination="UXy-tN-hGW" id="0ib-km-h8z"/>
                                     <outlet property="nameLabel" destination="r1A-Xd-dr5" id="Nzj-59-wVS"/>
                                     <outlet property="priceLabel" destination="klR-Jz-Eyd" id="Wf5-1c-Dwf"/>
+                                    <outlet property="verbLabel" destination="rZ2-q8-CFK" id="xo1-V2-USo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

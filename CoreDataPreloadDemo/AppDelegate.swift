@@ -109,11 +109,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - CSV Parser Methods
     
-    func parseCSV (contentsOfURL: NSURL, encoding: NSStringEncoding) -> [(name:String, detail:String, price: String)]? {
+    func parseCSV (contentsOfURL: NSURL, encoding: NSStringEncoding) -> [(name:String, detail:String, price: String, verb: String)]? {
         
         // Load the CSV file and parse it
         let delimiter = ","
-        var items:[(name:String, detail:String, price: String)]?
+        var items:[(name:String, detail:String, price: String, verb: String)]?
         
         do {
             let content = try String(contentsOfURL: contentsOfURL, encoding: encoding)
@@ -159,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
                     // Put the values into the tuple and add it to the items array
-                    let item = (name: values[0], detail: values[1], price: values[2])
+                    let item = (name: values[0], detail: values[1], price: values[2], verb: values[3])
                     items?.append(item)
                 }
             }
@@ -174,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func preloadData () {
 
         // Load the data file. For any reasons it can't be loaded, we just return
-        guard let remoteURL = NSURL(string: "http://www.rachelyee.com/VerbsImportedSlightlyBigger3Rows.csv") else {
+        guard let remoteURL = NSURL(string: "http://www.rachelyee.com/VerbsImportedSlightlyBigger.csv") else {
             return
         }
         
@@ -188,6 +188,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 menuItem.name = item.name
                 menuItem.detail = item.detail
                 menuItem.price = item.price
+                menuItem.verb = item.verb
         
                 do {
                     try managedObjectContext.save()

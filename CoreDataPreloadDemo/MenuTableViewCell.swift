@@ -12,4 +12,5 @@ class MenuTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel:UILabel!
     @IBOutlet var detailLabel:UILabel!
     @IBOutlet var priceLabel:UILabel!
+    @IBOutlet var verbLabel:UILabel!
 }

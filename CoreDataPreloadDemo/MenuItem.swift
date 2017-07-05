@@ -13,5 +13,6 @@ class MenuItem: NSManagedObject {
     @NSManaged var name:String?
     @NSManaged var detail:String?
     @NSManaged var price:String?
+    @NSManaged var verb:String?
     
 }

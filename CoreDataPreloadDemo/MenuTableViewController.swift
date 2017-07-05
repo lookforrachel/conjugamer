@@ -58,6 +58,8 @@ class MenuTableViewController: UITableViewController {
         cell.nameLabel.text = menuItems[indexPath.row].name
         cell.detailLabel.text = menuItems[indexPath.row].detail
         cell.priceLabel.text = menuItems[indexPath.row].price
+        cell.verbLabel.text = menuItems[indexPath.row].verb
+        
 
         return cell
     }
