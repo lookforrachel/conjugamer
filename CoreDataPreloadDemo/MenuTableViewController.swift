@@ -11,18 +11,18 @@ import CoreData
 
 class MenuTableViewController: UITableViewController {
 
-    private var menuItems:[MenuItem] = []
-    var fetchResultController:NSFetchedResultsController!
+    fileprivate var menuItems:[MenuItem] = []
+    var fetchResultController:NSFetchedResultsController<NSFetchRequestResult>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Load menu items from database
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
 
-            let fetchRequest = NSFetchRequest(entityName: "MenuItem")
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MenuItem")
             do {
-                menuItems = try managedObjectContext.executeFetchRequest(fetchRequest) as! [MenuItem]
+                menuItems = try managedObjectContext.fetch(fetchRequest) as! [MenuItem]
             } catch {
                 print("Failed to retrieve record")
                 print(error)
@@ -41,18 +41,18 @@ class MenuTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return menuItems.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MenuTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MenuTableViewCell
 
         // Configure the cell...
         cell.nameLabel.text = menuItems[indexPath.row].name
