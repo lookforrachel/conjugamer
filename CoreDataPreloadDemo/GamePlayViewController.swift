@@ -54,14 +54,30 @@ class GamePlayViewController: UIViewController {
     @IBOutlet weak var verbLabel: UILabel!
     @IBOutlet weak var tenseLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
+    @IBOutlet weak var textView: UITextView!
+    var currentIndex: Int = 0
+    @IBAction func checkAnswer(_ sender: Any) {
+        
+        if userInput.text == menuItems[currentIndex].detail {
+            textView.text = "correct!"
+        }
+        
+        else {
+         textView.text = "you're a dumbass, the correct answer is \(menuItems[currentIndex].price ?? "error")"
+        
+        }
+    }
+    
+    func randomNumberGenerator() -> Int {
+        //generates random number from 0 to menuItems.count
+        return Int(arc4random_uniform(UInt32(menuItems.count)))
+    }
     
     override func viewWillLayoutSubviews() {
-        
-        
-        
-        verbLabel.text = menuItems[1].verb
-        tenseLabel.text = menuItems[1].detail
-
+        currentIndex = self.randomNumberGenerator()
+        verbLabel.text = menuItems[currentIndex].name
+        tenseLabel.text = menuItems[0].verb
+       
         
     }
     

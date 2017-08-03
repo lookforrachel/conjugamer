@@ -117,38 +117,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Answer" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jvL-NE-NOY">
-                                <rect key="frame" x="153" y="318.5" width="69" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="answer" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jvL-NE-NOY">
+                                <rect key="frame" x="154" y="318.5" width="67.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eW6-hR-0jM">
-                                <rect key="frame" x="166" y="289" width="42" height="21"/>
+                                <rect key="frame" x="166.5" y="289" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eg6-x0-mnr">
-                                <rect key="frame" x="103" y="323" width="42" height="21"/>
+                                <rect key="frame" x="104" y="323" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ5-Yd-0wZ">
+                                <rect key="frame" x="140" y="356" width="95" height="30"/>
+                                <state key="normal" title="check answer"/>
+                                <connections>
+                                    <action selector="checkAnswer:" destination="18W-Ci-slj" eventType="touchUpInside" id="JCi-O0-4e6"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TEJ-Xy-Fdz">
+                                <rect key="frame" x="67.5" y="394" width="240" height="263"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="kq9-AK-1CR"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jvL-NE-NOY" firstAttribute="leading" secondItem="Eg6-x0-mnr" secondAttribute="trailing" constant="8" id="565-Ic-7jl"/>
+                            <constraint firstItem="5Uw-9r-Im9" firstAttribute="top" secondItem="TEJ-Xy-Fdz" secondAttribute="bottom" constant="10" id="A28-p0-0dY"/>
+                            <constraint firstItem="qQ5-Yd-0wZ" firstAttribute="top" secondItem="jvL-NE-NOY" secondAttribute="bottom" constant="7.5" id="Au0-0K-WGx"/>
                             <constraint firstItem="jvL-NE-NOY" firstAttribute="centerY" secondItem="ckQ-Yj-dET" secondAttribute="centerY" id="C16-mf-DUJ"/>
                             <constraint firstItem="jvL-NE-NOY" firstAttribute="centerX" secondItem="ckQ-Yj-dET" secondAttribute="centerX" id="Mvh-OE-UOe"/>
                             <constraint firstItem="jvL-NE-NOY" firstAttribute="top" secondItem="eW6-hR-0jM" secondAttribute="bottom" constant="8.5" id="O6c-LN-KgH"/>
+                            <constraint firstItem="qQ5-Yd-0wZ" firstAttribute="centerX" secondItem="ckQ-Yj-dET" secondAttribute="centerX" id="UHC-3z-z5D"/>
+                            <constraint firstItem="TEJ-Xy-Fdz" firstAttribute="top" secondItem="qQ5-Yd-0wZ" secondAttribute="bottom" constant="8" id="g8m-PF-6iL"/>
                             <constraint firstItem="Eg6-x0-mnr" firstAttribute="centerY" secondItem="ckQ-Yj-dET" secondAttribute="centerY" id="ycb-ZW-cX4"/>
+                            <constraint firstItem="TEJ-Xy-Fdz" firstAttribute="centerX" secondItem="ckQ-Yj-dET" secondAttribute="centerX" id="zK0-up-GMQ"/>
                             <constraint firstItem="eW6-hR-0jM" firstAttribute="centerX" secondItem="ckQ-Yj-dET" secondAttribute="centerX" id="zoC-Fg-RBX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mbb-Z9-w6w"/>
                     <connections>
                         <outlet property="tenseLabel" destination="Eg6-x0-mnr" id="GMK-dW-O2g"/>
+                        <outlet property="textView" destination="TEJ-Xy-Fdz" id="nZJ-9m-y6i"/>
                         <outlet property="userInput" destination="jvL-NE-NOY" id="1LR-Ad-Hzg"/>
                         <outlet property="verbLabel" destination="eW6-hR-0jM" id="U6E-6g-HOt"/>
                     </connections>
