@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5DF618E01F33885300DAE58C /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF618DF1F33885300DAE58C /* GamePlayViewController.swift */; };
 		F409E9561B02FFBF007BAB5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F409E9551B02FFBF007BAB5E /* AppDelegate.swift */; };
 		F409E95B1B02FFBF007BAB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F409E9591B02FFBF007BAB5E /* Main.storyboard */; };
 		F409E95D1B02FFBF007BAB5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F409E95C1B02FFBF007BAB5E /* Images.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5DF618DF1F33885300DAE58C /* GamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayViewController.swift; sourceTree = "<group>"; };
 		F409E9501B02FFBF007BAB5E /* CoreDataPreloadDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataPreloadDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F409E9541B02FFBF007BAB5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F409E9551B02FFBF007BAB5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				F409E95E1B02FFBF007BAB5E /* LaunchScreen.xib */,
 				F409E9531B02FFBF007BAB5E /* Supporting Files */,
 				F409E9751B0300AE007BAB5E /* MenuTableViewController.swift */,
+				5DF618DF1F33885300DAE58C /* GamePlayViewController.swift */,
 				F409E9771B030256007BAB5E /* MenuTableViewCell.swift */,
 				F409E9791B031049007BAB5E /* MenuItem.swift */,
 				F409E9AC1B0333A1007BAB5E /* CoreDataDemo.xcdatamodeld */,
@@ -232,6 +235,7 @@
 				F409E97A1B031049007BAB5E /* MenuItem.swift in Sources */,
 				F409E9561B02FFBF007BAB5E /* AppDelegate.swift in Sources */,
 				F409E9AE1B0333A1007BAB5E /* CoreDataDemo.xcdatamodeld in Sources */,
+				5DF618E01F33885300DAE58C /* GamePlayViewController.swift in Sources */,
 				F409E9781B030256007BAB5E /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
