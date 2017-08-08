@@ -175,7 +175,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func preloadData () {
 
         // Load the data file. For any reasons it can't be loaded, we just return
-        guard let remoteURL = URL(string: "http://www.rachelyee.com/VerbsImportedSlightlyBigger.csv") else {
+        guard let remoteURL = URL(string: "http://www.rachelyee.com/VerbsImportedSlightlyBiggerTenses.csv") else {
             return
         }
         

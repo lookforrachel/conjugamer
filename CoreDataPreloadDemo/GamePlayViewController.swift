@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 class GamePlayViewController: UIViewController {
 
@@ -55,10 +56,14 @@ class GamePlayViewController: UIViewController {
     @IBOutlet weak var tenseLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var tense1Label: UILabel!
+    @IBOutlet weak var tense0Label: UILabel!
     var currentRow: Int = 0
     var countTenseColumns = 2
     var currentColumn: Int = 0
     var columnNames = ["price","verb"]
+    var columnNameLong: String = ""
+    var columnNamesArr: String = ""
 
     @IBAction func checkAnswer(_ sender: Any) {
         
@@ -74,10 +79,19 @@ class GamePlayViewController: UIViewController {
         }
     }
     
-    func randomNumberGeneratorRow() -> Int {
-        //generates random number from 1 to menuItems.count
-        return Int(arc4random_uniform(UInt32(menuItems.count-1)+1))
+    
+    func randomSequenceGenerator(min: Int, max: Int) -> () -> Int {
+        var numbers: [Int] = []
+        return {
+            if numbers.count == 0 {
+                numbers = Array(min ... max)
+            }
+            
+            let index = Int(arc4random_uniform(UInt32(numbers.count)))
+            return numbers.remove(at: index)
+        }
     }
+
     
     func randomNumberGeneratorColumn() -> Int {
         //generates random number from 2 to number of columns with tenses
@@ -85,14 +99,20 @@ class GamePlayViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        currentRow = self.randomNumberGeneratorRow()
+        currentRow = self.randomSequenceGenerator(min: 1, max: menuItems.count-1)()
         currentColumn = self.randomNumberGeneratorColumn()
         let columnName = columnNames[currentColumn]
         
+        let columnNameLong = menuItems[0].value(forKey:columnName) as! String
+        let columnNamesArr = columnNameLong.components(separatedBy: "|")
+        
         verbLabel.text = menuItems[currentRow].detail
-        tenseLabel.text = menuItems[0].value(forKey:columnName) as! String
-   
-        //name = iddors
+        tenseLabel.text = columnNamesArr[2]
+        tense0Label.text = columnNamesArr[0]
+        tense1Label.text = columnNamesArr[1]
+        print(currentRow)
+        
+        //name = id
         //detail = infinitive
         //price = ind pre je
         //verb = ind pre tu
