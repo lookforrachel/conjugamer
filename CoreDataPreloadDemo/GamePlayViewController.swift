@@ -55,35 +55,48 @@ class GamePlayViewController: UIViewController {
     @IBOutlet weak var tenseLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var textView: UITextView!
-    var currentIndex: Int = 0
+    var currentRow: Int = 0
+    var countTenseColumns = 2
+    var currentColumn: Int = 0
+    var columnNames = ["price","verb"]
+
     @IBAction func checkAnswer(_ sender: Any) {
         
-        if userInput.text == menuItems[currentIndex].verb {
+        if userInput.text == menuItems[currentRow].verb {
             textView.text = "correct!"
             viewWillLayoutSubviews()
             userInput.text = nil
         }
         
         else {
-         textView.text = "you're a dumbass, the correct answer is \(menuItems[currentIndex].verb ?? "error")"
+         textView.text = "you're a dumbass, the correct answer is \(menuItems[currentRow].verb ?? "error")"
         
         }
     }
     
-    func randomNumberGenerator() -> Int {
-        //generates random number from 0 to menuItems.count
-        return Int(arc4random_uniform(UInt32(menuItems.count)+1))
+    func randomNumberGeneratorRow() -> Int {
+        //generates random number from 1 to menuItems.count
+        return Int(arc4random_uniform(UInt32(menuItems.count-1)+1))
+    }
+    
+    func randomNumberGeneratorColumn() -> Int {
+        //generates random number from 2 to number of columns with tenses
+        return Int(arc4random_uniform(UInt32(countTenseColumns)))
     }
     
     override func viewWillLayoutSubviews() {
-        currentIndex = self.randomNumberGenerator()
-        verbLabel.text = menuItems[currentIndex].detail
-        tenseLabel.text = menuItems[0].verb
+        currentRow = self.randomNumberGeneratorRow()
+        currentColumn = self.randomNumberGeneratorColumn()
+        let columnName = columnNames[currentColumn]
+        
+        verbLabel.text = menuItems[currentRow].detail
+        tenseLabel.text = menuItems[0].value(forKey:columnName) as! String
    
-        //name = id
-        //verb = ind pre tu
-        //price = ind pre je
+        //name = iddors
         //detail = infinitive
+        //price = ind pre je
+        //verb = ind pre tu
+
         
     }
     
