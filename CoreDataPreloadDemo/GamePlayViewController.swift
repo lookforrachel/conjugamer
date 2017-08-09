@@ -14,7 +14,7 @@ class GamePlayViewController: UIViewController {
 
     fileprivate var menuItems:[MenuItem] = []
     var fetchResultController:NSFetchedResultsController<NSFetchRequestResult>!
-
+    var randomiser:(()->Int)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,8 @@ class GamePlayViewController: UIViewController {
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MenuItem")
             do {
                 menuItems = try managedObjectContext.fetch(fetchRequest) as! [MenuItem]
-                //print(test(1))
+                randomiser = GamePlayViewController.randomSequenceGenerator(min: 1, max: menuItems.count-1)
+                
             } catch {
                 print("Failed to retrieve record")
                 print(error)
@@ -64,23 +65,24 @@ class GamePlayViewController: UIViewController {
     var columnNames = ["price","verb"]
     var columnNameLong: String = ""
     var columnNamesArr: String = ""
+    var answer: String = "x"
 
     @IBAction func checkAnswer(_ sender: Any) {
         
-        if userInput.text == menuItems[currentRow].verb {
+        if userInput.text == answer {
             textView.text = "correct!"
-            viewWillLayoutSubviews()
+            questionsPage()
             userInput.text = nil
         }
         
         else {
-         textView.text = "you're a dumbass, the correct answer is \(menuItems[currentRow].verb ?? "error")"
+         textView.text = "you're a dumbass, the correct answer is \(answer)"
         
         }
     }
     
     
-    func randomSequenceGenerator(min: Int, max: Int) -> () -> Int {
+    static func randomSequenceGenerator(min: Int, max: Int) -> () -> Int {
         var numbers: [Int] = []
         return {
             if numbers.count == 0 {
@@ -98,26 +100,39 @@ class GamePlayViewController: UIViewController {
         return Int(arc4random_uniform(UInt32(countTenseColumns)))
     }
     
-    override func viewWillLayoutSubviews() {
-        currentRow = self.randomSequenceGenerator(min: 1, max: menuItems.count-1)()
+    override func viewWillAppear(_ animated: Bool) {
+    
+        questionsPage()
+    }
+    
+    func questionsPage () {
+    
+        guard let unwrappedRandomiser = randomiser else {
+            fatalError()
+        }
+        
+        currentRow = unwrappedRandomiser()
         currentColumn = self.randomNumberGeneratorColumn()
         let columnName = columnNames[currentColumn]
         
         let columnNameLong = menuItems[0].value(forKey:columnName) as! String
         let columnNamesArr = columnNameLong.components(separatedBy: "|")
         
+        answer = menuItems[currentRow].value(forKey:columnName) as! String
+        
         verbLabel.text = menuItems[currentRow].detail
         tenseLabel.text = columnNamesArr[2]
         tense0Label.text = columnNamesArr[0]
         tense1Label.text = columnNamesArr[1]
-        print(currentRow)
+        print("row: \(currentRow)")
+        print("col: \(currentColumn)")
+        print("ans: \(answer)")
         
         //name = id
         //detail = infinitive
         //price = ind pre je
         //verb = ind pre tu
 
-        
     }
     
 }
