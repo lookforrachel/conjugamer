@@ -12,7 +12,7 @@ import Foundation
 
 class GamePlayViewController: UIViewController {
 
-    fileprivate var menuItems:[MenuItem] = []
+    fileprivate var verbDatabase:[VerbDatabase] = []
     var fetchResultController:NSFetchedResultsController<NSFetchRequestResult>!
     var randomiser:(()->Int)?
     
@@ -24,10 +24,10 @@ class GamePlayViewController: UIViewController {
         // Load menu items from database
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MenuItem")
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "VerbDatabase")
             do {
-                menuItems = try managedObjectContext.fetch(fetchRequest) as! [MenuItem]
-                randomiser = GamePlayViewController.randomSequenceGenerator(min: 1, max: menuItems.count-1)
+                verbDatabase = try managedObjectContext.fetch(fetchRequest) as! [VerbDatabase]
+                randomiser = GamePlayViewController.randomSequenceGenerator(min: 1, max: verbDatabase.count-1)
                 
             } catch {
                 print("Failed to retrieve record")
@@ -62,7 +62,7 @@ class GamePlayViewController: UIViewController {
     var currentRow: Int = 0
     var countTenseColumns = 2
     var currentColumn: Int = 0
-    var columnNames = ["price","verb"]
+    var columnNames = ["indPreJe","indPreTu"]
     var columnNameLong: String = ""
     var columnNamesArr: String = ""
     var answer: String = "x"
@@ -115,12 +115,12 @@ class GamePlayViewController: UIViewController {
         currentColumn = self.randomNumberGeneratorColumn()
         let columnName = columnNames[currentColumn]
         
-        let columnNameLong = menuItems[0].value(forKey:columnName) as! String
+        let columnNameLong = verbDatabase[0].value(forKey:columnName) as! String
         let columnNamesArr = columnNameLong.components(separatedBy: "|")
         
-        answer = menuItems[currentRow].value(forKey:columnName) as! String
+        answer = verbDatabase[currentRow].value(forKey:columnName) as! String
         
-        verbLabel.text = menuItems[currentRow].detail
+        verbLabel.text = verbDatabase[currentRow].inf
         tenseLabel.text = columnNamesArr[2]
         tense0Label.text = columnNamesArr[0]
         tense1Label.text = columnNamesArr[1]
