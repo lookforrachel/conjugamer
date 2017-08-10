@@ -53,12 +53,12 @@ class GamePlayViewController: UIViewController {
     }
     */
 
-    @IBOutlet weak var verbLabel: UILabel!
-    @IBOutlet weak var tenseLabel: UILabel!
+    @IBOutlet weak var verbMoodLabel: UILabel!
+    @IBOutlet weak var pronounLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var tense1Label: UILabel!
-    @IBOutlet weak var tense0Label: UILabel!
+    @IBOutlet weak var tenseLabel: UILabel!
+    @IBOutlet weak var verbLabel: UILabel!
     var currentRow: Int = 0
     var countTenseColumns = 2
     var currentColumn: Int = 0
@@ -120,10 +120,11 @@ class GamePlayViewController: UIViewController {
         
         answer = verbDatabase[currentRow].value(forKey:columnName) as! String
         
+        verbMoodLabel.text = columnNamesArr[0]
+        tenseLabel.text = columnNamesArr[1]
         verbLabel.text = verbDatabase[currentRow].inf
-        tenseLabel.text = columnNamesArr[2]
-        tense0Label.text = columnNamesArr[0]
-        tense1Label.text = columnNamesArr[1]
+        pronounLabel.text = columnNamesArr[2]
+        
         print("row: \(currentRow)")
         print("col: \(currentColumn)")
         print("ans: \(answer)")

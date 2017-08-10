@@ -108,6 +108,7 @@
         <!--Game Play View Controller-->
         <scene sceneID="j2u-On-z2q">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TX3-Z0-7rC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="18W-Ci-slj" customClass="GamePlayViewController" customModule="CoreDataPreloadDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yAo-ge-e6s"/>
@@ -189,15 +190,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="Mbb-Z9-w6w"/>
                     <connections>
-                        <outlet property="tense0Label" destination="MML-jt-F1y" id="aW0-3g-TGf"/>
-                        <outlet property="tense1Label" destination="Cj6-jr-J0U" id="tJu-tQ-fy4"/>
-                        <outlet property="tenseLabel" destination="Eg6-x0-mnr" id="GMK-dW-O2g"/>
+                        <outlet property="pronounLabel" destination="Eg6-x0-mnr" id="Mbg-64-tfy"/>
+                        <outlet property="tenseLabel" destination="Cj6-jr-J0U" id="eSd-an-9r1"/>
                         <outlet property="textView" destination="TEJ-Xy-Fdz" id="nZJ-9m-y6i"/>
                         <outlet property="userInput" destination="jvL-NE-NOY" id="1LR-Ad-Hzg"/>
-                        <outlet property="verbLabel" destination="eW6-hR-0jM" id="U6E-6g-HOt"/>
+                        <outlet property="verbLabel" destination="eW6-hR-0jM" id="Pl3-ZZ-J7G"/>
+                        <outlet property="verbMoodLabel" destination="MML-jt-F1y" id="Lbf-Ub-ye4"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TX3-Z0-7rC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="955.77211394302856"/>
         </scene>
