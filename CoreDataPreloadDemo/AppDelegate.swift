@@ -13,11 +13,19 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        preloadData()
+        //get defaults csv loaded flag
+        let coreIsLoaded = UserDefaults.standard.bool(forKey: "coreIsLoaded")
+        print((coreIsLoaded) ? "core already loaded, proceeding to view" : "preloading data")
+        
+        //if unset, preload data
+        if(!coreIsLoaded){
+            preloadData()
+        }
+        
         return true
     }
 
@@ -109,7 +117,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - CSV Parser Methods
-    
     func parseCSV (_ contentsOfURL: URL, encoding: String.Encoding) -> [(id:String, inf:String, indPreJe: String, indPreTu: String)]? {
         
         // Load the CSV file and parse it
@@ -194,6 +201,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
                 do {
                     try managedObjectContext.save()
+                    
+                    //set defaults csv loaded flag to true
+                    UserDefaults.standard.set(true, forKey: "coreIsLoaded")
+                    UserDefaults.standard.synchronize()
                 } catch {
                     print(error)
                 }

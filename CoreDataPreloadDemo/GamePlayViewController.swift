@@ -129,8 +129,8 @@ class GamePlayViewController: UIViewController {
             answer = verbDatabase[currentRow].value(forKey:columnName) as! String
             
             verbMoodLabel.text = columnNamesArr[0]
-            tenseLabel.text = ""
-            pronounLabel.text = columnNamesArr[2]
+            tenseLabel.text = columnNamesArr[1]
+            pronounLabel.text = ""
             
         default:
             verbMoodLabel.text = columnNamesArr[0]
