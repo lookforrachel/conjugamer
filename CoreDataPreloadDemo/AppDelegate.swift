@@ -118,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         do {
             let content = try String(contentsOf: contentsOfURL, encoding: encoding)
-            print(content)
+            //print(content)
             items = []
             let lines:[String] = content.components(separatedBy: CharacterSet.newlines) as [String]
             

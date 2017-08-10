@@ -117,17 +117,38 @@ class GamePlayViewController: UIViewController {
         
         let columnNameLong = verbDatabase[0].value(forKey:columnName) as! String
         let columnNamesArr = columnNameLong.components(separatedBy: "|")
+        print(columnNameLong,columnNamesArr.count)
+        
+        switch columnNamesArr.count {
+        case 1:
+            verbMoodLabel.text = columnNameLong
+            tenseLabel.text = ""
+            pronounLabel.text = ""
+            
+        case 2:
+            answer = verbDatabase[currentRow].value(forKey:columnName) as! String
+            
+            verbMoodLabel.text = columnNamesArr[0]
+            tenseLabel.text = ""
+            pronounLabel.text = columnNamesArr[2]
+            
+        default:
+            verbMoodLabel.text = columnNamesArr[0]
+            tenseLabel.text = columnNamesArr[1]
+            pronounLabel.text = columnNamesArr[2]
+
+
+        }
         
         answer = verbDatabase[currentRow].value(forKey:columnName) as! String
-        
-        verbMoodLabel.text = columnNamesArr[0]
-        tenseLabel.text = columnNamesArr[1]
+
         verbLabel.text = verbDatabase[currentRow].inf
-        pronounLabel.text = columnNamesArr[2]
         
         print("row: \(currentRow)")
         print("col: \(currentColumn)")
         print("ans: \(answer)")
+        
+        
         
         //name = id
         //detail = infinitive
