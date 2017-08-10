@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         preloadData()
-        
         return true
     }
 
@@ -111,11 +110,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - CSV Parser Methods
     
-    func parseCSV (_ contentsOfURL: URL, encoding: String.Encoding) -> [(name:String, detail:String, price: String, verb: String)]? {
+    func parseCSV (_ contentsOfURL: URL, encoding: String.Encoding) -> [(id:String, inf:String, indPreJe: String, indPreTu: String)]? {
         
         // Load the CSV file and parse it
         let delimiter = ","
-        var items:[(name:String, detail:String, price: String, verb: String)]?
+        var items:[(id:String, inf:String, indPreJe: String, indPreTu: String)]?
         
         do {
             let content = try String(contentsOf: contentsOfURL, encoding: encoding)
@@ -162,7 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
                     // Put the values into the tuple and add it to the items array
-                    let item = (name: values[0], detail: values[1], price: values[2], verb: values[3])
+                    let item = (id: values[0], inf: values[1], indPreJe: values[2], indPreTu: values[3])
                     items?.append(item)
                 }
             }
@@ -187,11 +186,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let items = parseCSV(remoteURL, encoding: String.Encoding.utf8) {
             // Preload the menu items
             for item in items {
-                let menuItem = NSEntityDescription.insertNewObject(forEntityName: "MenuItem", into: managedObjectContext) as! MenuItem
-                menuItem.name = item.name
-                menuItem.detail = item.detail
-                menuItem.price = item.price
-                menuItem.verb = item.verb
+                let verbDatabase = NSEntityDescription.insertNewObject(forEntityName: "VerbDatabase", into: managedObjectContext) as! VerbDatabase
+                verbDatabase.id = item.id
+                verbDatabase.inf = item.inf
+                verbDatabase.indPreJe = item.indPreJe
+                verbDatabase.indPreTu = item.indPreTu
         
                 do {
                     try managedObjectContext.save()
@@ -205,12 +204,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func removeData () {
         // Remove the existing items
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MenuItem")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "VerbDatabase")
         
         do {
-            let menuItems = try managedObjectContext.fetch(fetchRequest) as! [MenuItem]
-            for menuItem in menuItems {
-                managedObjectContext.delete(menuItem)
+            let VerbDatabases = try managedObjectContext.fetch(fetchRequest) as! [VerbDatabase]
+            for verbDatabase in VerbDatabases {
+                managedObjectContext.delete(verbDatabase)
             }
         } catch {
             print(error)
