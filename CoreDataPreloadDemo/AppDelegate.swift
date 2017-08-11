@@ -117,11 +117,123 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - CSV Parser Methods
-    func parseCSV (_ contentsOfURL: URL, encoding: String.Encoding) -> [(id:String, inf:String, indPreJe: String, indPreTu: String)]? {
+    func parseCSV (_ contentsOfURL: URL, encoding: String.Encoding) -> [(id: String,
+        inf: String,
+        ger: String,
+        prePart: String,
+        pastPart: String,
+        indPreJe: String,
+        indPreTu: String,
+        indPreIl: String,
+        indPreNous: String,
+        indPreVous: String,
+        indPreIls: String,
+        indImpJe: String,
+        indImpTu: String,
+        indImpIl: String,
+        indImpNous: String,
+        indImpVous: String,
+        indImpIls: String,
+        indPSJe: String,
+        indPSTu: String,
+        indPSIl: String,
+        indPSNous: String,
+        indPSVous: String,
+        indPSIls: String,
+        indFSJe: String,
+        indFSTu: String,
+        indFSIl: String,
+        indFSNous: String,
+        indFSVous: String,
+        indFSIls: String,
+        indConJe: String,
+        indConTu: String,
+        indConIl: String,
+        indConNous: String,
+        indConVous: String,
+        indConIls: String,
+        subPreJe: String,
+        subPreTu: String,
+        subPreIl: String,
+        subPreNous: String,
+        subPreVous: String,
+        subPreIls: String,
+        subImpJe: String,
+        subImpTu: String,
+        subImpIl: String,
+        subImpNous: String,
+        subImpVous: String,
+        subImpIls: String,
+        impTu: String,
+        impNous: String,
+        impVous: String,
+        aux: String,
+        indPCJe: String,
+        indPCTu: String,
+        indPCIl: String,
+        indPCNous: String,
+        indPCVous: String,
+        indPCIls: String)]? {
         
         // Load the CSV file and parse it
         let delimiter = ","
-        var items:[(id:String, inf:String, indPreJe: String, indPreTu: String)]?
+            var items:[(id: String,
+            inf: String,
+            ger: String,
+            prePart: String,
+            pastPart: String,
+            indPreJe: String,
+            indPreTu: String,
+            indPreIl: String,
+            indPreNous: String,
+            indPreVous: String,
+            indPreIls: String,
+            indImpJe: String,
+            indImpTu: String,
+            indImpIl: String,
+            indImpNous: String,
+            indImpVous: String,
+            indImpIls: String,
+            indPSJe: String,
+            indPSTu: String,
+            indPSIl: String,
+            indPSNous: String,
+            indPSVous: String,
+            indPSIls: String,
+            indFSJe: String,
+            indFSTu: String,
+            indFSIl: String,
+            indFSNous: String,
+            indFSVous: String,
+            indFSIls: String,
+            indConJe: String,
+            indConTu: String,
+            indConIl: String,
+            indConNous: String,
+            indConVous: String,
+            indConIls: String,
+            subPreJe: String,
+            subPreTu: String,
+            subPreIl: String,
+            subPreNous: String,
+            subPreVous: String,
+            subPreIls: String,
+            subImpJe: String,
+            subImpTu: String,
+            subImpIl: String,
+            subImpNous: String,
+            subImpVous: String,
+            subImpIls: String,
+            impTu: String,
+            impNous: String,
+            impVous: String,
+            aux: String,
+            indPCJe: String,
+            indPCTu: String,
+            indPCIl: String,
+            indPCNous: String,
+            indPCVous: String,
+            indPCIls: String)]?
         
         do {
             let content = try String(contentsOf: contentsOfURL, encoding: encoding)
@@ -168,7 +280,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
                     // Put the values into the tuple and add it to the items array
-                    let item = (id: values[0], inf: values[1], indPreJe: values[2], indPreTu: values[3])
+                    let item = (id: values[0],
+                                inf: values[1],
+                                ger: values[2],
+                                prePart: values[3],
+                                pastPart: values[4],
+                                indPreJe: values[5],
+                                indPreTu: values[6],
+                                indPreIl: values[7],
+                                indPreNous: values[8],
+                                indPreVous: values[9],
+                                indPreIls: values[10],
+                                indImpJe: values[11],
+                                indImpTu: values[12],
+                                indImpIl: values[13],
+                                indImpNous: values[14],
+                                indImpVous: values[15],
+                                indImpIls: values[16],
+                                indPSJe: values[17],
+                                indPSTu: values[18],
+                                indPSIl: values[19],
+                                indPSNous: values[20],
+                                indPSVous: values[21],
+                                indPSIls: values[22],
+                                indFSJe: values[23],
+                                indFSTu: values[24],
+                                indFSIl: values[25],
+                                indFSNous: values[26],
+                                indFSVous: values[27],
+                                indFSIls: values[28],
+                                indConJe: values[29],
+                                indConTu: values[30],
+                                indConIl: values[31],
+                                indConNous: values[32],
+                                indConVous: values[33],
+                                indConIls: values[34],
+                                subPreJe: values[35],
+                                subPreTu: values[36],
+                                subPreIl: values[37],
+                                subPreNous: values[38],
+                                subPreVous: values[39],
+                                subPreIls: values[40],
+                                subImpJe: values[41],
+                                subImpTu: values[42],
+                                subImpIl: values[43],
+                                subImpNous: values[44],
+                                subImpVous: values[45],
+                                subImpIls: values[46],
+                                impTu: values[47],
+                                impNous: values[48],
+                                impVous: values[49],
+                                aux: values[50],
+                                indPCJe: values[5],
+                                indPCTu: values[6],
+                                indPCIl: values[7],
+                                indPCNous: values[8],
+                                indPCVous: values[9],
+                                indPCIls: values[10])
+                    
                     items?.append(item)
                 }
             }
@@ -196,8 +365,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let verbDatabase = NSEntityDescription.insertNewObject(forEntityName: "VerbDatabase", into: managedObjectContext) as! VerbDatabase
                 verbDatabase.id = item.id
                 verbDatabase.inf = item.inf
+                verbDatabase.ger = item.ger
+                verbDatabase.prePart = item.prePart
+                verbDatabase.pastPart = item.pastPart
                 verbDatabase.indPreJe = item.indPreJe
                 verbDatabase.indPreTu = item.indPreTu
+                verbDatabase.indPreIl = item.indPreIl
+                verbDatabase.indPreNous = item.indPreNous
+                verbDatabase.indPreVous = item.indPreVous
+                verbDatabase.indPreIls = item.indPreIls
+                verbDatabase.indImpJe = item.indImpJe
+                verbDatabase.indImpTu = item.indImpTu
+                verbDatabase.indImpIl = item.indImpIl
+                verbDatabase.indImpNous = item.indImpNous
+                verbDatabase.indImpVous = item.indImpVous
+                verbDatabase.indImpIls = item.indImpIls
+                verbDatabase.indPSJe = item.indPSJe
+                verbDatabase.indPSTu = item.indPSTu
+                verbDatabase.indPSIl = item.indPSIl
+                verbDatabase.indPSNous = item.indPSNous
+                verbDatabase.indPSVous = item.indPSVous
+                verbDatabase.indPSIls = item.indPSIls
+                verbDatabase.indFSJe = item.indFSJe
+                verbDatabase.indFSTu = item.indFSTu
+                verbDatabase.indFSIl = item.indFSIl
+                verbDatabase.indFSNous = item.indFSNous
+                verbDatabase.indFSVous = item.indFSVous
+                verbDatabase.indFSIls = item.indFSIls
+                verbDatabase.indConJe = item.indConJe
+                verbDatabase.indConTu = item.indConTu
+                verbDatabase.indConIl = item.indConIl
+                verbDatabase.indConNous = item.indConNous
+                verbDatabase.indConVous = item.indConVous
+                verbDatabase.indConIls = item.indConIls
+                verbDatabase.subPreJe = item.subPreJe
+                verbDatabase.subPreTu = item.subPreTu
+                verbDatabase.subPreIl = item.subPreIl
+                verbDatabase.subPreNous = item.subPreNous
+                verbDatabase.subPreVous = item.subPreVous
+                verbDatabase.subPreIls = item.subPreIls
+                verbDatabase.subImpJe = item.subImpJe
+                verbDatabase.subImpTu = item.subImpTu
+                verbDatabase.subImpIl = item.subImpIl
+                verbDatabase.subImpNous = item.subImpNous
+                verbDatabase.subImpVous = item.subImpVous
+                verbDatabase.subImpIls = item.subImpIls
+                verbDatabase.impTu = item.impTu
+                verbDatabase.impNous = item.impNous
+                verbDatabase.impVous = item.impVous
+                verbDatabase.aux = item.aux
+                verbDatabase.indPCJe = item.indPCJe
+                verbDatabase.indPCTu = item.indPCTu
+                verbDatabase.indPCIl = item.indPCIl
+                verbDatabase.indPCNous = item.indPCNous
+                verbDatabase.indPCVous = item.indPCVous
+                verbDatabase.indPCIls = item.indPCIls
         
                 do {
                     try managedObjectContext.save()

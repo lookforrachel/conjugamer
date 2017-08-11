@@ -108,7 +108,6 @@
         <!--Game Play View Controller-->
         <scene sceneID="j2u-On-z2q">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TX3-Z0-7rC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="18W-Ci-slj" customClass="GamePlayViewController" customModule="CoreDataPreloadDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yAo-ge-e6s"/>
@@ -198,6 +197,7 @@
                         <outlet property="verbMoodLabel" destination="MML-jt-F1y" id="Lbf-Ub-ye4"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TX3-Z0-7rC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="955.77211394302856"/>
         </scene>

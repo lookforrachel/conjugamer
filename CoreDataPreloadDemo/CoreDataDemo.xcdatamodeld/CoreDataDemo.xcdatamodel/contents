@@ -7,6 +7,7 @@
         <attribute name="verb" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="VerbDatabase" representedClassName="VerbDatabase" syncable="YES">
+        <attribute name="aux" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ger" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="impNous" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,11 +31,16 @@
         <attribute name="indImpNous" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indImpTu" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indImpVous" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indPCIl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indPCIls" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indPCJe" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indPCNous" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indPCTu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indPCVous" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indPreIl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indPreIls" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indPreJe" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indPreNous" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="indPrePas" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indPreTu" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indPreVous" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indPSIl" optional="YES" attributeType="String" syncable="YES"/>
@@ -61,6 +67,6 @@
     </entity>
     <elements>
         <element name="MenuItem" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="VerbDatabase" positionX="-36" positionY="36" width="128" height="810"/>
+        <element name="VerbDatabase" positionX="-36" positionY="36" width="128" height="900"/>
     </elements>
 </model>

@@ -43,7 +43,6 @@ extension VerbDatabase {
     @NSManaged public var indPreIls: String?
     @NSManaged public var indPreJe: String?
     @NSManaged public var indPreNous: String?
-    @NSManaged public var indPrePas: String?
     @NSManaged public var indPreTu: String?
     @NSManaged public var indPreVous: String?
     @NSManaged public var indPSIl: String?
@@ -67,5 +66,11 @@ extension VerbDatabase {
     @NSManaged public var subPreNous: String?
     @NSManaged public var subPreTu: String?
     @NSManaged public var subPreVous: String?
-
+    @NSManaged public var aux: String?
+    @NSManaged public var indPCJe: String?
+    @NSManaged public var indPCTu: String?
+    @NSManaged public var indPCIl: String?
+    @NSManaged public var indPCNous: String?
+    @NSManaged public var indPCVous: String?
+    @NSManaged public var indPCIls: String?
 }
