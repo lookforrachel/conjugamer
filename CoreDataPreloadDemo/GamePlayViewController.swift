@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Foundation
 
-class GamePlayViewController: UIViewController {
+class GamePlayViewController: UIViewController, UITextFieldDelegate {
 
     fileprivate var verbDatabase:[VerbDatabase] = []
     var fetchResultController:NSFetchedResultsController<NSFetchRequestResult>!
@@ -28,7 +28,7 @@ class GamePlayViewController: UIViewController {
             do {
                 verbDatabase = try managedObjectContext.fetch(fetchRequest) as! [VerbDatabase]
                 randomiser = GamePlayViewController.randomSequenceGenerator(min: 1, max: verbDatabase.count-1)
-                
+                self.userInput.delegate = self
             } catch {
                 print("Failed to retrieve record")
                 print(error)
@@ -67,8 +67,15 @@ class GamePlayViewController: UIViewController {
     var columnNamesArr: String = ""
     var answer: String = "x"
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     @IBAction func checkAnswer(_ sender: Any) {
         
+
+    
         if userInput.text == answer {
             textView.text = "correct!"
             questionsPage()
