@@ -36,7 +36,8 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
             
         }
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -60,9 +61,14 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tenseLabel: UILabel!
     @IBOutlet weak var verbLabel: UILabel!
     var currentRow: Int = 0
-    var countTenseColumns = 2
+    var countTenseColumns = 6
     var currentColumn: Int = 0
-    var columnNames = ["indPreJe","indPreTu"]
+    var columnNames = ["indPreJe",
+                       "indPreTu",
+                       "indPreIl",
+                       "indPreNous",
+                       "indPreVous",
+                       "indPreIls"]
     var columnNameLong: String = ""
     var columnNamesArr: String = ""
     var answer: String = "x"
@@ -72,9 +78,12 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func checkAnswer(_ sender: Any) {
         
-
     
         if userInput.text == answer {
             textView.text = "correct!"
@@ -157,12 +166,10 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
         print("ans: \(answer)")
         
         
-        
         //name = id
         //detail = infinitive
         //price = ind pre je
         //verb = ind pre tu
-
     }
     
 }
