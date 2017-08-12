@@ -121,6 +121,7 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
         currentRow = unwrappedRandomiser()
         currentColumn = self.randomNumberGeneratorColumn()
         let columnName = columnNames[currentColumn]
+        print(columnName)
         
         let columnNameLong = verbDatabase[0].value(forKey:columnName) as! String
         let columnNamesArr = columnNameLong.components(separatedBy: "|")

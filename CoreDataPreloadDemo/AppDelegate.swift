@@ -117,11 +117,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - CSV Parser Methods
-    func parseCSV (_ contentsOfURL: URL, encoding: String.Encoding) -> [(id: String,
+    func parseCSV (_ contentsOfURL: URL, encoding: String.Encoding) -> [(
+        id: String,
         inf: String,
         ger: String,
         prePart: String,
         pastPart: String,
+        aux: String,
         indPreJe: String,
         indPreTu: String,
         indPreIl: String,
@@ -167,7 +169,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         impTu: String,
         impNous: String,
         impVous: String,
-        aux: String,
         indPCJe: String,
         indPCTu: String,
         indPCIl: String,
@@ -177,11 +178,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Load the CSV file and parse it
         let delimiter = ","
-            var items:[(id: String,
+            var items:[(
+            id: String,
             inf: String,
             ger: String,
             prePart: String,
             pastPart: String,
+            aux: String,
             indPreJe: String,
             indPreTu: String,
             indPreIl: String,
@@ -227,7 +230,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             impTu: String,
             impNous: String,
             impVous: String,
-            aux: String,
             indPCJe: String,
             indPCTu: String,
             indPCIl: String,
@@ -285,58 +287,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 ger: values[2],
                                 prePart: values[3],
                                 pastPart: values[4],
-                                indPreJe: values[5],
-                                indPreTu: values[6],
-                                indPreIl: values[7],
-                                indPreNous: values[8],
-                                indPreVous: values[9],
-                                indPreIls: values[10],
-                                indImpJe: values[11],
-                                indImpTu: values[12],
-                                indImpIl: values[13],
-                                indImpNous: values[14],
-                                indImpVous: values[15],
-                                indImpIls: values[16],
-                                indPSJe: values[17],
-                                indPSTu: values[18],
-                                indPSIl: values[19],
-                                indPSNous: values[20],
-                                indPSVous: values[21],
-                                indPSIls: values[22],
-                                indFSJe: values[23],
-                                indFSTu: values[24],
-                                indFSIl: values[25],
-                                indFSNous: values[26],
-                                indFSVous: values[27],
-                                indFSIls: values[28],
-                                indConJe: values[29],
-                                indConTu: values[30],
-                                indConIl: values[31],
-                                indConNous: values[32],
-                                indConVous: values[33],
-                                indConIls: values[34],
-                                subPreJe: values[35],
-                                subPreTu: values[36],
-                                subPreIl: values[37],
-                                subPreNous: values[38],
-                                subPreVous: values[39],
-                                subPreIls: values[40],
-                                subImpJe: values[41],
-                                subImpTu: values[42],
-                                subImpIl: values[43],
-                                subImpNous: values[44],
-                                subImpVous: values[45],
-                                subImpIls: values[46],
-                                impTu: values[47],
-                                impNous: values[48],
-                                impVous: values[49],
-                                aux: values[50],
-                                indPCJe: values[5],
-                                indPCTu: values[6],
-                                indPCIl: values[7],
-                                indPCNous: values[8],
-                                indPCVous: values[9],
-                                indPCIls: values[10])
+                                aux: values[5],
+                                indPreJe: values[6],
+                                indPreTu: values[7],
+                                indPreIl: values[8],
+                                indPreNous: values[9],
+                                indPreVous: values[10],
+                                indPreIls: values[11],
+                                indImpJe: values[12],
+                                indImpTu: values[13],
+                                indImpIl: values[14],
+                                indImpNous: values[15],
+                                indImpVous: values[16],
+                                indImpIls: values[17],
+                                indPSJe: values[18],
+                                indPSTu: values[19],
+                                indPSIl: values[20],
+                                indPSNous: values[21],
+                                indPSVous: values[22],
+                                indPSIls: values[23],
+                                indFSJe: values[24],
+                                indFSTu: values[25],
+                                indFSIl: values[26],
+                                indFSNous: values[27],
+                                indFSVous: values[28],
+                                indFSIls: values[29],
+                                indConJe: values[30],
+                                indConTu: values[31],
+                                indConIl: values[32],
+                                indConNous: values[33],
+                                indConVous: values[34],
+                                indConIls: values[35],
+                                subPreJe: values[36],
+                                subPreTu: values[37],
+                                subPreIl: values[38],
+                                subPreNous: values[39],
+                                subPreVous: values[40],
+                                subPreIls: values[41],
+                                subImpJe: values[42],
+                                subImpTu: values[43],
+                                subImpIl: values[44],
+                                subImpNous: values[45],
+                                subImpVous: values[46],
+                                subImpIls: values[47],
+                                impTu: values[48],
+                                impNous: values[49],
+                                impVous: values[50],
+                                indPCJe: values[51],
+                                indPCTu: values[52],
+                                indPCIl: values[53],
+                                indPCNous: values[54],
+                                indPCVous: values[55],
+                                indPCIls: values[56]
+)
                     
                     items?.append(item)
                 }
@@ -368,6 +371,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 verbDatabase.ger = item.ger
                 verbDatabase.prePart = item.prePart
                 verbDatabase.pastPart = item.pastPart
+                verbDatabase.aux = item.aux
                 verbDatabase.indPreJe = item.indPreJe
                 verbDatabase.indPreTu = item.indPreTu
                 verbDatabase.indPreIl = item.indPreIl
@@ -413,7 +417,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 verbDatabase.impTu = item.impTu
                 verbDatabase.impNous = item.impNous
                 verbDatabase.impVous = item.impVous
-                verbDatabase.aux = item.aux
                 verbDatabase.indPCJe = item.indPCJe
                 verbDatabase.indPCTu = item.indPCTu
                 verbDatabase.indPCIl = item.indPCIl
