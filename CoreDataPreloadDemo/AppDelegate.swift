@@ -121,8 +121,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         id: String,
         inf: String,
         ger: String,
-        prePart: String,
-        pastPart: String,
+        partPre: String,
+        partPas: String,
         aux: String,
         indPreJe: String,
         indPreTu: String,
@@ -182,8 +182,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             id: String,
             inf: String,
             ger: String,
-            prePart: String,
-            pastPart: String,
+            partPre: String,
+            partPas: String,
             aux: String,
             indPreJe: String,
             indPreTu: String,
@@ -285,8 +285,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let item = (id: values[0],
                                 inf: values[1],
                                 ger: values[2],
-                                prePart: values[3],
-                                pastPart: values[4],
+                                partPre: values[3],
+                                partPas: values[4],
                                 aux: values[5],
                                 indPreJe: values[6],
                                 indPreTu: values[7],
@@ -369,8 +369,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 verbDatabase.id = item.id
                 verbDatabase.inf = item.inf
                 verbDatabase.ger = item.ger
-                verbDatabase.prePart = item.prePart
-                verbDatabase.pastPart = item.pastPart
+                verbDatabase.partPre = item.partPre
+                verbDatabase.partPas = item.partPas
                 verbDatabase.aux = item.aux
                 verbDatabase.indPreJe = item.indPreJe
                 verbDatabase.indPreTu = item.indPreTu

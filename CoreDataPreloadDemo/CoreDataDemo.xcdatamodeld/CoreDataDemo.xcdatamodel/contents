@@ -50,8 +50,8 @@
         <attribute name="indPSTu" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indPSVous" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="inf" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pastPart" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="prePart" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="partPas" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="partPre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subImpIl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subImpIls" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subImpJe" optional="YES" attributeType="String" syncable="YES"/>

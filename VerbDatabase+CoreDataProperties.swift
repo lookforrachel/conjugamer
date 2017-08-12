@@ -52,8 +52,8 @@ extension VerbDatabase {
     @NSManaged public var indPSTu: String?
     @NSManaged public var indPSVous: String?
     @NSManaged public var inf: String?
-    @NSManaged public var pastPart: String?
-    @NSManaged public var prePart: String?
+    @NSManaged public var partPre: String?
+    @NSManaged public var partPas: String?
     @NSManaged public var subImpIl: String?
     @NSManaged public var subImpIls: String?
     @NSManaged public var subImpJe: String?
