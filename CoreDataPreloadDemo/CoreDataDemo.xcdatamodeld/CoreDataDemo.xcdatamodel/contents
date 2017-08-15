@@ -6,7 +6,7 @@
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="verb" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="VerbDatabase" representedClassName="VerbDatabase" syncable="YES">
+    <entity name="Verb" representedClassName="Verb" syncable="YES">
         <attribute name="aux" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ger" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -67,6 +67,6 @@
     </entity>
     <elements>
         <element name="MenuItem" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="VerbDatabase" positionX="-36" positionY="36" width="128" height="900"/>
+        <element name="Verb" positionX="-36" positionY="36" width="128" height="900"/>
     </elements>
 </model>

@@ -12,7 +12,7 @@ import Foundation
 
 class GamePlayViewController: UIViewController, UITextFieldDelegate {
 
-    fileprivate var verbDatabase:[VerbDatabase] = []
+    fileprivate var Verb:[Verb] = []
     var fetchResultController:NSFetchedResultsController<NSFetchRequestResult>!
     var randomiser:(()->Int)?
     
@@ -24,10 +24,10 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
         // Load menu items from database
         if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "VerbDatabase")
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Verb")
             do {
-                verbDatabase = try managedObjectContext.fetch(fetchRequest) as! [VerbDatabase]
-                randomiser = GamePlayViewController.randomSequenceGenerator(min: 1, max: verbDatabase.count-1)
+                Verb = try managedObjectContext.fetch(fetchRequest) as! [Verb]
+                randomiser = GamePlayViewController.randomSequenceGenerator(min: 1, max: Verb.count-1)
                 self.userInput.delegate = self
             } catch {
                 print("Failed to retrieve record")
@@ -132,7 +132,7 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
         let columnName = columnNames[currentColumn]
         print(columnName)
         
-        let columnNameLong = verbDatabase[0].value(forKey:columnName) as! String
+        let columnNameLong = Verb[0].value(forKey:columnName) as! String
         let columnNamesArr = columnNameLong.components(separatedBy: "|")
         print(columnNameLong,columnNamesArr.count)
         
@@ -143,7 +143,7 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
             pronounLabel.text = ""
             
         case 2:
-            answer = verbDatabase[currentRow].value(forKey:columnName) as! String
+            answer = Verb[currentRow].value(forKey:columnName) as! String
             
             verbMoodLabel.text = columnNamesArr[0]
             tenseLabel.text = columnNamesArr[1]
@@ -157,14 +157,14 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
 
         }
         
-        answer = verbDatabase[currentRow].value(forKey:columnName) as! String
+        answer = Verb[currentRow].value(forKey:columnName) as! String
 
-        verbLabel.text = verbDatabase[currentRow].inf
+        verbLabel.text = Verb[currentRow].inf
         
         print("row: \(currentRow)")
         print("col: \(currentColumn)")
         print("ans: \(answer)")
-        
+                
         
         //name = id
         //detail = infinitive

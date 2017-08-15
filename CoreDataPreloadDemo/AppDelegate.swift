@@ -365,64 +365,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let items = parseCSV(remoteURL, encoding: String.Encoding.utf8) {
             // Preload the menu items
             for item in items {
-                let verbDatabase = NSEntityDescription.insertNewObject(forEntityName: "VerbDatabase", into: managedObjectContext) as! VerbDatabase
-                verbDatabase.id = item.id
-                verbDatabase.inf = item.inf
-                verbDatabase.ger = item.ger
-                verbDatabase.partPre = item.partPre
-                verbDatabase.partPas = item.partPas
-                verbDatabase.aux = item.aux
-                verbDatabase.indPreJe = item.indPreJe
-                verbDatabase.indPreTu = item.indPreTu
-                verbDatabase.indPreIl = item.indPreIl
-                verbDatabase.indPreNous = item.indPreNous
-                verbDatabase.indPreVous = item.indPreVous
-                verbDatabase.indPreIls = item.indPreIls
-                verbDatabase.indImpJe = item.indImpJe
-                verbDatabase.indImpTu = item.indImpTu
-                verbDatabase.indImpIl = item.indImpIl
-                verbDatabase.indImpNous = item.indImpNous
-                verbDatabase.indImpVous = item.indImpVous
-                verbDatabase.indImpIls = item.indImpIls
-                verbDatabase.indPSJe = item.indPSJe
-                verbDatabase.indPSTu = item.indPSTu
-                verbDatabase.indPSIl = item.indPSIl
-                verbDatabase.indPSNous = item.indPSNous
-                verbDatabase.indPSVous = item.indPSVous
-                verbDatabase.indPSIls = item.indPSIls
-                verbDatabase.indFSJe = item.indFSJe
-                verbDatabase.indFSTu = item.indFSTu
-                verbDatabase.indFSIl = item.indFSIl
-                verbDatabase.indFSNous = item.indFSNous
-                verbDatabase.indFSVous = item.indFSVous
-                verbDatabase.indFSIls = item.indFSIls
-                verbDatabase.indConJe = item.indConJe
-                verbDatabase.indConTu = item.indConTu
-                verbDatabase.indConIl = item.indConIl
-                verbDatabase.indConNous = item.indConNous
-                verbDatabase.indConVous = item.indConVous
-                verbDatabase.indConIls = item.indConIls
-                verbDatabase.subPreJe = item.subPreJe
-                verbDatabase.subPreTu = item.subPreTu
-                verbDatabase.subPreIl = item.subPreIl
-                verbDatabase.subPreNous = item.subPreNous
-                verbDatabase.subPreVous = item.subPreVous
-                verbDatabase.subPreIls = item.subPreIls
-                verbDatabase.subImpJe = item.subImpJe
-                verbDatabase.subImpTu = item.subImpTu
-                verbDatabase.subImpIl = item.subImpIl
-                verbDatabase.subImpNous = item.subImpNous
-                verbDatabase.subImpVous = item.subImpVous
-                verbDatabase.subImpIls = item.subImpIls
-                verbDatabase.impTu = item.impTu
-                verbDatabase.impNous = item.impNous
-                verbDatabase.impVous = item.impVous
-                verbDatabase.indPCJe = item.indPCJe
-                verbDatabase.indPCTu = item.indPCTu
-                verbDatabase.indPCIl = item.indPCIl
-                verbDatabase.indPCNous = item.indPCNous
-                verbDatabase.indPCVous = item.indPCVous
-                verbDatabase.indPCIls = item.indPCIls
+                let Verb = NSEntityDescription.insertNewObject(forEntityName: "Verb", into: managedObjectContext) as! Verb
+                Verb.id = item.id
+                Verb.inf = item.inf
+                Verb.ger = item.ger
+                Verb.partPre = item.partPre
+                Verb.partPas = item.partPas
+                Verb.aux = item.aux
+                Verb.indPreJe = item.indPreJe
+                Verb.indPreTu = item.indPreTu
+                Verb.indPreIl = item.indPreIl
+                Verb.indPreNous = item.indPreNous
+                Verb.indPreVous = item.indPreVous
+                Verb.indPreIls = item.indPreIls
+                Verb.indImpJe = item.indImpJe
+                Verb.indImpTu = item.indImpTu
+                Verb.indImpIl = item.indImpIl
+                Verb.indImpNous = item.indImpNous
+                Verb.indImpVous = item.indImpVous
+                Verb.indImpIls = item.indImpIls
+                Verb.indPSJe = item.indPSJe
+                Verb.indPSTu = item.indPSTu
+                Verb.indPSIl = item.indPSIl
+                Verb.indPSNous = item.indPSNous
+                Verb.indPSVous = item.indPSVous
+                Verb.indPSIls = item.indPSIls
+                Verb.indFSJe = item.indFSJe
+                Verb.indFSTu = item.indFSTu
+                Verb.indFSIl = item.indFSIl
+                Verb.indFSNous = item.indFSNous
+                Verb.indFSVous = item.indFSVous
+                Verb.indFSIls = item.indFSIls
+                Verb.indConJe = item.indConJe
+                Verb.indConTu = item.indConTu
+                Verb.indConIl = item.indConIl
+                Verb.indConNous = item.indConNous
+                Verb.indConVous = item.indConVous
+                Verb.indConIls = item.indConIls
+                Verb.subPreJe = item.subPreJe
+                Verb.subPreTu = item.subPreTu
+                Verb.subPreIl = item.subPreIl
+                Verb.subPreNous = item.subPreNous
+                Verb.subPreVous = item.subPreVous
+                Verb.subPreIls = item.subPreIls
+                Verb.subImpJe = item.subImpJe
+                Verb.subImpTu = item.subImpTu
+                Verb.subImpIl = item.subImpIl
+                Verb.subImpNous = item.subImpNous
+                Verb.subImpVous = item.subImpVous
+                Verb.subImpIls = item.subImpIls
+                Verb.impTu = item.impTu
+                Verb.impNous = item.impNous
+                Verb.impVous = item.impVous
+                Verb.indPCJe = item.indPCJe
+                Verb.indPCTu = item.indPCTu
+                Verb.indPCIl = item.indPCIl
+                Verb.indPCNous = item.indPCNous
+                Verb.indPCVous = item.indPCVous
+                Verb.indPCIls = item.indPCIls
         
                 do {
                     try managedObjectContext.save()
@@ -440,12 +440,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func removeData () {
         // Remove the existing items
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "VerbDatabase")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Verb")
         
         do {
-            let VerbDatabases = try managedObjectContext.fetch(fetchRequest) as! [VerbDatabase]
-            for verbDatabase in VerbDatabases {
-                managedObjectContext.delete(verbDatabase)
+            let Verbs = try managedObjectContext.fetch(fetchRequest) as! [Verb]
+            for Verb in Verbs {
+                managedObjectContext.delete(Verb)
             }
         } catch {
             print(error)

@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(VerbDatabase)
-public class VerbDatabase: NSManagedObject {
+@objc(Verb)
+public class Verb: NSManagedObject {
 
 }

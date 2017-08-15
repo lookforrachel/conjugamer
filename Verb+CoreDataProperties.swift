@@ -1,5 +1,5 @@
 //
-//  VerbDatabase+CoreDataProperties.swift
+//  Verb+CoreDataProperties.swift
 //  CoreDataPreloadDemo
 //
 //  Created by Rachel Yee on 8/10/17.
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension VerbDatabase {
+extension Verb {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<VerbDatabase> {
-        return NSFetchRequest<VerbDatabase>(entityName: "VerbDatabase")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Verb> {
+        return NSFetchRequest<Verb>(entityName: "Verb")
     }
 
     @NSManaged public var ger: String?
