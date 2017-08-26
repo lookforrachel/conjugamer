@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Conjugation" representedClassName="Conjugation" syncable="YES">
+        <attribute name="conjugation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pronoun" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tense" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="verbMood" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="verb" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Verb" inverseName="conjugation" inverseEntity="Verb" syncable="YES"/>
+    </entity>
+    <entity name="Verb" representedClassName="Verb" syncable="YES">
+        <attribute name="auxiliary" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="infinitive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isRegular" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="verbGroup" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="conjugation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Conjugation" inverseName="verb" inverseEntity="Conjugation" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Conjugation" positionX="-54" positionY="-9" width="128" height="118"/>
+        <element name="Verb" positionX="-63" positionY="-18" width="128" height="120"/>
+    </elements>
+</model>
