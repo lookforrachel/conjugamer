@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let moc = persistentContainer.viewContext
         do{
-            let url = Bundle.main.url(forResource: "verbs", withExtension: "json")
+            let url = Bundle.main.url(forResource: "verbsList", withExtension: "json")
             let string = try String(contentsOf: url!)
             let data = string.data(using: .utf8)
             do{
@@ -104,6 +104,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     guard let inf = item["infinitif"] else {
                         fatalError("no inf")
+                    }
+                    
+                    guard let grp = item["groupe"] else {
+                        fatalError("no grp")
                     }
                     
                     guard let ger = item["gérondif"] else {
@@ -307,6 +311,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // Verb object initialization
                     let verbObject = Verb(context: moc)
                     verbObject.infinitive = inf
+                    
+                    switch grp {
+                    case "1":
+                        verbObject.verbGroup = 1
+                    case "2":
+                        verbObject.verbGroup = 2
+                    case "3":
+                        verbObject.verbGroup = 3
+                    default:
+                        verbObject.auxiliary = 4
+                        print("error assigning verb group for \(inf)")
+                    }
                     
                     switch aux {
                     case "être":
