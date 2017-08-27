@@ -17,10 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        removeData ()
         processJSON()
 
         let moc = persistentContainer.viewContext
-        
+
         let verbRequest:NSFetchRequest<Verb> = Verb.fetchRequest()
         verbRequest.returnsObjectsAsFaults = false
         
@@ -88,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
+    
 
     func processJSON(){
         
@@ -115,11 +117,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     guard let partPas = item["participe|passé"] else {
                         fatalError("no partPas")
                     }
-//
-//                    guard let aux = item["auxiliare"] else {
-//                        fatalError("no aux")
-//                    }
-//                    
+
+                    guard let aux = item["auxiliare"] else {
+                        fatalError("no aux")
+                    }
+                    
                     guard let indPreJe = item["indicatif|présent|je"] else {
                         fatalError("no indPreJe")
                     }
@@ -301,9 +303,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
 
+
                     // Verb object initialization
                     let verbObject = Verb(context: moc)
                     verbObject.infinitive = inf
+                    
+                    switch aux {
+                    case "être":
+                        verbObject.auxiliary = 0
+                    case "avoir":
+                        verbObject.auxiliary = 1
+                    case "avoir;être":
+                        verbObject.auxiliary = 2
+                    default:
+                        verbObject.auxiliary = 3
+                        print("error assigning auxiliary group for \(inf)")
+                    }
                     
                     
                     
@@ -788,6 +803,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    // MARK: - Core Data Delete all
+    
+    func removeData () {
+        // Remove the existing items
+        let moc = persistentContainer.viewContext
+        let verbRequest: NSFetchRequest<Verb> = Verb.fetchRequest()
+        let conjugationRequest: NSFetchRequest<Conjugation> = Conjugation.fetchRequest()
+        var deleteRequest: NSBatchDeleteRequest
+        var deleteResults: NSPersistentStoreResult
+        
+        do {
+            deleteRequest = NSBatchDeleteRequest(fetchRequest: verbRequest as! NSFetchRequest<NSFetchRequestResult>)
+            deleteResults = try moc.execute(deleteRequest)
+            
+            deleteRequest = NSBatchDeleteRequest(fetchRequest: conjugationRequest as! NSFetchRequest<NSFetchRequestResult>)
+            deleteResults = try moc.execute(deleteRequest)
+            
+        } catch {
+            print(error)
+        }
+        
+    }
     
     // MARK: - Core Data Saving support
 
