@@ -315,12 +315,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     switch grp {
                     case "1":
                         verbObject.verbGroup = 1
+                        verbObject.isRegular = true
                     case "2":
                         verbObject.verbGroup = 2
+                        verbObject.isRegular = true
                     case "3":
                         verbObject.verbGroup = 3
+                        verbObject.isRegular = false
                     default:
-                        verbObject.auxiliary = 4
                         print("error assigning verb group for \(inf)")
                     }
                     
@@ -770,10 +772,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     verbObject.addToConjugation(conjugationObjectImpVous)
 
-                    
-//                    print(inf)
-//                    print(ger)
-//                    print(indPreJe)
                     
                 }
                 
