@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 //        removeData ()
-        processJSON()
+//        processJSON()
 
         let moc = persistentContainer.viewContext
 
@@ -835,7 +835,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             deleteResults = try moc.execute(deleteRequest)
             
         } catch {
-            print(error)
+            fatalError("Failed to remove existing data")
         }
         
     }
