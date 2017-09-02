@@ -1,5 +1,5 @@
 //
-//  FilterTensesTableViewController.swift
+//  OptionsPronounsTableViewController.swift
 //  jsonToCoreData
 //
 //  Created by Rachel Yee on 8/31/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterTensesTableViewController: UITableViewController {
+class OptionsPronounsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

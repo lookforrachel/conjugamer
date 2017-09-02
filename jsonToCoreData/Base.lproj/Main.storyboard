@@ -13,7 +13,7 @@
         <!--verbs-->
         <scene sceneID="Jvh-pT-jPl">
             <objects>
-                <tableViewController title="verbs" id="iLs-dJ-XoI" customClass="FilterVerbsTableViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="verbs" id="iLs-dJ-XoI" customClass="OptionsVerbsTableViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qzn-Kv-hK4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +201,7 @@
         <!--Tenses-->
         <scene sceneID="RV3-y4-xCo">
             <objects>
-                <tableViewController title="Tenses" id="kft-rq-F0k" customClass="FilterTensesTableViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Tenses" id="kft-rq-F0k" customClass="OptionsTensesTableViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6zp-Js-cSw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -832,7 +832,7 @@
         <!--Pronouns-->
         <scene sceneID="iK5-Hu-g9o">
             <objects>
-                <tableViewController title="Pronouns" id="bsG-Dv-x2K" customClass="FilterPronounsTableViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Pronouns" id="bsG-Dv-x2K" customClass="OptionsPronounsTableViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XmH-4f-bnU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

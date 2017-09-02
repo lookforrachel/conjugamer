@@ -1,5 +1,5 @@
 //
-//  FilterPronounsTableViewController.swift
+//  OptionsVerbsTableViewController.swift
 //  jsonToCoreData
 //
 //  Created by Rachel Yee on 8/31/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterPronounsTableViewController: UITableViewController {
+class OptionsVerbsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  FilterVerbsTableViewController.swift
+//  OptionsTensesTableViewController.swift
 //  jsonToCoreData
 //
 //  Created by Rachel Yee on 8/31/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterVerbsTableViewController: UITableViewController {
+class OptionsTensesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

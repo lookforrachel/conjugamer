@@ -19,9 +19,9 @@
 		5D69D3421F50F00C00946C73 /* Verb+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D69D33E1F50F00C00946C73 /* Verb+CoreDataClass.swift */; };
 		5D69D3431F50F00C00946C73 /* Verb+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D69D33F1F50F00C00946C73 /* Verb+CoreDataProperties.swift */; };
 		5DA656E61F58A16F00F30A38 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656E51F58A16F00F30A38 /* OptionsViewController.swift */; };
-		5DA656E81F58D1FF00F30A38 /* FilterTensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656E71F58D1FF00F30A38 /* FilterTensesTableViewController.swift */; };
-		5DA656EA1F58D21300F30A38 /* FilterPronounsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656E91F58D21300F30A38 /* FilterPronounsTableViewController.swift */; };
-		5DA656EC1F58D22600F30A38 /* FilterVerbsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656EB1F58D22600F30A38 /* FilterVerbsTableViewController.swift */; };
+		5DA656E81F58D1FF00F30A38 /* OptionsTensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656E71F58D1FF00F30A38 /* OptionsTensesTableViewController.swift */; };
+		5DA656EA1F58D21300F30A38 /* OptionsPronounsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656E91F58D21300F30A38 /* OptionsPronounsTableViewController.swift */; };
+		5DA656EC1F58D22600F30A38 /* OptionsVerbsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656EB1F58D22600F30A38 /* OptionsVerbsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,9 +39,9 @@
 		5D69D33E1F50F00C00946C73 /* Verb+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Verb+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5D69D33F1F50F00C00946C73 /* Verb+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Verb+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5DA656E51F58A16F00F30A38 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
-		5DA656E71F58D1FF00F30A38 /* FilterTensesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTensesTableViewController.swift; sourceTree = "<group>"; };
-		5DA656E91F58D21300F30A38 /* FilterPronounsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPronounsTableViewController.swift; sourceTree = "<group>"; };
-		5DA656EB1F58D22600F30A38 /* FilterVerbsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVerbsTableViewController.swift; sourceTree = "<group>"; };
+		5DA656E71F58D1FF00F30A38 /* OptionsTensesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTensesTableViewController.swift; sourceTree = "<group>"; };
+		5DA656E91F58D21300F30A38 /* OptionsPronounsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsPronounsTableViewController.swift; sourceTree = "<group>"; };
+		5DA656EB1F58D22600F30A38 /* OptionsVerbsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsVerbsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +83,9 @@
 				5D4D82C71F4F662A00D7B3EA /* ViewController.swift */,
 				5D4D82C91F4F662A00D7B3EA /* Main.storyboard */,
 				5DA656E51F58A16F00F30A38 /* OptionsViewController.swift */,
-				5DA656E71F58D1FF00F30A38 /* FilterTensesTableViewController.swift */,
-				5DA656E91F58D21300F30A38 /* FilterPronounsTableViewController.swift */,
-				5DA656EB1F58D22600F30A38 /* FilterVerbsTableViewController.swift */,
+				5DA656E71F58D1FF00F30A38 /* OptionsTensesTableViewController.swift */,
+				5DA656E91F58D21300F30A38 /* OptionsPronounsTableViewController.swift */,
+				5DA656EB1F58D22600F30A38 /* OptionsVerbsTableViewController.swift */,
 				5D4D82CF1F4F662A00D7B3EA /* Assets.xcassets */,
 				5D4D82D11F4F662A00D7B3EA /* LaunchScreen.storyboard */,
 				5D4D82D41F4F662A00D7B3EA /* Info.plist */,
@@ -168,11 +168,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DA656E81F58D1FF00F30A38 /* FilterTensesTableViewController.swift in Sources */,
-				5DA656EA1F58D21300F30A38 /* FilterPronounsTableViewController.swift in Sources */,
+				5DA656E81F58D1FF00F30A38 /* OptionsTensesTableViewController.swift in Sources */,
+				5DA656EA1F58D21300F30A38 /* OptionsPronounsTableViewController.swift in Sources */,
 				5D4D82CE1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodeld in Sources */,
 				5D4D82C81F4F662A00D7B3EA /* ViewController.swift in Sources */,
-				5DA656EC1F58D22600F30A38 /* FilterVerbsTableViewController.swift in Sources */,
+				5DA656EC1F58D22600F30A38 /* OptionsVerbsTableViewController.swift in Sources */,
 				5D69D3421F50F00C00946C73 /* Verb+CoreDataClass.swift in Sources */,
 				5D69D3411F50F00C00946C73 /* Conjugation+CoreDataProperties.swift in Sources */,
 				5D69D3431F50F00C00946C73 /* Verb+CoreDataProperties.swift in Sources */,
