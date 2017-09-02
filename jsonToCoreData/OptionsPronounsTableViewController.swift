@@ -49,14 +49,64 @@ class OptionsPronounsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell = tableView.cellForRow(at: indexPath)?.textLabel?.text as! String
+        
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
+            //remove selected predicate
+            
+            switch selectedCell {
+            case "je":
+                print("no je")
+            case "tu":
+                print("no tu")
+            case "il":
+                print("no il")
+            case "elle":
+                print("no elle")
+            case "nous":
+                print("no nous")
+            case "vous":
+                print("no vous")
+            case "ils":
+                print("no ils")
+            case "elles":
+                print("no elles")
+            default:
+                print("something else")
+            }
         }
         else {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
+            //add selected predicate
+            
+            switch selectedCell {
+            case "je":
+                print("je")
+            case "tu":
+                print("tu")
+            case "il":
+                print("il")
+            case "elle":
+                print("elle")
+            case "nous":
+                print("nous")
+            case "vous":
+                print("vous")
+            case "ils":
+                print("ils")
+            case "elles":
+                print("elles")
+            default:
+                print("something else")
+            }
+
         }
     }
 
+    private func setFilterSearchPredicate(filterby: String){
+        //searchPredicate = NSPredicate(format:)
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
