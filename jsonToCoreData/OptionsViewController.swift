@@ -9,7 +9,7 @@
 import UIKit
 
 var options = ["tenses", "pronouns", "verbs"]
-var myIndex = 0
+private var selectedCell = 0
 
 class OptionsViewController: UITableViewController {
 
@@ -39,12 +39,19 @@ class OptionsViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return options.count
     }
-
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "optionsCell", for: indexPath)
+        
+        cell.textLabel?.text = options[indexPath.row]
+        
+        return cell
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        myIndex = indexPath.row
+        selectedCell = indexPath.row
         
-        switch myIndex {
+        switch selectedCell {
         case 0:
             performSegue(withIdentifier: "tensesSegue" , sender: self)
         case 1:
@@ -55,19 +62,6 @@ class OptionsViewController: UITableViewController {
             print("no row selected")
         }
     }
-    
-    
-    
-    
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "optionsCell", for: indexPath)
-
-        cell.textLabel?.text = options[indexPath.row]
-
-        return cell
-    }
-    
 
     /*
     // Override to support conditional editing of the table view.
