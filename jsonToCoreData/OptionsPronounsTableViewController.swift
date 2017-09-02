@@ -57,23 +57,23 @@ class OptionsPronounsTableViewController: UITableViewController {
             
             switch selectedCell {
             case "je":
-                print("no je")
+                print("not je")
             case "tu":
-                print("no tu")
+                print("not tu")
             case "il":
-                print("no il")
+                print("not il")
             case "elle":
-                print("no elle")
+                print("not elle")
             case "nous":
-                print("no nous")
+                print("not nous")
             case "vous":
-                print("no vous")
+                print("not vous")
             case "ils":
-                print("no ils")
+                print("not ils")
             case "elles":
-                print("no elles")
+                print("not elles")
             default:
-                print("something else")
+                print("not something else")
             }
         }
         else {
