@@ -1,5 +1,5 @@
 //
-//  FilterTableViewController.swift
+//  OptionsViewController.swift
 //  jsonToCoreData
 //
 //  Created by Rachel Yee on 8/31/17.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-var filterMain = ["tenses", "pronouns", "verbs"]
+var options = ["tenses", "pronouns", "verbs"]
 var myIndex = 0
 
-class FilterTableViewController: UITableViewController {
+class OptionsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class FilterTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return filterMain.count
+        return options.count
     }
 
     
@@ -61,9 +61,9 @@ class FilterTableViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterMainCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "optionsCell", for: indexPath)
 
-        cell.textLabel?.text = filterMain[indexPath.row]
+        cell.textLabel?.text = options[indexPath.row]
 
         return cell
     }
