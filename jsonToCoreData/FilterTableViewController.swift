@@ -8,6 +8,7 @@
 
 import UIKit
 
+var filterMain = ["tenses", "pronouns", "verbs"]
 var myIndex = 0
 
 class FilterTableViewController: UITableViewController {
@@ -36,7 +37,7 @@ class FilterTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return filterMain.count
     }
 
     
@@ -58,15 +59,15 @@ class FilterTableViewController: UITableViewController {
     
     
     
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterMainCell", for: indexPath)
+
+        cell.textLabel?.text = filterMain[indexPath.row]
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
