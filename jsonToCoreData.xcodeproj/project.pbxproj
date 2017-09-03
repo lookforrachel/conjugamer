@@ -18,6 +18,7 @@
 		5D69D3411F50F00C00946C73 /* Conjugation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D69D33D1F50F00C00946C73 /* Conjugation+CoreDataProperties.swift */; };
 		5D69D3421F50F00C00946C73 /* Verb+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D69D33E1F50F00C00946C73 /* Verb+CoreDataClass.swift */; };
 		5D69D3431F50F00C00946C73 /* Verb+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D69D33F1F50F00C00946C73 /* Verb+CoreDataProperties.swift */; };
+		5D6BEA0F1F5BA06C00177F26 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6BEA0E1F5BA06C00177F26 /* GamePlayViewController.swift */; };
 		5DA656E61F58A16F00F30A38 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656E51F58A16F00F30A38 /* OptionsViewController.swift */; };
 		5DA656E81F58D1FF00F30A38 /* OptionsTensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656E71F58D1FF00F30A38 /* OptionsTensesTableViewController.swift */; };
 		5DA656EA1F58D21300F30A38 /* OptionsPronounsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656E91F58D21300F30A38 /* OptionsPronounsTableViewController.swift */; };
@@ -38,6 +39,7 @@
 		5D69D33D1F50F00C00946C73 /* Conjugation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Conjugation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5D69D33E1F50F00C00946C73 /* Verb+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Verb+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5D69D33F1F50F00C00946C73 /* Verb+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Verb+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D6BEA0E1F5BA06C00177F26 /* GamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayViewController.swift; sourceTree = "<group>"; };
 		5DA656E51F58A16F00F30A38 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		5DA656E71F58D1FF00F30A38 /* OptionsTensesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTensesTableViewController.swift; sourceTree = "<group>"; };
 		5DA656E91F58D21300F30A38 /* OptionsPronounsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsPronounsTableViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				5D4D82C51F4F662A00D7B3EA /* AppDelegate.swift */,
 				5D668BF01F527D6F00E25217 /* verbsList.json */,
 				5D4D82C71F4F662A00D7B3EA /* ViewController.swift */,
+				5D6BEA0E1F5BA06C00177F26 /* GamePlayViewController.swift */,
 				5D4D82C91F4F662A00D7B3EA /* Main.storyboard */,
 				5DA656E51F58A16F00F30A38 /* OptionsViewController.swift */,
 				5DA656E71F58D1FF00F30A38 /* OptionsTensesTableViewController.swift */,
@@ -178,6 +181,7 @@
 				5D69D3431F50F00C00946C73 /* Verb+CoreDataProperties.swift in Sources */,
 				5D4D82C61F4F662A00D7B3EA /* AppDelegate.swift in Sources */,
 				5D69D3401F50F00C00946C73 /* Conjugation+CoreDataClass.swift in Sources */,
+				5D6BEA0F1F5BA06C00177F26 /* GamePlayViewController.swift in Sources */,
 				5DA656E61F58A16F00F30A38 /* OptionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,10 +8,17 @@
 
 import UIKit
 
-var verbGroup = ["Group 1","Group 2","Group 3"]
-private var selectedCell = 0
+protocol OptionsVerbsTableViewControllerDelegate {
+    func updateGamePlayList(filterby: NSPredicate?)
+}
+
 
 class OptionsVerbsTableViewController: UITableViewController {
+    
+    var verbGroup = ["Group 1","Group 2","Group 3"]
+    private var selectedCell = 0
+    
+    //MARK: Properties
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,44 +56,22 @@ class OptionsVerbsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell = tableView.cellForRow(at: indexPath)?.textLabel?.text as! String
+        let selectedCell = tableView.cellForRow(at: indexPath)!
         
-        if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
-            //remove selected predicate
+        if selectedCell.accessoryType == .checkmark {
+            selectedCell.accessoryType = .none
+            //remove selected predicate from NSUserDefaults
             
-            switch selectedCell {
-            case "Group 1":
-                print("not Group 1")
-            case "Group 2":
-                print("not Group 2")
-            case "Group 3":
-                print("not Group 3")
-            default:
-                print("not something else")
-            }
+            print("not Group \(indexPath.row)")
         }
         else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
-            //add selected predicate
-            
-            switch selectedCell {
-            case "Group 1":
-                print("Group 1")
-            case "Group 2":
-                print("Group 2")
-            case "Group 3":
-                print("Group 3")
-            default:
-                print("something else")
-            }
+            selectedCell.accessoryType = .checkmark
+            //add selected predicate to NSUserDefaults
+            print("Group \(indexPath.row)")
             
         }
     }
     
-    private func setFilterSearchPredicate(filterby: String){
-        //searchPredicate = NSPredicate(format:)
-    }
     
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

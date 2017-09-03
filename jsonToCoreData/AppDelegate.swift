@@ -60,8 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(conjugation.conjugation!)
             }
         }
-        
-        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

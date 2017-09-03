@@ -13,12 +13,12 @@ class ViewController: UIViewController {
 //    var Questions = []
 //    var QNumber = Int()
     
+    
+    var selectedConjugations = ["this", "that"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,8 +26,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let gamePlayViewController: GamePlayViewController = segue.destination as! GamePlayViewController
+        gamePlayViewController.myArray = selectedConjugations
+    }
+    
+    
 //    func PickQuestion() {
-//    
+//
 //        if Questions.count > 0 {
 //            QNumber = arc4random() % Questions.count
 //

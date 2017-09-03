@@ -12,4 +12,14 @@ import CoreData
 @objc(Conjugation)
 public class Conjugation: NSManagedObject {
 
+//    func getConjugations(request:NSFetchRequest<Conjugation>, moc: NSManagedObjectContext) -> [Verb]{
+//        do {
+//            let conjugations = try.moc.fetch(request)
+//            return conjugations
+//        }
+//        catch{
+//            fatalError("Error in getting list of conjugations")
+//        }
+//    
+//    }
 }
