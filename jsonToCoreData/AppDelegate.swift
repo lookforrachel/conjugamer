@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //get defaults csv loaded flag
         let coreIsLoaded = UserDefaults.standard.bool(forKey: "coreIsLoaded")
         print((coreIsLoaded) ? "core already loaded, proceeding to view" : "preloading data")
+
         
         //if unset, preload data
 //        if(!coreIsLoaded){
@@ -30,47 +31,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        removeData ()
 //        processJSON()
 
-        let moc = persistentContainer.viewContext
-
-        let verbRequest:NSFetchRequest<Verb> = Verb.fetchRequest()
-        verbRequest.returnsObjectsAsFaults = false
-        
-        let sortDescriptor = NSSortDescriptor(key: "infinitive", ascending: false)
-        
-        let keyPath = "infinitive"
-        let searchString = "vexer"
-        
-        let verbPredicate = NSPredicate(format: "%K CONTAINS %@", keyPath, searchString)
-        
-        verbRequest.sortDescriptors = [sortDescriptor]
-        verbRequest.predicate = verbPredicate
-        
-        
-        var verbArray = [Verb]()
-        
-        do {
-            try verbArray = moc.fetch(verbRequest)
-            
-        } catch {
-            print(error)
-        }
-        
-        for verb in verbArray {
-            print("verb:\(verb.infinitive!)")
-            displayConjugations(verb:verb)
-        }
+//        let moc = persistentContainer.viewContext
+//
+//        let verbRequest:NSFetchRequest<Verb> = Verb.fetchRequest()
+//        verbRequest.returnsObjectsAsFaults = false
+//        
+//        let sortDescriptor = NSSortDescriptor(key: "infinitive", ascending: false)
+//        
+//        let keyPath = "infinitive"
+//        let searchString = "vexer"
+//        
+//        let verbPredicate = NSPredicate(format: "%K CONTAINS %@", keyPath, searchString)
+//        
+//        verbRequest.sortDescriptors = [sortDescriptor]
+//        verbRequest.predicate = verbPredicate
+//        
+//        
+//        var verbArray = [Verb]()
+//        
+//        do {
+//            try verbArray = moc.fetch(verbRequest)
+//            
+//        } catch {
+//            print(error)
+//        }
+//        
+//        for verb in verbArray {
+//            print("verb:\(verb.infinitive!)")
+//            displayConjugations(verb:verb)
+//        }
         
         return true
     }
     
-    func displayConjugations (verb:Verb) {
-    
-        if let conjugationList = verb.conjugation as? Set<Conjugation> {
-            for conjugation in conjugationList {
-                print(conjugation.conjugation!)
-            }
-        }
-    }
+//    func displayConjugations (verb:Verb) {
+//    
+//        if let conjugationList = verb.conjugation as? Set<Conjugation> {
+//            for conjugation in conjugationList {
+//                print(conjugation.conjugation!)
+//            }
+//        }
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -32,6 +32,13 @@ class OptionsVerbsTableViewController: UITableViewController {
             if let booleanValue = UserDefaults.standard.object(forKey: "group1") {
                 print(booleanValue)
                 }
+            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
+            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
+            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
+            print("group1: \(isGroup1On)")
+            print("group2: \(isGroup2On)")
+            print("group3: \(isGroup3On)")
+            ShowBackButton()
         }
         else {
             UserDefaults.standard.set(false, forKey: "group1")
@@ -39,6 +46,13 @@ class OptionsVerbsTableViewController: UITableViewController {
             if let booleanValue = UserDefaults.standard.object(forKey: "group1") {
                 print(booleanValue)
             }
+            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
+            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
+            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
+            print("group1: \(isGroup1On)")
+            print("group2: \(isGroup2On)")
+            print("group3: \(isGroup3On)")
+            HideBackButton()
         }
     }
     @IBAction func group2Switch(_ sender: UISwitch) {
@@ -48,6 +62,13 @@ class OptionsVerbsTableViewController: UITableViewController {
             if let booleanValue = UserDefaults.standard.object(forKey: "group2") {
                 print(booleanValue)
             }
+            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
+            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
+            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
+            print("group1: \(isGroup1On)")
+            print("group2: \(isGroup2On)")
+            print("group3: \(isGroup3On)")
+            ShowBackButton()
         }
         else {
             print("group1 off")
@@ -55,6 +76,13 @@ class OptionsVerbsTableViewController: UITableViewController {
             if let booleanValue = UserDefaults.standard.object(forKey: "group2") {
                 print(booleanValue)
             }
+            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
+            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
+            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
+            print("group1: \(isGroup1On)")
+            print("group2: \(isGroup2On)")
+            print("group3: \(isGroup3On)")
+            HideBackButton()
         }
     }
 
@@ -65,6 +93,13 @@ class OptionsVerbsTableViewController: UITableViewController {
             if let booleanValue = UserDefaults.standard.object(forKey: "group3") {
                 print(booleanValue)
             }
+            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
+            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
+            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
+            print("group1: \(isGroup1On)")
+            print("group2: \(isGroup2On)")
+            print("group3: \(isGroup3On)")
+            ShowBackButton()
         }
         else {
             print("group3 off")
@@ -72,6 +107,13 @@ class OptionsVerbsTableViewController: UITableViewController {
             if let booleanValue = UserDefaults.standard.object(forKey: "group3") {
                 print(booleanValue)
             }
+            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
+            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
+            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
+            print("group1: \(isGroup1On)")
+            print("group2: \(isGroup2On)")
+            print("group3: \(isGroup3On)")
+            HideBackButton()
         }
     }
     
@@ -80,9 +122,9 @@ class OptionsVerbsTableViewController: UITableViewController {
     var verbGroup = ["Group 1","Group 2","Group 3"]
     private var selectedCell = 0
 
-    let isGroup1On = UserDefaults.standard.bool(forKey: "group1")
-    let isGroup2On = UserDefaults.standard.bool(forKey: "group2")
-    let isGroup3On = UserDefaults.standard.bool(forKey: "group3")
+    var isGroup1On = UserDefaults.standard.bool(forKey: "group1")
+    var isGroup2On = UserDefaults.standard.bool(forKey: "group2")
+    var isGroup3On = UserDefaults.standard.bool(forKey: "group3")
     
     var searchPredicate: NSPredicate?
     var delegate: FilterVerbsDelegate? = nil
@@ -138,7 +180,6 @@ class OptionsVerbsTableViewController: UITableViewController {
         
         }
         
-        HideBackButton()
 
     }
     
@@ -170,11 +211,24 @@ class OptionsVerbsTableViewController: UITableViewController {
     }
     
     func HideBackButton(){
-        if isGroup1On && isGroup2On && isGroup3On {
+        if isGroup1On || isGroup2On || isGroup3On {
             navigationItem.hidesBackButton = false
+            print("at least one switch on")
         }
         else {
             navigationItem.hidesBackButton = true
+            print("all switches are off")
+        }
+    }
+    
+    func ShowBackButton(){
+        if isGroup1On || isGroup2On || isGroup3On {
+            navigationItem.hidesBackButton = false
+            print("at least one switch on")
+        }
+        else {
+            navigationItem.hidesBackButton = true
+            print("all switches are off")
         }
     }
 
