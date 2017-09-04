@@ -8,11 +8,16 @@
 
 import UIKit
 
-var pronouns = ["je", "tu", "il", "elle", "nous", "vous", "ils", "elles"]
-private var selectedCell = 0
-
 class OptionsPronounsTableViewController: UITableViewController {
 
+    //MARK: Properties
+    
+    var pronouns = ["je", "tu", "il", "elle", "nous", "vous", "ils", "elles"]
+    private var selectedCell = 0
+
+
+    //MARK: Outlets
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

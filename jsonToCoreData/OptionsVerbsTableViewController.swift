@@ -14,6 +14,19 @@ protocol FilterVerbsDelegate: class {
 
 class OptionsVerbsTableViewController: UITableViewController {
     
+    //MARK: Properties
+    
+    var verbGroup = ["Group1","Group2","Group3"]
+    private var selectedCell = 0
+    
+    var isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+    var isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+    var isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+    
+    var searchPredicate: NSPredicate?
+    var delegate: FilterVerbsDelegate? = nil
+
+    
     //MARK: Outlets
     
     @IBOutlet weak var group1Label: UILabel!
@@ -27,109 +40,108 @@ class OptionsVerbsTableViewController: UITableViewController {
     
     @IBAction func group1Switch(_ sender: UISwitch) {
         if (sender.isOn == true){
+            UserDefaults.standard.set(true, forKey: "isGroup1On")
             print("group1 on")
-            UserDefaults.standard.set(true, forKey: "group1")
-            if let booleanValue = UserDefaults.standard.object(forKey: "group1") {
-                print(booleanValue)
-                }
-            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
-            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
-            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
-            print("group1: \(isGroup1On)")
-            print("group2: \(isGroup2On)")
-            print("group3: \(isGroup3On)")
-            ShowBackButton()
+            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+//            ShowBackButton()
+//            print("group1: \(isGroup1On)")
+//            print("group2: \(isGroup2On)")
+//            print("group3: \(isGroup3On)")
+//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup1On") {
+//                print(booleanValue)
+//            }
+        }
+        else if (isGroup2On || isGroup3On){
+            UserDefaults.standard.set(false, forKey: "isGroup1On")
+            print("group1 off")
+            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+//            HideBackButton()
+//            print("group1: \(isGroup1On)")
+//            print("group2: \(isGroup2On)")
+//            print("group3: \(isGroup3On)")
+//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup1On") {
+//                print(booleanValue)
+//            }
         }
         else {
-            UserDefaults.standard.set(false, forKey: "group1")
-            print("group1 off")
-            if let booleanValue = UserDefaults.standard.object(forKey: "group1") {
-                print(booleanValue)
-            }
-            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
-            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
-            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
-            print("group1: \(isGroup1On)")
-            print("group2: \(isGroup2On)")
-            print("group3: \(isGroup3On)")
-            HideBackButton()
+            group1Switch.setOn(true, animated: true)
+            createAlert(title: "!", message: "user must select at least one option")
         }
+        
     }
     @IBAction func group2Switch(_ sender: UISwitch) {
         if (sender.isOn == true){
+            UserDefaults.standard.set(true, forKey: "isGroup2On")
             print("group2 on")
-            UserDefaults.standard.set(true, forKey: "group2")
-            if let booleanValue = UserDefaults.standard.object(forKey: "group2") {
-                print(booleanValue)
-            }
-            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
-            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
-            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
-            print("group1: \(isGroup1On)")
-            print("group2: \(isGroup2On)")
-            print("group3: \(isGroup3On)")
-            ShowBackButton()
+            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+//            ShowBackButton()
+//            print("group1: \(isGroup1On)")
+//            print("group2: \(isGroup2On)")
+//            print("group3: \(isGroup3On)")
+//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup2On") {
+//                print(booleanValue)
+//            }
+        }
+        else if (isGroup1On || isGroup3On){
+            UserDefaults.standard.set(false, forKey: "isGroup2On")
+            print("group2 off")
+            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+//            HideBackButton()
+//            print("group1: \(isGroup1On)")
+//            print("group2: \(isGroup2On)")
+//            print("group3: \(isGroup3On)")
+//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup2On") {
+//                print(booleanValue)
+//            }
         }
         else {
-            print("group1 off")
-            UserDefaults.standard.set(false, forKey: "group2")
-            if let booleanValue = UserDefaults.standard.object(forKey: "group2") {
-                print(booleanValue)
-            }
-            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
-            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
-            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
-            print("group1: \(isGroup1On)")
-            print("group2: \(isGroup2On)")
-            print("group3: \(isGroup3On)")
-            HideBackButton()
+            group2Switch.setOn(true, animated: true)
+            createAlert(title: "!", message: "user must select at least one option")
         }
     }
 
     @IBAction func group3Switch(_ sender: UISwitch) {
         if (sender.isOn == true){
+            UserDefaults.standard.set(true, forKey: "isGroup3On")
             print("group3 on")
-            UserDefaults.standard.set(true, forKey: "group3")
-            if let booleanValue = UserDefaults.standard.object(forKey: "group3") {
-                print(booleanValue)
-            }
-            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
-            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
-            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
-            print("group1: \(isGroup1On)")
-            print("group2: \(isGroup2On)")
-            print("group3: \(isGroup3On)")
-            ShowBackButton()
+            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+//            ShowBackButton()
+//            print("group1: \(isGroup1On)")
+//            print("group2: \(isGroup2On)")
+//            print("group3: \(isGroup3On)")
+//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup3On") {
+//                print(booleanValue)
+//            }
+        }
+        else if (isGroup1On || isGroup2On){
+            UserDefaults.standard.set(false, forKey: "isGroup3On")
+            print("group3 off")
+            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+//            HideBackButton()
+//            print("group1: \(isGroup1On)")
+//            print("group2: \(isGroup2On)")
+//            print("group3: \(isGroup3On)")
+//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup3On") {
+//                print(booleanValue)
+//            }
         }
         else {
-            print("group3 off")
-            UserDefaults.standard.set(false, forKey: "group3")
-            if let booleanValue = UserDefaults.standard.object(forKey: "group3") {
-                print(booleanValue)
-            }
-            isGroup1On = UserDefaults.standard.bool(forKey: "group1")
-            isGroup2On = UserDefaults.standard.bool(forKey: "group2")
-            isGroup3On = UserDefaults.standard.bool(forKey: "group3")
-            print("group1: \(isGroup1On)")
-            print("group2: \(isGroup2On)")
-            print("group3: \(isGroup3On)")
-            HideBackButton()
+            group3Switch.setOn(true, animated: true)
+            createAlert(title: "!", message: "user must select at least one option")
         }
     }
-    
-    //MARK: Properties
-    
-    var verbGroup = ["Group 1","Group 2","Group 3"]
-    private var selectedCell = 0
-
-    var isGroup1On = UserDefaults.standard.bool(forKey: "group1")
-    var isGroup2On = UserDefaults.standard.bool(forKey: "group2")
-    var isGroup3On = UserDefaults.standard.bool(forKey: "group3")
-    
-    var searchPredicate: NSPredicate?
-    var delegate: FilterVerbsDelegate? = nil
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -205,32 +217,53 @@ class OptionsVerbsTableViewController: UITableViewController {
     // MARK: Private Function
 
     func initialSetup(){
-        UserDefaults.standard.set(true, forKey: "group1")
-        UserDefaults.standard.set(true, forKey: "group2")
-        UserDefaults.standard.set(true, forKey: "group3")
+        UserDefaults.standard.set(true, forKey: "isGroup1On")
+        UserDefaults.standard.set(true, forKey: "isGroup2On")
+        UserDefaults.standard.set(true, forKey: "isGroup3On")
     }
     
-    func HideBackButton(){
-        if isGroup1On || isGroup2On || isGroup3On {
-            navigationItem.hidesBackButton = false
-            print("at least one switch on")
-        }
-        else {
-            navigationItem.hidesBackButton = true
-            print("all switches are off")
-        }
+//    func IsAnySelection() -> bool {
+//        let
+//        if isGroup1On || isGroup2On || isGroup3On {
+//            print("at least one switch on")
+//            return false
+//        }
+//        else {
+//            print("all switches are off")
+//            return true
+//        }
+//    }
+
+    func createAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func ShowBackButton(){
-        if isGroup1On || isGroup2On || isGroup3On {
-            navigationItem.hidesBackButton = false
-            print("at least one switch on")
-        }
-        else {
-            navigationItem.hidesBackButton = true
-            print("all switches are off")
-        }
-    }
+//    func HideBackButton(){
+//        if isGroup1On || isGroup2On || isGroup3On {
+//            navigationItem.hidesBackButton = false
+//            print("at least one switch on")
+//        }
+//        else {
+//            navigationItem.hidesBackButton = true
+//            print("all switches are off")
+//        }
+//    }
+//
+//    func ShowBackButton(){
+//        if isGroup1On || isGroup2On || isGroup3On {
+//            navigationItem.hidesBackButton = false
+//            print("at least one switch on")
+//        }
+//        else {
+//            navigationItem.hidesBackButton = true
+//            print("all switches are off")
+//        }
+//    }
 
 //
 //    func setSearchPredicate(filterby: Int) {

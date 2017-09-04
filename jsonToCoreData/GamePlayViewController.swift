@@ -10,6 +10,10 @@ import UIKit
 import CoreData
 
 class GamePlayViewController: UIViewController {
+    
+    //MARK: IMPORTANT NOTE TO SELF
+    
+    //if no predicate for verb && pronoun && tense exists, send user message to set options
 
     // MARK: Properties
     
