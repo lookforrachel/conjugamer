@@ -17,6 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //get defaults csv loaded flag
+        let coreIsLoaded = UserDefaults.standard.bool(forKey: "coreIsLoaded")
+        print((coreIsLoaded) ? "core already loaded, proceeding to view" : "preloading data")
+        
+        //if unset, preload data
+//        if(!coreIsLoaded){
+//            processJSON()
+//        }
+        
 //        removeData ()
 //        processJSON()
 
@@ -770,11 +780,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     verbObject.addToConjugation(conjugationObjectImpVous)
 
-                    
+                    //set defaults csv loaded flag to true
+                    UserDefaults.standard.set(true, forKey: "coreIsLoaded")
+                    UserDefaults.standard.synchronize()
                 }
                 
                 try! moc.save()
-            }
+                
+                            }
         } catch {
             print("didnt work")
         }

@@ -13,6 +13,12 @@ class ViewController: UIViewController {
 //    var Questions = []
 //    var QNumber = Int()
     
+    @IBAction func optionsBtn(_ sender: Any) {
+        performSegue(withIdentifier: "optionsSegue", sender: self)
+    }
+    @IBAction func playBtn(_ sender: Any) {
+        performSegue(withIdentifier: "gamePlaySegue", sender: self)
+    }
     
     var selectedConjugations = ["this", "that"]
     
@@ -26,10 +32,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let gamePlayViewController: GamePlayViewController = segue.destination as! GamePlayViewController
-        gamePlayViewController.myArray = selectedConjugations
-    }
+
     
     
 //    func PickQuestion() {

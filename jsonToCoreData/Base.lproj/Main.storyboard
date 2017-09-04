@@ -81,14 +81,14 @@
                                 <rect key="frame" x="160.5" y="318.5" width="54" height="30"/>
                                 <state key="normal" title="Options"/>
                                 <connections>
-                                    <segue destination="RFg-s2-dRX" kind="show" identifier="optionsSegue" animates="NO" id="Jad-Oy-ElN"/>
+                                    <action selector="optionsBtn:" destination="Fhc-SU-XmY" eventType="touchUpInside" id="ISQ-9C-XOo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sua-n0-nog">
                                 <rect key="frame" x="172.5" y="356.5" width="30" height="30"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
-                                    <segue destination="ner-wq-Idt" kind="show" identifier="gamePlaySegue" animates="NO" id="eCa-ED-C69"/>
+                                    <action selector="playBtn:" destination="Fhc-SU-XmY" eventType="touchUpInside" id="k2G-7f-YRc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -101,6 +101,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HEj-HX-tyJ"/>
+                    <connections>
+                        <segue destination="RFg-s2-dRX" kind="show" identifier="optionsSegue" id="gMf-3X-6KJ"/>
+                        <segue destination="ner-wq-Idt" kind="custom" identifier="gamePlaySegue" id="iUX-iw-lrZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7DK-op-jAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,17 +8,22 @@
 
 import UIKit
 
-protocol OptionsVerbsTableViewControllerDelegate {
+protocol FilterVerbsDelegate: class {
     func updateGamePlayList(filterby: NSPredicate?)
 }
 
-
 class OptionsVerbsTableViewController: UITableViewController {
+    
+    //MARK: Properties
     
     var verbGroup = ["Group 1","Group 2","Group 3"]
     private var selectedCell = 0
+    var group1 = true
+    var group2 = true
+    var group3 = true
     
-    //MARK: Properties
+    var searchPredicate: NSPredicate?
+    var delegate: FilterVerbsDelegate? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,22 @@ class OptionsVerbsTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+     
+        //get userDefaults flag
+        let beenHere = UserDefaults.standard.bool(forKey: "beenHere")
+        print((beenHere) ? "user has been here before" : "loading defaults")
+        
+        //if unset, setup initial settings
+                if(!beenHere){
+                    
+                    //setup initial settings
+                    print("set group 1 to...")
+                    
+                    //set beenHere flag to true
+                    UserDefaults.standard.set(true, forKey: "beenHere")
+                }
+
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,15 +82,42 @@ class OptionsVerbsTableViewController: UITableViewController {
         if selectedCell.accessoryType == .checkmark {
             selectedCell.accessoryType = .none
             //remove selected predicate from NSUserDefaults
-            
+            UserDefaults.standard.set(false, forKey: "group\(indexPath.row)")
+            if let booleanValue = UserDefaults.standard.object(forKey: "group\(indexPath.row)") {
+                print(booleanValue)
+            }
             print("not Group \(indexPath.row)")
         }
         else {
             selectedCell.accessoryType = .checkmark
             //add selected predicate to NSUserDefaults
-            print("Group \(indexPath.row)")
-            
+//            setSearchPredicate(filterby: indexPath.row)
+//            delegate?.updateGamePlayList(filterby: searchPredicate)
+            UserDefaults.standard.set(true, forKey: "group\(indexPath.row)")
+            if let booleanValue = UserDefaults.standard.object(forKey: "group\(indexPath.row)") {
+                print(booleanValue)
+            }
         }
+    }
+    
+//    func SetCheckmarks(){
+//        if  == true {
+//          tableView.cellForRow(at: indexPath
+//        }
+//    }
+    
+//    func HideBackButton(){
+//        if no cells have been selected {
+//            navigationItem.hidesBackButton = true}
+//        else {
+//            navigationItem.hidesBackButton = false
+//        }
+//    }
+    
+    // MARK: Private Function
+    
+    func setSearchPredicate(filterby: Int) {
+        searchPredicate = NSPredicate(format: "verbGroup = %@", filterby)
     }
     
     
