@@ -14,16 +14,80 @@ protocol FilterVerbsDelegate: class {
 
 class OptionsVerbsTableViewController: UITableViewController {
     
+    //MARK: Outlets
+    
+    @IBOutlet weak var group1Label: UILabel!
+    @IBOutlet weak var group2Label: UILabel!
+    @IBOutlet weak var group3Label: UILabel!
+    
+    @IBOutlet weak var group1Switch: UISwitch!
+    @IBOutlet weak var group2Switch: UISwitch!
+    @IBOutlet weak var group3Switch: UISwitch!
+    
+    
+    @IBAction func group1Switch(_ sender: UISwitch) {
+        if (sender.isOn == true){
+            print("group1 on")
+            UserDefaults.standard.set(true, forKey: "group1")
+            if let booleanValue = UserDefaults.standard.object(forKey: "group1") {
+                print(booleanValue)
+                }
+        }
+        else {
+            UserDefaults.standard.set(false, forKey: "group1")
+            print("group1 off")
+            if let booleanValue = UserDefaults.standard.object(forKey: "group1") {
+                print(booleanValue)
+            }
+        }
+    }
+    @IBAction func group2Switch(_ sender: UISwitch) {
+        if (sender.isOn == true){
+            print("group2 on")
+            UserDefaults.standard.set(true, forKey: "group2")
+            if let booleanValue = UserDefaults.standard.object(forKey: "group2") {
+                print(booleanValue)
+            }
+        }
+        else {
+            print("group1 off")
+            UserDefaults.standard.set(false, forKey: "group2")
+            if let booleanValue = UserDefaults.standard.object(forKey: "group2") {
+                print(booleanValue)
+            }
+        }
+    }
+
+    @IBAction func group3Switch(_ sender: UISwitch) {
+        if (sender.isOn == true){
+            print("group3 on")
+            UserDefaults.standard.set(true, forKey: "group3")
+            if let booleanValue = UserDefaults.standard.object(forKey: "group3") {
+                print(booleanValue)
+            }
+        }
+        else {
+            print("group3 off")
+            UserDefaults.standard.set(false, forKey: "group3")
+            if let booleanValue = UserDefaults.standard.object(forKey: "group3") {
+                print(booleanValue)
+            }
+        }
+    }
+    
     //MARK: Properties
     
     var verbGroup = ["Group 1","Group 2","Group 3"]
     private var selectedCell = 0
-    var group1 = true
-    var group2 = true
-    var group3 = true
+
+    let isGroup1On = UserDefaults.standard.bool(forKey: "group1")
+    let isGroup2On = UserDefaults.standard.bool(forKey: "group2")
+    let isGroup3On = UserDefaults.standard.bool(forKey: "group3")
     
     var searchPredicate: NSPredicate?
     var delegate: FilterVerbsDelegate? = nil
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,16 +103,43 @@ class OptionsVerbsTableViewController: UITableViewController {
         print((beenHere) ? "user has been here before" : "loading defaults")
         
         //if unset, setup initial settings
-                if(!beenHere){
+        if(!beenHere){
+            
+            //setup initial settings
+            initialSetup()
                     
-                    //setup initial settings
-                    print("set group 1 to...")
-                    
-                    //set beenHere flag to true
-                    UserDefaults.standard.set(true, forKey: "beenHere")
-                }
-
+             //set beenHere flag to true
+             UserDefaults.standard.set(true, forKey: "beenHere")
+        }
+        else {
+            
+            //get userDefaults & setup viewController
+            //group1
+            if isGroup1On {
+                group1Switch.setOn(true, animated: true)
+            }
+            else {
+            group1Switch.setOn(false, animated: true)
+            }
+            //group2
+            if isGroup2On {
+                group2Switch.setOn(true, animated: true)
+            }
+            else {
+                group2Switch.setOn(false, animated: true)
+            }
+            //group3
+            if isGroup3On {
+                group3Switch.setOn(true, animated: true)
+            }
+            else {
+                group3Switch.setOn(false, animated: true)
+            }
         
+        }
+        
+        HideBackButton()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,58 +159,30 @@ class OptionsVerbsTableViewController: UITableViewController {
         return verbGroup.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "verbsCell", for: indexPath)
-        
-        cell.textLabel?.text = verbGroup[indexPath.row]
-        
-        return cell
+    
+
+    // MARK: Private Function
+
+    func initialSetup(){
+        UserDefaults.standard.set(true, forKey: "group1")
+        UserDefaults.standard.set(true, forKey: "group2")
+        UserDefaults.standard.set(true, forKey: "group3")
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell = tableView.cellForRow(at: indexPath)!
-        
-        if selectedCell.accessoryType == .checkmark {
-            selectedCell.accessoryType = .none
-            //remove selected predicate from NSUserDefaults
-            UserDefaults.standard.set(false, forKey: "group\(indexPath.row)")
-            if let booleanValue = UserDefaults.standard.object(forKey: "group\(indexPath.row)") {
-                print(booleanValue)
-            }
-            print("not Group \(indexPath.row)")
+    func HideBackButton(){
+        if isGroup1On && isGroup2On && isGroup3On {
+            navigationItem.hidesBackButton = false
         }
         else {
-            selectedCell.accessoryType = .checkmark
-            //add selected predicate to NSUserDefaults
-//            setSearchPredicate(filterby: indexPath.row)
-//            delegate?.updateGamePlayList(filterby: searchPredicate)
-            UserDefaults.standard.set(true, forKey: "group\(indexPath.row)")
-            if let booleanValue = UserDefaults.standard.object(forKey: "group\(indexPath.row)") {
-                print(booleanValue)
-            }
+            navigationItem.hidesBackButton = true
         }
     }
-    
-//    func SetCheckmarks(){
-//        if  == true {
-//          tableView.cellForRow(at: indexPath
-//        }
+
+//
+//    func setSearchPredicate(filterby: Int) {
+//        searchPredicate = NSPredicate(format: "verbGroup = %@", filterby)
 //    }
-    
-//    func HideBackButton(){
-//        if no cells have been selected {
-//            navigationItem.hidesBackButton = true}
-//        else {
-//            navigationItem.hidesBackButton = false
-//        }
-//    }
-    
-    // MARK: Private Function
-    
-    func setSearchPredicate(filterby: Int) {
-        searchPredicate = NSPredicate(format: "verbGroup = %@", filterby)
-    }
-    
+
     
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -176,4 +239,5 @@ class OptionsVerbsTableViewController: UITableViewController {
      }
      */
     
+
 }
