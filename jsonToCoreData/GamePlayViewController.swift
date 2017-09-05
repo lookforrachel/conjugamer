@@ -22,6 +22,11 @@ class GamePlayViewController: UIViewController, SendVerbsDelegate {
     var verbGroupSelected = 0
     var request: NSFetchRequest<Conjugation>?
     
+    var predicateList = [NSPredicate]()
+    let predicate1 = NSPredicate(format: "verbGroup == 1")
+    let predicate2 = NSPredicate(format: "verbGroup == 2")
+    let predicate3 = NSPredicate(format: "verbGroup == 3")
+    
     func sendVerbs(data: String) {
         print(data)
     }
@@ -50,15 +55,20 @@ class GamePlayViewController: UIViewController, SendVerbsDelegate {
                 let verbRequest:NSFetchRequest<Verb> = Verb.fetchRequest()
                 verbRequest.returnsObjectsAsFaults = false
         
-                let sortDescriptor = NSSortDescriptor(key: "infinitive", ascending: false)
+                let sortDescriptor = NSSortDescriptor(key: "verbGroup", ascending: false)
         
-                let keyPath = "infinitive"
-                let searchString = "vexer"
+//                let keyPath = "verbGroup"
+//                let searchString = "1"
+//        
+//                let verbPredicate = NSPredicate(format: "%K == %@", keyPath, searchString)
         
-                let verbPredicate = NSPredicate(format: "%K CONTAINS %@", keyPath, searchString)
+                let verbCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: [predicate2,predicate3])
+        
+                predicateList.append(verbCompoundPredicate)
         
                 verbRequest.sortDescriptors = [sortDescriptor]
-                verbRequest.predicate = verbPredicate
+                verbRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateList)
+//                verbRequest.predicate = verbPredicate
         
         
                 var verbArray = [Verb]()
@@ -72,7 +82,7 @@ class GamePlayViewController: UIViewController, SendVerbsDelegate {
         
                 for verb in verbArray {
                     print("verb:\(verb.infinitive!)")
-                    displayConjugations(verb:verb)
+//                    displayConjugations(verb:verb)
                 }
     }
 
