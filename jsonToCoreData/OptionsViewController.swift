@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class OptionsViewController: UITableViewController, SendVerbsDelegate {
+class OptionsViewController: UITableViewController {
 
     //MARK: Properties
     var options = ["tenses", "pronouns", "verbs"]
@@ -114,19 +114,13 @@ class OptionsViewController: UITableViewController, SendVerbsDelegate {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "verbsSegue" {
-            let controller = segue.destination as! OptionsVerbsTableViewController
-            controller.delegate = self
-        }
-    
     }
- 
-
+    */
 }

@@ -8,14 +8,6 @@
 
 import UIKit
 
-//protocol FilterVerbsDelegate: class {
-//    func updateGamePlayList(filterby: NSPredicate?)
-//}
-
-protocol SendVerbsDelegate: class {
-    func sendVerbs(data: String)
-}
-
 class OptionsVerbsTableViewController: UITableViewController {
     
     //MARK: Properties
@@ -28,28 +20,9 @@ class OptionsVerbsTableViewController: UITableViewController {
     var isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
     
     var searchPredicate: NSPredicate?
-    var delegate: SendVerbsDelegate? = nil
 
     
     //MARK: Outlets
-    
-    @IBAction func savePrefsBtn(_ sender: Any) {
-        print("button was pressed")
-        isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-        isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
-        isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
-        
-        if isGroup1On{
-            let data = "Group 1 on"
-            delegate?.sendVerbs(data: data)
-        }
-        else {
-            let data = "Group 1 off"
-            delegate?.sendVerbs(data: data)
-        }
-
-    }
-    
     
     @IBOutlet weak var group1Label: UILabel!
     @IBOutlet weak var group2Label: UILabel!
@@ -245,18 +218,6 @@ class OptionsVerbsTableViewController: UITableViewController {
         UserDefaults.standard.set(true, forKey: "isGroup3On")
     }
     
-//    func IsAnySelection() -> bool {
-//        let
-//        if isGroup1On || isGroup2On || isGroup3On {
-//            print("at least one switch on")
-//            return false
-//        }
-//        else {
-//            print("all switches are off")
-//            return true
-//        }
-//    }
-
     func createAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message: message , preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.default, handler: { (action) in
@@ -265,34 +226,6 @@ class OptionsVerbsTableViewController: UITableViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-    
-//    func HideBackButton(){
-//        if isGroup1On || isGroup2On || isGroup3On {
-//            navigationItem.hidesBackButton = false
-//            print("at least one switch on")
-//        }
-//        else {
-//            navigationItem.hidesBackButton = true
-//            print("all switches are off")
-//        }
-//    }
-//
-//    func ShowBackButton(){
-//        if isGroup1On || isGroup2On || isGroup3On {
-//            navigationItem.hidesBackButton = false
-//            print("at least one switch on")
-//        }
-//        else {
-//            navigationItem.hidesBackButton = true
-//            print("all switches are off")
-//        }
-//    }
-
-//
-//    func setSearchPredicate(filterby: Int) {
-//        searchPredicate = NSPredicate(format: "verbGroup = %@", filterby)
-//    }
-
     
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -339,29 +272,13 @@ class OptionsVerbsTableViewController: UITableViewController {
      }
      */
     
-    
+    /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
-        
-        if segue.identifier == "OptionsSegue" {
-            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
-            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
-            
-            if isGroup1On {
-                let data = "Group 1 on"
-                delegate?.sendVerbs(data: data)
-            }
-            else {
-            print("not sure what's going on")
-            }
-        }
      }
-    
-    
-
+    */
 }

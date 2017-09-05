@@ -9,21 +9,15 @@
 import UIKit
 import CoreData
 
-class GamePlayViewController: UIViewController, SendVerbsDelegate {
+class GamePlayViewController: UIViewController {
     
-    // MARK: Properties
-    
+    // MARK: Properties    
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var predicateList = [NSPredicate]()
     let predicate1 = NSPredicate(format: "verbGroup == 1")
     let predicate2 = NSPredicate(format: "verbGroup == 2")
     let predicate3 = NSPredicate(format: "verbGroup == 3")
-    
-    func sendVerbs(data: String) {
-        print(data)
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +36,6 @@ class GamePlayViewController: UIViewController, SendVerbsDelegate {
         let isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
         let isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
         
-        print((isGroup1On) ? "GROUP ONE ON" : "GROUP ONE OFF")
         if isGroup1On {
             predicateList.append(predicate1)
         }
@@ -107,13 +100,3 @@ class GamePlayViewController: UIViewController, SendVerbsDelegate {
 //        }
     
 }
-
-
-
-//extension GamePlayViewController: OptionsVerbsTableViewController {
-//    func updateGamePlayList(filterby: NSPredicate?){
-//        if let filter = filterby {
-//            searchPredicate = filter
-//        }
-//    }
-//}

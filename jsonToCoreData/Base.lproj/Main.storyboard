@@ -18,14 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="poT-3U-SHU">
-                            <rect key="frame" x="0.0" y="132" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="savePrefsBtn:" destination="iLs-dJ-XoI" eventType="touchUpInside" id="YBy-wg-glq"/>
-                            </connections>
-                        </button>
                         <sections>
                             <tableViewSection id="5Xi-PN-zTc">
                                 <cells>
