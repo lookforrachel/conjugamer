@@ -15,13 +15,6 @@ class GamePlayViewController: UIViewController, SendVerbsDelegate {
     
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    lazy var conjugations = [Conjugation]()
-    var conjugation: Conjugation? = nil
-    var myArray = [String]()
-    var searchPredicate: NSPredicate?
-    var verbGroupSelected = 0
-    var request: NSFetchRequest<Conjugation>?
-    
     var predicateList = [NSPredicate]()
     let predicate1 = NSPredicate(format: "verbGroup == 1")
     let predicate2 = NSPredicate(format: "verbGroup == 2")
@@ -30,13 +23,6 @@ class GamePlayViewController: UIViewController, SendVerbsDelegate {
     func sendVerbs(data: String) {
         print(data)
     }
-    
-    weak var managedObjectContext: NSManagedObjectContext! {
-        didSet {
-            return conjugation = Conjugation(context: managedObjectContext)
-        }
-    }
-    
     
     
     override func viewDidLoad() {
@@ -52,38 +38,53 @@ class GamePlayViewController: UIViewController, SendVerbsDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
-                let verbRequest:NSFetchRequest<Verb> = Verb.fetchRequest()
-                verbRequest.returnsObjectsAsFaults = false
+        let isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+        let isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+        let isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
         
-                let sortDescriptor = NSSortDescriptor(key: "verbGroup", ascending: false)
-        
+        print((isGroup1On) ? "GROUP ONE ON" : "GROUP ONE OFF")
+        if isGroup1On {
+            predicateList.append(predicate1)
+        }
+        if isGroup2On {
+            predicateList.append(predicate2)
+        }
+        if isGroup3On {
+            predicateList.append(predicate3)
+        }
+    
+        let verbRequest:NSFetchRequest<Verb> = Verb.fetchRequest()
+        verbRequest.returnsObjectsAsFaults = false
+
+        let sortDescriptor = NSSortDescriptor(key: "verbGroup", ascending: false)
+
 //                let keyPath = "verbGroup"
 //                let searchString = "1"
 //        
 //                let verbPredicate = NSPredicate(format: "%K == %@", keyPath, searchString)
-        
-                let verbCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: [predicate2,predicate3])
-        
-                predicateList.append(verbCompoundPredicate)
-        
-                verbRequest.sortDescriptors = [sortDescriptor]
-                verbRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateList)
+
+//        let verbCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: [predicate2])
+//
+//        predicateList.append(verbCompoundPredicate)
+
+        verbRequest.sortDescriptors = [sortDescriptor]
+        verbRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateList)
 //                verbRequest.predicate = verbPredicate
-        
-        
-                var verbArray = [Verb]()
-        
-                do {
-                    try verbArray = moc.fetch(verbRequest)
-        
-                } catch {
-                    print(error)
-                }
-        
-                for verb in verbArray {
-                    print("verb:\(verb.infinitive!)")
+
+
+        var verbArray = [Verb]()
+
+        do {
+            try verbArray = moc.fetch(verbRequest)
+
+        } catch {
+            print(error)
+        }
+
+        for verb in verbArray {
+            print("verb:\(verb.infinitive!)")
 //                    displayConjugations(verb:verb)
-                }
+        }
     }
 
     func displayConjugations (verb:Verb) {
@@ -94,25 +95,7 @@ class GamePlayViewController: UIViewController, SendVerbsDelegate {
             }
         }
     }
-    
-    //MARK: Private function
-    
-    private func loadData() {
-        var predicates = [NSPredicate]()
-    
-        let verbPredicate = NSPredicate(format: "verbGroup = %@", verbGroupSelected)
-        predicates.append(verbPredicate)
-        
-        if let additionalPredicate = searchPredicate {
-            predicates.append(additionalPredicate)
-        }
-        
-        let predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicates)
-        request?.predicate = predicate
-    
-        conjugations = conjugation!.getConjugations(request: request!, moc: managedObjectContext)
-        print(conjugations)
-    }
+
 
     
 //    // MARK: - Navigation
