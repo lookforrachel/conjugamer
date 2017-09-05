@@ -17,12 +17,6 @@ class OptionsViewController: UITableViewController {
     private var selectedCell = 0
     
     //MARK: Outlets
-    func sendVerbs(data: String) {
-        label.text = data
-    }
-    
-    @IBOutlet weak var label: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

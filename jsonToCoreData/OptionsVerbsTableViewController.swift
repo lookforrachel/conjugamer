@@ -19,20 +19,70 @@ class OptionsVerbsTableViewController: UITableViewController {
     var isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
     var isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
     
-    var searchPredicate: NSPredicate?
-
-    
     //MARK: Outlets
-    
+    //Labels
     @IBOutlet weak var group1Label: UILabel!
     @IBOutlet weak var group2Label: UILabel!
     @IBOutlet weak var group3Label: UILabel!
     
+    //Switches
     @IBOutlet weak var group1Switch: UISwitch!
     @IBOutlet weak var group2Switch: UISwitch!
     @IBOutlet weak var group3Switch: UISwitch!
     
+    // MARK: Initialisation
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        //get userDefaults flag
+        let beenHere = UserDefaults.standard.bool(forKey: "beenHere")
+        print((beenHere) ? "user has been here before" : "loading defaults")
+        
+        //if unset, setup initial settings
+        if(!beenHere){
+            
+            //setup initial settings
+            initialSetup()
+            
+            //set beenHere flag to true
+            UserDefaults.standard.set(true, forKey: "beenHere")
+        }
+        else {
+            
+            //get userDefaults & setup viewController
+            //group1
+            if isGroup1On {
+                group1Switch.setOn(true, animated: true)
+            }
+            else {
+                group1Switch.setOn(false, animated: true)
+            }
+            //group2
+            if isGroup2On {
+                group2Switch.setOn(true, animated: true)
+            }
+            else {
+                group2Switch.setOn(false, animated: true)
+            }
+            //group3
+            if isGroup3On {
+                group3Switch.setOn(true, animated: true)
+            }
+            else {
+                group3Switch.setOn(false, animated: true)
+            }
+        }
+    }
+
     
+    
+    //Actions
     @IBAction func group1Switch(_ sender: UISwitch) {
         if (sender.isOn == true){
             UserDefaults.standard.set(true, forKey: "isGroup1On")
@@ -67,7 +117,6 @@ class OptionsVerbsTableViewController: UITableViewController {
             group1Switch.setOn(true, animated: true)
             createAlert(title: "!", message: "user must select at least one option")
         }
-        
     }
     @IBAction func group2Switch(_ sender: UISwitch) {
         if (sender.isOn == true){
@@ -137,58 +186,6 @@ class OptionsVerbsTableViewController: UITableViewController {
             group3Switch.setOn(true, animated: true)
             createAlert(title: "!", message: "user must select at least one option")
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-     
-        //get userDefaults flag
-        let beenHere = UserDefaults.standard.bool(forKey: "beenHere")
-        print((beenHere) ? "user has been here before" : "loading defaults")
-        
-        //if unset, setup initial settings
-        if(!beenHere){
-            
-            //setup initial settings
-            initialSetup()
-                    
-             //set beenHere flag to true
-             UserDefaults.standard.set(true, forKey: "beenHere")
-        }
-        else {
-            
-            //get userDefaults & setup viewController
-            //group1
-            if isGroup1On {
-                group1Switch.setOn(true, animated: true)
-            }
-            else {
-            group1Switch.setOn(false, animated: true)
-            }
-            //group2
-            if isGroup2On {
-                group2Switch.setOn(true, animated: true)
-            }
-            else {
-                group2Switch.setOn(false, animated: true)
-            }
-            //group3
-            if isGroup3On {
-                group3Switch.setOn(true, animated: true)
-            }
-            else {
-                group3Switch.setOn(false, animated: true)
-            }
-        
-        }
-        
-
     }
     
     override func didReceiveMemoryWarning() {
