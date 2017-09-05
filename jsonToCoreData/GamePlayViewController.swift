@@ -9,13 +9,11 @@
 import UIKit
 import CoreData
 
-class GamePlayViewController: UIViewController {
+class GamePlayViewController: UIViewController, SendVerbsDelegate {
     
-    //MARK: IMPORTANT NOTE TO SELF
-    
-    //if no predicate for verb && pronoun && tense exists, send user message to set options
-
     // MARK: Properties
+    
+    let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     lazy var conjugations = [Conjugation]()
     var conjugation: Conjugation? = nil
@@ -24,11 +22,17 @@ class GamePlayViewController: UIViewController {
     var verbGroupSelected = 0
     var request: NSFetchRequest<Conjugation>?
     
+    func sendVerbs(data: String) {
+        print(data)
+    }
+    
     weak var managedObjectContext: NSManagedObjectContext! {
         didSet {
             return conjugation = Conjugation(context: managedObjectContext)
         }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +46,45 @@ class GamePlayViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(myArray)
+        
+                let verbRequest:NSFetchRequest<Verb> = Verb.fetchRequest()
+                verbRequest.returnsObjectsAsFaults = false
+        
+                let sortDescriptor = NSSortDescriptor(key: "infinitive", ascending: false)
+        
+                let keyPath = "infinitive"
+                let searchString = "vexer"
+        
+                let verbPredicate = NSPredicate(format: "%K CONTAINS %@", keyPath, searchString)
+        
+                verbRequest.sortDescriptors = [sortDescriptor]
+                verbRequest.predicate = verbPredicate
+        
+        
+                var verbArray = [Verb]()
+        
+                do {
+                    try verbArray = moc.fetch(verbRequest)
+        
+                } catch {
+                    print(error)
+                }
+        
+                for verb in verbArray {
+                    print("verb:\(verb.infinitive!)")
+                    displayConjugations(verb:verb)
+                }
     }
 
+    func displayConjugations (verb:Verb) {
+        
+        if let conjugationList = verb.conjugation as? Set<Conjugation> {
+            for conjugation in conjugationList {
+                print(conjugation.conjugation!)
+            }
+        }
+    }
+    
     //MARK: Private function
     
     private func loadData() {
@@ -64,16 +104,18 @@ class GamePlayViewController: UIViewController {
         print(conjugations)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+//    // MARK: - Navigation
+//
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//        }
+    
 }
+
+
 
 //extension GamePlayViewController: OptionsVerbsTableViewController {
 //    func updateGamePlayList(filterby: NSPredicate?){

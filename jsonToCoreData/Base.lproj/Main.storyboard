@@ -18,6 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="poT-3U-SHU">
+                            <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="savePrefsBtn:" destination="iLs-dJ-XoI" eventType="touchUpInside" id="YBy-wg-glq"/>
+                            </connections>
+                        </button>
                         <sections>
                             <tableViewSection id="5Xi-PN-zTc">
                                 <cells>
@@ -181,7 +189,7 @@
                     <navigationItem key="navigationItem" id="HEj-HX-tyJ"/>
                     <connections>
                         <segue destination="RFg-s2-dRX" kind="show" identifier="optionsSegue" id="gMf-3X-6KJ"/>
-                        <segue destination="ner-wq-Idt" kind="custom" identifier="gamePlaySegue" id="iUX-iw-lrZ"/>
+                        <segue destination="ner-wq-Idt" kind="show" identifier="gamePlaySegue" id="iUX-iw-lrZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7DK-op-jAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,6 +222,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iCQ-Nr-e6v">
+                            <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="optionsCell" textLabel="OWf-5p-AnA" style="IBUITableViewCellStyleDefault" id="naP-4u-qYZ">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -275,6 +290,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="options" id="Hh4-kJ-j2z"/>
                     <connections>
+                        <outlet property="label" destination="iCQ-Nr-e6v" id="1df-ku-Rnb"/>
                         <segue destination="kft-rq-F0k" kind="show" identifier="tensesSegue" id="UJz-qJ-ZLm"/>
                         <segue destination="bsG-Dv-x2K" kind="show" identifier="pronounsSegue" id="YUH-D1-55E"/>
                         <segue destination="iLs-dJ-XoI" kind="show" identifier="verbsSegue" id="ezQ-C9-iYX"/>

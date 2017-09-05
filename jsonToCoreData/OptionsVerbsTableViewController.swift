@@ -8,8 +8,12 @@
 
 import UIKit
 
-protocol FilterVerbsDelegate: class {
-    func updateGamePlayList(filterby: NSPredicate?)
+//protocol FilterVerbsDelegate: class {
+//    func updateGamePlayList(filterby: NSPredicate?)
+//}
+
+protocol SendVerbsDelegate: class {
+    func sendVerbs(data: String)
 }
 
 class OptionsVerbsTableViewController: UITableViewController {
@@ -24,10 +28,28 @@ class OptionsVerbsTableViewController: UITableViewController {
     var isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
     
     var searchPredicate: NSPredicate?
-    var delegate: FilterVerbsDelegate? = nil
+    var delegate: SendVerbsDelegate? = nil
 
     
     //MARK: Outlets
+    
+    @IBAction func savePrefsBtn(_ sender: Any) {
+        print("button was pressed")
+        isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+        isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+        isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+        
+        if isGroup1On{
+            let data = "Group 1 on"
+            delegate?.sendVerbs(data: data)
+        }
+        else {
+            let data = "Group 1 off"
+            delegate?.sendVerbs(data: data)
+        }
+
+    }
+    
     
     @IBOutlet weak var group1Label: UILabel!
     @IBOutlet weak var group2Label: UILabel!
@@ -45,6 +67,7 @@ class OptionsVerbsTableViewController: UITableViewController {
             isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
             isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
             isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+            
 //            ShowBackButton()
 //            print("group1: \(isGroup1On)")
 //            print("group2: \(isGroup2On)")
@@ -316,15 +339,29 @@ class OptionsVerbsTableViewController: UITableViewController {
      }
      */
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "OptionsSegue" {
+            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+            
+            if isGroup1On {
+                let data = "Group 1 on"
+                delegate?.sendVerbs(data: data)
+            }
+            else {
+            print("not sure what's going on")
+            }
+        }
      }
-     */
+    
     
 
 }

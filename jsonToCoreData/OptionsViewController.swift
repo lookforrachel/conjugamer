@@ -8,11 +8,22 @@
 
 import UIKit
 
-var options = ["tenses", "pronouns", "verbs"]
-private var selectedCell = 0
 
-class OptionsViewController: UITableViewController {
 
+class OptionsViewController: UITableViewController, SendVerbsDelegate {
+
+    //MARK: Properties
+    var options = ["tenses", "pronouns", "verbs"]
+    private var selectedCell = 0
+    
+    //MARK: Outlets
+    func sendVerbs(data: String) {
+        label.text = data
+    }
+    
+    @IBOutlet weak var label: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +32,11 @@ class OptionsViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+        print((isGroup1On) ? "GROUP ONE ON" : "GROUP ONE OFF")
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,14 +114,19 @@ class OptionsViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "verbsSegue" {
+            let controller = segue.destination as! OptionsVerbsTableViewController
+            controller.delegate = self
+        }
+    
     }
-    */
+ 
 
 }
