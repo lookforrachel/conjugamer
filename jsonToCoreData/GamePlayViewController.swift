@@ -20,15 +20,15 @@ class GamePlayViewController: UIViewController {
     let predicateVerbGroup3 = NSPredicate(format: "verb.verbGroup == 3")
     
     //Pronouns
-//    var predicateListPronoun = [NSPredicate]()
-//    let predicateJe = NSPredicate(format: "pronoun == 0")
-//    let predicateTu = NSPredicate(format: "pronoun == 1")
-//    let predicateIl = NSPredicate(format: "pronoun == 2")
-////    let predicateElle = NSPredicate(format: "pronoun == 2")
-//    let predicateNous = NSPredicate(format: "pronoun == 3")
-//    let predicateVous = NSPredicate(format: "pronoun == 4")
-//    let predicateIls = NSPredicate(format: "pronoun == 5")
-////    let predicateElles = NSPredicate(format: "pronoun == 5")
+    var predicateListPronoun = [NSPredicate]()
+    let predicateJe = NSPredicate(format: "pronoun == 0")
+    let predicateTu = NSPredicate(format: "pronoun == 1")
+    let predicateIl = NSPredicate(format: "pronoun == 2")
+//    let predicateElle = NSPredicate(format: "pronoun == 2")
+    let predicateNous = NSPredicate(format: "pronoun == 3")
+    let predicateVous = NSPredicate(format: "pronoun == 4")
+    let predicateIls = NSPredicate(format: "pronoun == 5")
+//    let predicateElles = NSPredicate(format: "pronoun == 5")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +42,25 @@ class GamePlayViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        let isJeOn = UserDefaults.standard.bool(forKey: "isElleOn")
+        let isTuOn = UserDefaults.standard.bool(forKey: "isTuOn")
+        let isIlOn = UserDefaults.standard.bool(forKey: "isIlOn")
+        let isElleOn = UserDefaults.standard.bool(forKey: "isElleOn")
+        let isNousOn = UserDefaults.standard.bool(forKey: "isNousOn")
+        let isVousOn = UserDefaults.standard.bool(forKey: "isVousOn")
+        let isIlsOn = UserDefaults.standard.bool(forKey: "isIlsOn")
+        let isEllesOn = UserDefaults.standard.bool(forKey: "isEllesOn")
+
+                    print("je: \(isJeOn)")
+                    print("tu: \(isTuOn)")
+                    print("il: \(isIlOn)")
+                    print("elle: \(isElleOn)")
+                    print("nous: \(isNousOn)")
+                    print("vous: \(isVousOn)")
+                    print("ils: \(isIlsOn)")
+                    print("elles: \(isEllesOn)")
+        
         setupFetchRequest()
     }
 
@@ -53,13 +72,13 @@ class GamePlayViewController: UIViewController {
         let isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
         
         //Pronouns
-//        let isJeOn = UserDefaults.standard.bool(forKey: "isElleOn")
-//        let isTuOn = UserDefaults.standard.bool(forKey: "isTuOn")
-//        let isIlOn = UserDefaults.standard.bool(forKey: "isIlOn")
+        let isJeOn = UserDefaults.standard.bool(forKey: "isElleOn")
+        let isTuOn = UserDefaults.standard.bool(forKey: "isTuOn")
+        let isIlOn = UserDefaults.standard.bool(forKey: "isIlOn")
 //        let isElleOn = UserDefaults.standard.bool(forKey: "isElleOn")
-//        let isNousOn = UserDefaults.standard.bool(forKey: "isNousOn")
-//        let isVousOn = UserDefaults.standard.bool(forKey: "isVousOn")
-//        let isIlsOn = UserDefaults.standard.bool(forKey: "isIlsOn")
+        let isNousOn = UserDefaults.standard.bool(forKey: "isNousOn")
+        let isVousOn = UserDefaults.standard.bool(forKey: "isVousOn")
+        let isIlsOn = UserDefaults.standard.bool(forKey: "isIlsOn")
 //        let isEllesOn = UserDefaults.standard.bool(forKey: "isEllesOn")
         
         //check all options booleans
@@ -76,48 +95,47 @@ class GamePlayViewController: UIViewController {
         
         
         // Pronouns
-//        if isJeOn {
-//            predicateListPronoun.append(predicateJe)
+        if isJeOn {
+            predicateListPronoun.append(predicateJe)
+        }
+        if isTuOn {
+            predicateListPronoun.append(predicateTu)
+        }
+        if isIlOn {
+            predicateListPronoun.append(predicateIl)
+        }
+//        if isElleOn {
+//            predicateListPronoun.append(predicateElle)
 //        }
-//        if isTuOn {
-//            predicateListPronoun.append(predicateTu)
+        if isNousOn {
+            predicateListPronoun.append(predicateNous)
+        }
+        if isVousOn {
+            predicateListPronoun.append(predicateVous)
+        }
+        if isIlsOn {
+            predicateListPronoun.append(predicateIls)
+        }
+//        if isEllesOn {
+//            predicateListPronoun.append(predicateElles)
 //        }
-//        if isIlOn {
-//            predicateListPronoun.append(predicateIl)
-//        }
-////        if isElleOn {
-////            predicateListPronoun.append(predicateElle)
-////        }
-//        if isNousOn {
-//            predicateListPronoun.append(predicateNous)
-//        }
-//        if isVousOn {
-//            predicateListPronoun.append(predicateVous)
-//        }
-//        if isIlsOn {
-//            predicateListPronoun.append(predicateIls)
-//        }
-////        if isEllesOn {
-////            predicateListPronoun.append(predicateElles)
-////        }
-        
+    
         
         
         let verbRequest:NSFetchRequest<Conjugation> = Conjugation.fetchRequest()
         verbRequest.returnsObjectsAsFaults = false
         
+        //sort descriptor
         let sortDescriptor = NSSortDescriptor(key: "conjugation", ascending: false)
         
-        
-        verbRequest.sortDescriptors = [sortDescriptor]
-        
+        //predicates
         let verbGroupCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateListVerb)
 
-//        let pronounsCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateListPronoun)
+        let pronounsCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateListPronoun)
         
-//        let Verbpredicate = NSPredicate(format: "ANY verb.verbGroup in %@")
-        
-        verbRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [verbGroupCompoundPredicate])
+        verbRequest.sortDescriptors = [sortDescriptor]
+
+        verbRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [verbGroupCompoundPredicate, pronounsCompoundPredicate])
         
         var conjugationArray = [Conjugation]()
         
