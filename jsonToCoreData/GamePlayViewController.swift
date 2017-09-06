@@ -13,11 +13,22 @@ class GamePlayViewController: UIViewController {
     
     // MARK: Properties    
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //Verb Groups
+    var predicateListVerb = [NSPredicate]()
+    let predicateVerbGroup1 = NSPredicate(format: "verb.verbGroup == 1")
+    let predicateVerbGroup2 = NSPredicate(format: "verb.verbGroup == 2")
+    let predicateVerbGroup3 = NSPredicate(format: "verb.verbGroup == 3")
     
-    var predicateList = [NSPredicate]()
-    let predicate1 = NSPredicate(format: "verbGroup == 1")
-    let predicate2 = NSPredicate(format: "verbGroup == 2")
-    let predicate3 = NSPredicate(format: "verbGroup == 3")
+    //Pronouns
+//    var predicateListPronoun = [NSPredicate]()
+//    let predicateJe = NSPredicate(format: "pronoun == 0")
+//    let predicateTu = NSPredicate(format: "pronoun == 1")
+//    let predicateIl = NSPredicate(format: "pronoun == 2")
+////    let predicateElle = NSPredicate(format: "pronoun == 2")
+//    let predicateNous = NSPredicate(format: "pronoun == 3")
+//    let predicateVous = NSPredicate(format: "pronoun == 4")
+//    let predicateIls = NSPredicate(format: "pronoun == 5")
+////    let predicateElles = NSPredicate(format: "pronoun == 5")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,63 +42,106 @@ class GamePlayViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setupFetchRequest()
+    }
+
+    func setupFetchRequest(){
         
+        // Verb Groups
         let isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
         let isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
         let isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
         
+        //Pronouns
+//        let isJeOn = UserDefaults.standard.bool(forKey: "isElleOn")
+//        let isTuOn = UserDefaults.standard.bool(forKey: "isTuOn")
+//        let isIlOn = UserDefaults.standard.bool(forKey: "isIlOn")
+//        let isElleOn = UserDefaults.standard.bool(forKey: "isElleOn")
+//        let isNousOn = UserDefaults.standard.bool(forKey: "isNousOn")
+//        let isVousOn = UserDefaults.standard.bool(forKey: "isVousOn")
+//        let isIlsOn = UserDefaults.standard.bool(forKey: "isIlsOn")
+//        let isEllesOn = UserDefaults.standard.bool(forKey: "isEllesOn")
+        
+        //check all options booleans
+        // Verb Groups
         if isGroup1On {
-            predicateList.append(predicate1)
+            predicateListVerb.append(predicateVerbGroup1)
         }
         if isGroup2On {
-            predicateList.append(predicate2)
+            predicateListVerb.append(predicateVerbGroup2)
         }
         if isGroup3On {
-            predicateList.append(predicate3)
+            predicateListVerb.append(predicateVerbGroup3)
         }
-    
-        let verbRequest:NSFetchRequest<Verb> = Verb.fetchRequest()
+        
+        
+        // Pronouns
+//        if isJeOn {
+//            predicateListPronoun.append(predicateJe)
+//        }
+//        if isTuOn {
+//            predicateListPronoun.append(predicateTu)
+//        }
+//        if isIlOn {
+//            predicateListPronoun.append(predicateIl)
+//        }
+////        if isElleOn {
+////            predicateListPronoun.append(predicateElle)
+////        }
+//        if isNousOn {
+//            predicateListPronoun.append(predicateNous)
+//        }
+//        if isVousOn {
+//            predicateListPronoun.append(predicateVous)
+//        }
+//        if isIlsOn {
+//            predicateListPronoun.append(predicateIls)
+//        }
+////        if isEllesOn {
+////            predicateListPronoun.append(predicateElles)
+////        }
+        
+        
+        
+        let verbRequest:NSFetchRequest<Conjugation> = Conjugation.fetchRequest()
         verbRequest.returnsObjectsAsFaults = false
-
-        let sortDescriptor = NSSortDescriptor(key: "verbGroup", ascending: false)
-
-//                let keyPath = "verbGroup"
-//                let searchString = "1"
-//        
-//                let verbPredicate = NSPredicate(format: "%K == %@", keyPath, searchString)
-
-//        let verbCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: [predicate2])
-//
-//        predicateList.append(verbCompoundPredicate)
-
+        
+        let sortDescriptor = NSSortDescriptor(key: "conjugation", ascending: false)
+        
+        
         verbRequest.sortDescriptors = [sortDescriptor]
-        verbRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateList)
-//                verbRequest.predicate = verbPredicate
+        
+        let verbGroupCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateListVerb)
 
-
-        var verbArray = [Verb]()
-
+//        let pronounsCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateListPronoun)
+        
+//        let Verbpredicate = NSPredicate(format: "ANY verb.verbGroup in %@")
+        
+        verbRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [verbGroupCompoundPredicate])
+        
+        var conjugationArray = [Conjugation]()
+        
         do {
-            try verbArray = moc.fetch(verbRequest)
-
+            try conjugationArray = moc.fetch(verbRequest)
+            
         } catch {
             print(error)
         }
-
-        for verb in verbArray {
-            print("verb:\(verb.infinitive!)")
-//                    displayConjugations(verb:verb)
-        }
-    }
-
-    func displayConjugations (verb:Verb) {
         
-        if let conjugationList = verb.conjugation as? Set<Conjugation> {
-            for conjugation in conjugationList {
-                print(conjugation.conjugation!)
-            }
+        for conjugation in conjugationArray {
+            print("conjugation: \(conjugation.conjugation!)")
+            //                    displayConjugations(verb:verb)
         }
     }
+    
+//    func displayConjugations (verb:Verb) {
+//        
+//        if let conjugationList = verb.conjugation as? Set<Verb> {
+//            for conjugation in conjugationList {
+//                print(conjugation.conjugation!)
+//            }
+//        }
+//    }
 
 
     
