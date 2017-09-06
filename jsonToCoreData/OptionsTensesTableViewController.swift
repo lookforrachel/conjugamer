@@ -10,6 +10,87 @@ import UIKit
 
 class OptionsTensesTableViewController: UITableViewController {
 
+    // MARK: Properties
+    
+    let numberOfRowsAtSection: [Int] = [8, 4, 3, 2, 2, 2, 2]
+
+    
+    // MARK: Outlet
+    
+    //switches
+    @IBOutlet weak var indPreSwitch: UISwitch!
+    @IBOutlet weak var indPCSwitch: UISwitch!
+    @IBOutlet weak var indImp: UISwitch!
+    @IBOutlet weak var indPQP: UISwitch!
+    @IBOutlet weak var indPS: UISwitch!
+    @IBOutlet weak var indPA: UISwitch!
+    @IBOutlet weak var indFS: UISwitch!
+    @IBOutlet weak var indFA: UISwitch!
+    @IBOutlet weak var subPre: UISwitch!
+    @IBOutlet weak var subPas: UISwitch!
+    @IBOutlet weak var subImp: UISwitch!
+    @IBOutlet weak var subPQP: UISwitch!
+    @IBOutlet weak var conPre: UISwitch!
+    @IBOutlet weak var conPas1: UISwitch!
+    @IBOutlet weak var conPas2: UISwitch!
+    @IBOutlet weak var impPre: UISwitch!
+    @IBOutlet weak var impPas: UISwitch!
+    @IBOutlet weak var partPre: UISwitch!
+    @IBOutlet weak var partPas: UISwitch!
+    @IBOutlet weak var infPre: UISwitch!
+    @IBOutlet weak var infPas: UISwitch!
+    @IBOutlet weak var gerPre: UISwitch!
+    @IBOutlet weak var gerPas: UISwitch!
+    
+    //actions
+    @IBAction func indPreSwitch(_ sender: UISwitch) {
+    }
+    @IBAction func indPCSwitch(_ sender: UISwitch) {
+    }
+    @IBAction func indImp(_ sender: UISwitch) {
+    }
+    @IBAction func indPQP(_ sender: UISwitch) {
+    }
+    @IBAction func indPS(_ sender: UISwitch) {
+    }
+    @IBAction func indPA(_ sender: UISwitch) {
+    }
+    @IBAction func indFS(_ sender: UISwitch) {
+    }
+    @IBAction func indFA(_ sender: UISwitch) {
+    }
+    @IBAction func subPre(_ sender: UISwitch) {
+    }
+    @IBAction func subPas(_ sender: UISwitch) {
+    }
+    @IBAction func subImp(_ sender: UISwitch) {
+    }
+    @IBAction func subPQP(_ sender: UISwitch) {
+    }
+    @IBAction func conPre(_ sender: UISwitch) {
+    }
+    @IBAction func conPas1(_ sender: UISwitch) {
+    }
+    @IBAction func conPas2(_ sender: UISwitch) {
+    }
+    @IBAction func impPre(_ sender: UISwitch) {
+    }
+    @IBAction func impPas(_ sender: UISwitch) {
+    }
+    @IBAction func partPre(_ sender: UISwitch) {
+    }
+    @IBAction func partPas(_ sender: UISwitch) {
+    }
+    @IBAction func infPre(_ sender: UISwitch) {
+    }
+    @IBAction func infPas(_ sender: UISwitch) {
+    }
+    @IBAction func gerPre(_ sender: UISwitch) {
+    }
+    @IBAction func gerPas(_ sender: UISwitch) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,12 +110,17 @@ class OptionsTensesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return numberOfRowsAtSection.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        var rows: Int = 0
+        
+        if section < numberOfRowsAtSection.count {
+            rows = numberOfRowsAtSection[section]
+        }
+        return rows
     }
 
     /*
