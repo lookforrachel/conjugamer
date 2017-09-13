@@ -8,7 +8,17 @@
 
 import UIKit
 
-
+class optionsViewCell: UITableViewCell {
+    
+    @IBOutlet weak var cellLabel: UILabel!
+    @IBOutlet weak var cellSwitch: UISwitch!
+    var delegate:cellSwitchDelegate?
+    var myUniqueSettingID:String!
+    
+    @IBAction func cellSwitchAction(_ sender: UISwitch) {
+        delegate?.switchUpdated(self)
+    }
+}
 
 class OptionsViewController: UITableViewController {
 
@@ -29,8 +39,8 @@ class OptionsViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-        print((isGroup1On) ? "GROUP ONE ON" : "GROUP ONE OFF")
+//        let isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+//        print((isGroup1On) ? "GROUP ONE ON" : "GROUP ONE OFF")
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +64,7 @@ class OptionsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "optionsCell", for: indexPath)
         
         cell.textLabel?.text = options[indexPath.row]
+
         
         return cell
     }

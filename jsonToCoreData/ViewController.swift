@@ -32,7 +32,20 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Modes et temps
+    // pronoms personnels
+    // groupes de verbes
+    // conjugaison
+    // jouer
+    // aide et options
+    // succès
+    // options
+    // quitter le jeu
+    // classements (leaderboard)
+    // langage français ou système
 
+    
+    
     
     
 //    func PickQuestion() {

@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 
 class GamePlayViewController: UIViewController {
-    
+
+    // TODO: set all defaults to true
     // MARK: Properties    
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     //Verb Groups
@@ -29,6 +30,8 @@ class GamePlayViewController: UIViewController {
     let predicateVous = NSPredicate(format: "pronoun == 4")
     let predicateIls = NSPredicate(format: "pronoun == 5")
 //    let predicateElles = NSPredicate(format: "pronoun == 5")
+    
+    //Tenses
     
     override func viewDidLoad() {
         super.viewDidLoad()

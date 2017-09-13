@@ -8,27 +8,49 @@
 
 import UIKit
 
-class OptionsVerbsTableViewController: UITableViewController {
+
+protocol cellSwitchDelegate {
+    func switchUpdated(_ cellPassed:optionsViewCell)
+}
+
+
+class OptionsVerbsTableViewController: UITableViewController, cellSwitchDelegate {
     
     //MARK: Properties
+    let alertTitle = "!"
+    let alertMessage = "user must select at least one option"
     
-    var verbGroup = ["Group1","Group2","Group3"]
-    private var selectedCell = 0
     
-    var isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-    var isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
-    var isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
+    
+    let viewModel = OptionsViewModel()
+    //cell.cellLabel.text = viewModel.option
+    
+    
+    
+    //TODO: Cocoa touch model view controller design pattern
+    
+//    var verbGroup = ["Group1","Group2","Group3"]
+//    
+//    private var selectedCell = 0
+//    
+//    var isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
+//    var isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
+//    var isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
     
     //MARK: Outlets
-    //Labels
-    @IBOutlet weak var group1Label: UILabel!
-    @IBOutlet weak var group2Label: UILabel!
-    @IBOutlet weak var group3Label: UILabel!
+//    //Labels
+//    @IBOutlet weak var group1Label: UILabel!
+//    @IBOutlet weak var group2Label: UILabel!
+//    @IBOutlet weak var group3Label: UILabel!
+//    
+//    //Switches
+//    @IBOutlet weak var group1Switch: UISwitch!
+//    @IBOutlet weak var group2Switch: UISwitch!
+//    @IBOutlet weak var group3Switch: UISwitch!
     
-    //Switches
-    @IBOutlet weak var group1Switch: UISwitch!
-    @IBOutlet weak var group2Switch: UISwitch!
-    @IBOutlet weak var group3Switch: UISwitch!
+    
+    
+    
     
     // MARK: Initialisation
     override func viewDidLoad() {
@@ -45,148 +67,44 @@ class OptionsVerbsTableViewController: UITableViewController {
         print((beenHere) ? "user has been here before" : "loading defaults")
         
         //if unset, setup initial settings
-        if(!beenHere){
-            
-            //setup initial settings
-            initialSetup()
-            
-            //set beenHere flag to true
-            UserDefaults.standard.set(true, forKey: "beenHere")
-        }
-        else {
-            
-            //get userDefaults & setup viewController
-            //group1
-            if isGroup1On {
-                group1Switch.setOn(true, animated: true)
-            }
-            else {
-                group1Switch.setOn(false, animated: true)
-            }
-            //group2
-            if isGroup2On {
-                group2Switch.setOn(true, animated: true)
-            }
-            else {
-                group2Switch.setOn(false, animated: true)
-            }
-            //group3
-            if isGroup3On {
-                group3Switch.setOn(true, animated: true)
-            }
-            else {
-                group3Switch.setOn(false, animated: true)
-            }
-        }
+//        if(!beenHere){
+//            
+//            //setup initial settings
+//            initialSetup()
+//            
+//            //set beenHere flag to true
+//            UserDefaults.standard.set(true, forKey: "beenHere")
+//        }
+//        else {
+//            
+//            //get userDefaults & setup viewController
+//            //group1
+//            if isGroup1On {
+//                group1Switch.setOn(true, animated: true)
+//            }
+//            else {
+//                group1Switch.setOn(false, animated: true)
+//            }
+//            //group2
+//            if isGroup2On {
+//                group2Switch.setOn(true, animated: true)
+//            }
+//            else {
+//                group2Switch.setOn(false, animated: true)
+//            }
+//            //group3
+//            if isGroup3On {
+//                group3Switch.setOn(true, animated: true)
+//            }
+//            else {
+//                group3Switch.setOn(false, animated: true)
+//            }
+//        }
     }
 
     
     
-    //Actions
-    @IBAction func group1Switch(_ sender: UISwitch) {
-        if (sender.isOn == true){
-            UserDefaults.standard.set(true, forKey: "isGroup1On")
-            print("group1 on")
-            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
-            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
-            
-//            ShowBackButton()
-//            print("group1: \(isGroup1On)")
-//            print("group2: \(isGroup2On)")
-//            print("group3: \(isGroup3On)")
-//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup1On") {
-//                print(booleanValue)
-//            }
-        }
-        else if (isGroup2On || isGroup3On){
-            UserDefaults.standard.set(false, forKey: "isGroup1On")
-            print("group1 off")
-            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
-            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
-//            HideBackButton()
-//            print("group1: \(isGroup1On)")
-//            print("group2: \(isGroup2On)")
-//            print("group3: \(isGroup3On)")
-//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup1On") {
-//                print(booleanValue)
-//            }
-        }
-        else {
-            group1Switch.setOn(true, animated: true)
-            createAlert(title: "!", message: "user must select at least one option")
-        }
-    }
-    @IBAction func group2Switch(_ sender: UISwitch) {
-        if (sender.isOn == true){
-            UserDefaults.standard.set(true, forKey: "isGroup2On")
-            print("group2 on")
-            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
-            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
-//            ShowBackButton()
-//            print("group1: \(isGroup1On)")
-//            print("group2: \(isGroup2On)")
-//            print("group3: \(isGroup3On)")
-//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup2On") {
-//                print(booleanValue)
-//            }
-        }
-        else if (isGroup1On || isGroup3On){
-            UserDefaults.standard.set(false, forKey: "isGroup2On")
-            print("group2 off")
-            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
-            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
-//            HideBackButton()
-//            print("group1: \(isGroup1On)")
-//            print("group2: \(isGroup2On)")
-//            print("group3: \(isGroup3On)")
-//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup2On") {
-//                print(booleanValue)
-//            }
-        }
-        else {
-            group2Switch.setOn(true, animated: true)
-            createAlert(title: "!", message: "user must select at least one option")
-        }
-    }
 
-    @IBAction func group3Switch(_ sender: UISwitch) {
-        if (sender.isOn == true){
-            UserDefaults.standard.set(true, forKey: "isGroup3On")
-            print("group3 on")
-            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
-            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
-//            ShowBackButton()
-//            print("group1: \(isGroup1On)")
-//            print("group2: \(isGroup2On)")
-//            print("group3: \(isGroup3On)")
-//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup3On") {
-//                print(booleanValue)
-//            }
-        }
-        else if (isGroup1On || isGroup2On){
-            UserDefaults.standard.set(false, forKey: "isGroup3On")
-            print("group3 off")
-            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
-            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
-//            HideBackButton()
-//            print("group1: \(isGroup1On)")
-//            print("group2: \(isGroup2On)")
-//            print("group3: \(isGroup3On)")
-//            if let booleanValue = UserDefaults.standard.object(forKey: "isGroup3On") {
-//                print(booleanValue)
-//            }
-        }
-        else {
-            group3Switch.setOn(true, animated: true)
-            createAlert(title: "!", message: "user must select at least one option")
-        }
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -202,17 +120,52 @@ class OptionsVerbsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return verbGroup.count
+        return viewModel.myOptions.verbOptions.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "verbsCell", for: indexPath) as! optionsViewCell
+        
+        //set the switch state
+        
+        //set the label
+        
+        cell.cellSwitch.tag = indexPath.row
+        cell.myUniqueSettingID = "VerbGroups\(indexPath.row)"
+        cell.cellLabel.text = viewModel.myOptions.verbOptions[indexPath.row].group.rawValue
+        cell.delegate = self
+        
+        
+        cell.cellSwitch.isOn = viewModel.myOptions.verbOptions[indexPath.row].isOn
+        // Configure the cell...
+        
+        return cell
+    }
+
+    func switchUpdated(_ cellPassed:optionsViewCell) -> Void {
+        let cell = cellPassed
+        let checkResponse = viewModel.myCrazyCheckingFunction(cell: cell)
+        if (checkResponse){
+            print("checking function returned true")
+            return
+        } else {
+            //Alert
+            createAlert(title: alertTitle, message: alertMessage)
+            print("checking function returned falze")
+            cell.cellSwitch.setOn(!cell.cellSwitch.isOn, animated: true)
+            return
+        }
     }
     
     
-
     // MARK: Private Function
 
     func initialSetup(){
-        UserDefaults.standard.set(true, forKey: "isGroup1On")
-        UserDefaults.standard.set(true, forKey: "isGroup2On")
-        UserDefaults.standard.set(true, forKey: "isGroup3On")
+//        UserDefaults.standard.set(true, forKey: "isGroup1On")
+//        UserDefaults.standard.set(true, forKey: "isGroup2On")
+//        UserDefaults.standard.set(true, forKey: "isGroup3On")
+        
     }
     
     func createAlert(title: String, message: String){
@@ -224,15 +177,9 @@ class OptionsVerbsTableViewController: UITableViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
+    
+
+ 
     
     /*
      // Override to support conditional editing of the table view.

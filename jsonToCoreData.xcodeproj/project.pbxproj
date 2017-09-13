@@ -13,6 +13,8 @@
 		5D4D82CE1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D4D82CC1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodeld */; };
 		5D4D82D01F4F662A00D7B3EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D4D82CF1F4F662A00D7B3EA /* Assets.xcassets */; };
 		5D4D82D31F4F662A00D7B3EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D4D82D11F4F662A00D7B3EA /* LaunchScreen.storyboard */; };
+		5D4F322A1F64F69A0099DC02 /* OptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4F32291F64F69A0099DC02 /* OptionsViewModel.swift */; };
+		5D4F322C1F6625A40099DC02 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4F322B1F6625A40099DC02 /* Options.swift */; };
 		5D668BF11F527D6F00E25217 /* verbsList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D668BF01F527D6F00E25217 /* verbsList.json */; };
 		5D69D3401F50F00C00946C73 /* Conjugation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D69D33C1F50F00C00946C73 /* Conjugation+CoreDataClass.swift */; };
 		5D69D3411F50F00C00946C73 /* Conjugation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D69D33D1F50F00C00946C73 /* Conjugation+CoreDataProperties.swift */; };
@@ -34,6 +36,8 @@
 		5D4D82CF1F4F662A00D7B3EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D4D82D21F4F662A00D7B3EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D4D82D41F4F662A00D7B3EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D4F32291F64F69A0099DC02 /* OptionsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewModel.swift; sourceTree = "<group>"; };
+		5D4F322B1F6625A40099DC02 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		5D668BF01F527D6F00E25217 /* verbsList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verbsList.json; sourceTree = "<group>"; };
 		5D69D33C1F50F00C00946C73 /* Conjugation+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Conjugation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5D69D33D1F50F00C00946C73 /* Conjugation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Conjugation+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -81,15 +85,17 @@
 			isa = PBXGroup;
 			children = (
 				5D4D82C51F4F662A00D7B3EA /* AppDelegate.swift */,
-				5D668BF01F527D6F00E25217 /* verbsList.json */,
 				5D4D82C71F4F662A00D7B3EA /* ViewController.swift */,
 				5D6BEA0E1F5BA06C00177F26 /* GamePlayViewController.swift */,
 				5D4D82C91F4F662A00D7B3EA /* Main.storyboard */,
-				5DA656E51F58A16F00F30A38 /* OptionsViewController.swift */,
 				5DA656E71F58D1FF00F30A38 /* OptionsTensesTableViewController.swift */,
 				5DA656E91F58D21300F30A38 /* OptionsPronounsTableViewController.swift */,
 				5DA656EB1F58D22600F30A38 /* OptionsVerbsTableViewController.swift */,
+				5DA656E51F58A16F00F30A38 /* OptionsViewController.swift */,
+				5D4F32291F64F69A0099DC02 /* OptionsViewModel.swift */,
+				5D4F322B1F6625A40099DC02 /* Options.swift */,
 				5D4D82CF1F4F662A00D7B3EA /* Assets.xcassets */,
+				5D668BF01F527D6F00E25217 /* verbsList.json */,
 				5D4D82D11F4F662A00D7B3EA /* LaunchScreen.storyboard */,
 				5D4D82D41F4F662A00D7B3EA /* Info.plist */,
 				5D4D82CC1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodeld */,
@@ -177,6 +183,8 @@
 				5D4D82C81F4F662A00D7B3EA /* ViewController.swift in Sources */,
 				5DA656EC1F58D22600F30A38 /* OptionsVerbsTableViewController.swift in Sources */,
 				5D69D3421F50F00C00946C73 /* Verb+CoreDataClass.swift in Sources */,
+				5D4F322C1F6625A40099DC02 /* Options.swift in Sources */,
+				5D4F322A1F64F69A0099DC02 /* OptionsViewModel.swift in Sources */,
 				5D69D3411F50F00C00946C73 /* Conjugation+CoreDataProperties.swift in Sources */,
 				5D69D3431F50F00C00946C73 /* Verb+CoreDataProperties.swift in Sources */,
 				5D4D82C61F4F662A00D7B3EA /* AppDelegate.swift in Sources */,
