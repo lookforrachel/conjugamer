@@ -16,52 +16,72 @@ private let optionKeys = [
     "isGroup3On"
 ]
 
+
+enum OptionsMain:String {
+    
+    case Tenses = "tenseOptions"
+    case Pronouns = "pronounOptions"
+    case Verbs = "verbOptions"
+}
+
 class Options {
     
-    //var name: String
-    var verbOptions = [VerbOption]()
-    //var isOn: Bool
+    var options = [Option]()
     
-    init() {
+    var optionsMain: OptionsMain
+    var name: String
+    var isOn: Bool
+    var myOptionMain: String
+
+    
+    init(optionsMain: OptionsMain) {
         
-        for value in optionKeys{
-            guard let thisverbgroup = VerbGroup(rawValue:value) else {
-                fatalError()
+        self.optionsMain = optionsMain
+        
+        myOptionMain = self.optionsMain.rawValue
+        
+        self.name = ""
+        self.isOn = false
+        
+        guard let optionsPlistDict = Bundle.main.url(forResource: "optionsDict", withExtension: "plist") else {
+            fatalError()
+        }
+        guard let dictionart = NSDictionary(contentsOf: optionsPlistDict) else {
+            fatalError()
+        }
+        
+        
+        if let subOptions = dictionart.object(forKey: myOptionMain) as? NSArray{
+            
+            for thing in subOptions{
+                let dict = thing as! NSDictionary
+                
+                if let title = dict.object(forKey: "title") as? String, let defaultsKey = dict.object(forKey: "userDefaults") as? String {
+                    print(title,defaultsKey)
+                    self.name = title
+                    self.isOn = UserDefaults.standard.bool(forKey: defaultsKey)
+                    let thisOption = Option(name: title, defaultsKey: defaultsKey)
+                    options.append(thisOption)
+                }
+                
+                
+
+                
             }
-            let thisVerbOption = VerbOption(group: thisverbgroup)
-            verbOptions.append(thisVerbOption)
             
         }
         
-        for val in verbOptions{
-            print(val.group)
-        }
-        
-        print(verbOptions.count)
         
     }
     
 }
 
-enum VerbGroup:String {
-    
-    case VerbGroup1 = "isGroup1On"
-    case VerbGroup2 = "isGroup2On"
-    case VerbGroup3 = "isGroup3On"
-    
-}
-
-class VerbOption {
+class Option {
+    var name: String
     var isOn: Bool
-    var group: VerbGroup
     
-    init(group: VerbGroup){
-        self.group = group
-        print(self.group.rawValue)
-        
-        self.isOn = UserDefaults.standard.bool(forKey: self.group.rawValue)
-        
-        
+    init(name: String, defaultsKey: String) {
+        self.name = name
+        self.isOn = UserDefaults.standard.bool(forKey: defaultsKey)
     }
-    
 }

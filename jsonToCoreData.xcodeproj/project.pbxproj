@@ -25,6 +25,8 @@
 		5DA656E81F58D1FF00F30A38 /* OptionsTensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656E71F58D1FF00F30A38 /* OptionsTensesTableViewController.swift */; };
 		5DA656EA1F58D21300F30A38 /* OptionsPronounsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656E91F58D21300F30A38 /* OptionsPronounsTableViewController.swift */; };
 		5DA656EC1F58D22600F30A38 /* OptionsVerbsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA656EB1F58D22600F30A38 /* OptionsVerbsTableViewController.swift */; };
+		5DD74F611F69A346004C46AF /* OptionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD74F601F69A346004C46AF /* OptionsViewCell.swift */; };
+		5DD74F631F69AF5D004C46AF /* optionsDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DD74F621F69AF5D004C46AF /* optionsDict.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		5DA656E71F58D1FF00F30A38 /* OptionsTensesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTensesTableViewController.swift; sourceTree = "<group>"; };
 		5DA656E91F58D21300F30A38 /* OptionsPronounsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsPronounsTableViewController.swift; sourceTree = "<group>"; };
 		5DA656EB1F58D22600F30A38 /* OptionsVerbsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsVerbsTableViewController.swift; sourceTree = "<group>"; };
+		5DD74F601F69A346004C46AF /* OptionsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewCell.swift; sourceTree = "<group>"; };
+		5DD74F621F69AF5D004C46AF /* optionsDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = optionsDict.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +96,10 @@
 				5DA656E91F58D21300F30A38 /* OptionsPronounsTableViewController.swift */,
 				5DA656EB1F58D22600F30A38 /* OptionsVerbsTableViewController.swift */,
 				5DA656E51F58A16F00F30A38 /* OptionsViewController.swift */,
+				5DD74F601F69A346004C46AF /* OptionsViewCell.swift */,
 				5D4F32291F64F69A0099DC02 /* OptionsViewModel.swift */,
 				5D4F322B1F6625A40099DC02 /* Options.swift */,
+				5DD74F621F69AF5D004C46AF /* optionsDict.plist */,
 				5D4D82CF1F4F662A00D7B3EA /* Assets.xcassets */,
 				5D668BF01F527D6F00E25217 /* verbsList.json */,
 				5D4D82D11F4F662A00D7B3EA /* LaunchScreen.storyboard */,
@@ -165,6 +171,7 @@
 			files = (
 				5D668BF11F527D6F00E25217 /* verbsList.json in Resources */,
 				5D4D82D31F4F662A00D7B3EA /* LaunchScreen.storyboard in Resources */,
+				5DD74F631F69AF5D004C46AF /* optionsDict.plist in Resources */,
 				5D4D82D01F4F662A00D7B3EA /* Assets.xcassets in Resources */,
 				5D4D82CB1F4F662A00D7B3EA /* Main.storyboard in Resources */,
 			);
@@ -181,6 +188,7 @@
 				5DA656EA1F58D21300F30A38 /* OptionsPronounsTableViewController.swift in Sources */,
 				5D4D82CE1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodeld in Sources */,
 				5D4D82C81F4F662A00D7B3EA /* ViewController.swift in Sources */,
+				5DD74F611F69A346004C46AF /* OptionsViewCell.swift in Sources */,
 				5DA656EC1F58D22600F30A38 /* OptionsVerbsTableViewController.swift in Sources */,
 				5D69D3421F50F00C00946C73 /* Verb+CoreDataClass.swift in Sources */,
 				5D4F322C1F6625A40099DC02 /* Options.swift in Sources */,

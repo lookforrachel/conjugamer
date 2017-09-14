@@ -8,24 +8,15 @@
 
 import UIKit
 
-class optionsViewCell: UITableViewCell {
-    
-    @IBOutlet weak var cellLabel: UILabel!
-    @IBOutlet weak var cellSwitch: UISwitch!
-    var delegate:cellSwitchDelegate?
-    var myUniqueSettingID:String!
-    
-    @IBAction func cellSwitchAction(_ sender: UISwitch) {
-        delegate?.switchUpdated(self)
-    }
-}
+
+
 
 class OptionsViewController: UITableViewController {
 
     //MARK: Properties
     var options = ["tenses", "pronouns", "verbs"]
     private var selectedCell = 0
-    
+    var segueOptions:OptionsMain = .Verbs
     //MARK: Outlets
     
     override func viewDidLoad() {
@@ -74,10 +65,13 @@ class OptionsViewController: UITableViewController {
         
         switch selectedCell {
         case 0:
+            segueOptions = .Tenses
             performSegue(withIdentifier: "tensesSegue" , sender: self)
         case 1:
+            segueOptions = .Pronouns
             performSegue(withIdentifier: "pronounsSegue" , sender: self)
         case 2:
+            segueOptions = .Verbs
             performSegue(withIdentifier: "verbsSegue" , sender: self)
         default:
             print("no row selected")
@@ -119,13 +113,20 @@ class OptionsViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let options = OptionsViewModel(optionKeys: segueOptions)
+        
+        if segue.identifier == "verbsSegue" {
+            let optionsVerbsTableViewController: OptionsVerbsTableViewController = segue.destination as! OptionsVerbsTableViewController
+            
+            optionsVerbsTableViewController.optionsVM = options
+            }
     }
-    */
 }

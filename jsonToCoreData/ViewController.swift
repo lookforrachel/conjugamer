@@ -20,8 +20,6 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "gamePlaySegue", sender: self)
     }
     
-    var selectedConjugations = ["this", "that"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -43,23 +41,6 @@ class ViewController: UIViewController {
     // quitter le jeu
     // classements (leaderboard)
     // langage français ou système
-
-    
-    
-    
-    
-//    func PickQuestion() {
-//
-//        if Questions.count > 0 {
-//            QNumber = arc4random() % Questions.count
-//
-//            Questions.remove(at: QNumber)
-//            
-//        }
-//    
-//
-//    
-//    }
 
     
 

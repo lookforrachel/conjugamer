@@ -17,14 +17,14 @@ protocol cellSwitchDelegate {
 class OptionsVerbsTableViewController: UITableViewController, cellSwitchDelegate {
     
     //MARK: Properties
+    
+    
     let alertTitle = "!"
     let alertMessage = "user must select at least one option"
+    var delegate:cellSwitchDelegate?
+    var myArray = [String]()
     
-    
-    
-    let viewModel = OptionsViewModel()
-    //cell.cellLabel.text = viewModel.option
-    
+    var optionsVM:OptionsViewModel!
     
     
     //TODO: Cocoa touch model view controller design pattern
@@ -49,23 +49,23 @@ class OptionsVerbsTableViewController: UITableViewController, cellSwitchDelegate
 //    @IBOutlet weak var group3Switch: UISwitch!
     
     
-    
-    
-    
     // MARK: Initialisation
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        //print(optionsVM.myOptions.optionsMain)
+        
         //get userDefaults flag
         let beenHere = UserDefaults.standard.bool(forKey: "beenHere")
         print((beenHere) ? "user has been here before" : "loading defaults")
-        
+        for option in optionsVM.returnOptions(){
+            print("option name: \(option.name), option.isON: \(option.isOn)")
+        }
         //if unset, setup initial settings
 //        if(!beenHere){
 //            
@@ -112,40 +112,44 @@ class OptionsVerbsTableViewController: UITableViewController, cellSwitchDelegate
     }
     
     // MARK: - Table view data source
-    
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        // #warning Incomplete implementation, return the number of sections
-    //        return 0
-    //    }
+//    
+//        override func numberOfSections(in tableView: UITableView) -> Int {
+//            // #warning Incomplete implementation, return the number of sections
+//            return 0
+//        }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return viewModel.myOptions.verbOptions.count
+
+        return optionsVM.returnOptions().count;
+        
+//        guard let optionsVM = self.optionsVM else {
+//            fatalError()
+//        }
+//        
+//        let rows = optionsVM.myOptions.options.count
+//        return rows
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Configure the cell...
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "verbsCell", for: indexPath) as! optionsViewCell
-        
-        //set the switch state
-        
-        //set the label
-        
+        let options = optionsVM.returnOptions()
         cell.cellSwitch.tag = indexPath.row
-        cell.myUniqueSettingID = "VerbGroups\(indexPath.row)"
-        cell.cellLabel.text = viewModel.myOptions.verbOptions[indexPath.row].group.rawValue
+        cell.cellLabel.text = options[indexPath.row].name
         cell.delegate = self
         
         
-        cell.cellSwitch.isOn = viewModel.myOptions.verbOptions[indexPath.row].isOn
-        // Configure the cell...
+        cell.cellSwitch.isOn = optionsVM.returnOptions()[indexPath.row].isOn
+        print(myArray)
         
         return cell
     }
 
     func switchUpdated(_ cellPassed:optionsViewCell) -> Void {
         let cell = cellPassed
-        let checkResponse = viewModel.myCrazyCheckingFunction(cell: cell)
+        let checkResponse = optionsVM.myCrazyCheckingFunction(cell: cell)
         if (checkResponse){
             print("checking function returned true")
             return
@@ -216,13 +220,12 @@ class OptionsVerbsTableViewController: UITableViewController, cellSwitchDelegate
      }
      */
     
-    /*
+    
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-    */
+//     
+//     // In a storyboard-based application, you will often want to do a little preparation before navigation
+//     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//     // Get the new view controller using segue.destinationViewController.
+//     // Pass the selected object to the new view controller.
+//    }
 }

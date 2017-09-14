@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>tenseOptions</key>
+	<dict>
+		<key>Indicativ</key>
+		<array>
+			<dict>
+				<key>userDefaults</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>pronounOptions</key>
+	<array/>
+	<key>verbOptions</key>
+	<array>
+		<dict>
+			<key>userDefaults</key>
+			<string>isGroup1On</string>
+			<key>title</key>
+			<string>Group 1</string>
+		</dict>
+		<dict>
+			<key>userDefaults</key>
+			<string>isGroup2On</string>
+			<key>title</key>
+			<string>Group 2</string>
+		</dict>
+		<dict>
+			<key>userDefaults</key>
+			<string>isGroup3On</string>
+			<key>title</key>
+			<string>Group 3</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -9,20 +9,28 @@
 import UIKit
 import Foundation
 
-
+//   let verbKeys = [
+//        "isGroup1On",
+//        "isGroup2On",
+//        "isGroup3On"
+//    ]
 
 
 class OptionsViewModel {
-    var myOptions: Options
+    private var myOptions: Options
     
-    private let optionKeys = [
-        "isGroup1On",
-        "isGroup2On",
-        "isGroup3On"
-    ]
+    //private var optionKeys = [String]()
     
-    init(){
-        self.myOptions = Options()
+    init(optionKeys: OptionsMain){
+        self.myOptions = Options(optionsMain: optionKeys)
+        
+        //set optionKeys to something we processed out of myOptions
+        
+        //self.optionKeys = optionKeys
+    }
+    
+    func returnOptions()->[Option]{
+        return self.myOptions.options
     }
     
     func myCrazyCheckingFunction(cell:optionsViewCell) -> Bool {
@@ -30,7 +38,7 @@ class OptionsViewModel {
         if (cell.cellSwitch.isOn==false){
             var on = 0;
             
-            for option in myOptions.verbOptions {
+            for option in myOptions.options {
                 
                 if (option.isOn){
                     on+=1
@@ -43,38 +51,13 @@ class OptionsViewModel {
                 return false
             }
         }
-        
-        
+
             //set NSUD, set model,
-            myOptions.verbOptions[cell.cellSwitch.tag].isOn = cell.cellSwitch.isOn
-            print("changing \(cell.cellSwitch.tag) \(myOptions.verbOptions[cell.cellSwitch.tag].isOn)")
-            UserDefaults.standard.set(myOptions.verbOptions[cell.cellSwitch.tag].isOn, forKey: optionKeys[cell.cellSwitch.tag])
-        
+            myOptions.options[cell.cellSwitch.tag].isOn = cell.cellSwitch.isOn
+            print("changing \(cell.cellSwitch.tag) \(myOptions.options[cell.cellSwitch.tag].isOn)")
+            //UserDefaults.standard.set(myOptions.options[cell.cellSwitch.tag].isOn, forKey: optionKeys[cell.cellSwitch.tag])
         
         return true
-        
-
-
-        
-    }
-    
-    var IsOnlyButtonOn: Bool {
-//        if (isOn == true){
-//            //save myOptions.isOn to true
-//            UserDefaults.standard.set(true, forKey: "isGroup1On")
-//            return Bool(isOn)
-//        }
-//        else if (isGroup2On || isGroup3On){
-//            UserDefaults.standard.set(false, forKey: "isGroup1On")
-//            print("group1 off")
-//            isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
-//            isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
-//            isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
-//        }
-//        else {
-//            group1Switch.setOn(true, animated: true)
-//            createAlert(title: "!", message: "user must select at least one option")
-//        }
-        return false
+  
     }
 }
