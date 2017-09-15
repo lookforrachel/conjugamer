@@ -71,7 +71,7 @@ class OptionsViewController: UITableViewController {
             segueOptions = .Pronouns
             performSegue(withIdentifier: "verbsSegue" , sender: self)
         case 2:
-            segueOptions = .Verbs
+            segueOptions = .Tenses
             performSegue(withIdentifier: "verbsSegue" , sender: self)
         default:
             print("no row selected")

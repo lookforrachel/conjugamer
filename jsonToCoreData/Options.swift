@@ -52,29 +52,40 @@ class Options {
             fatalError()
         }
         
-        
-        if let subOptions = dictionary.object(forKey: myOptionMain) as? NSArray{
-            
-            for thing in subOptions{
-                let dict = thing as! NSDictionary
+        if myOptionMain != "tenseOptions"{
+            if let subOptions = dictionary.object(forKey: myOptionMain) as? NSArray{
                 
-                if let title = dict.object(forKey: "title") as? String, let defaultsKey = dict.object(forKey: "userDefaults") as? String {
-                    print(title,defaultsKey)
-                    self.name = title
-                    self.isOn = UserDefaults.standard.bool(forKey: defaultsKey)
-                    self.defaultsKey = defaultsKey
-                    let thisOption = Option(name: title, defaultsKey: defaultsKey)
-                    options.append(thisOption)
+                for thing in subOptions{
+                    let dict = thing as! NSDictionary
+                    
+                    if let title = dict.object(forKey: "title") as? String, let defaultsKey = dict.object(forKey: "userDefaults") as? String {
+                        print(title,defaultsKey)
+                        self.name = title
+                        self.isOn = UserDefaults.standard.bool(forKey: defaultsKey)
+                        self.defaultsKey = defaultsKey
+                        let thisOption = Option(name: title, defaultsKey: defaultsKey)
+                        options.append(thisOption)
+                    }
                 }
-                
-                
-
-                
             }
-            
+        } else {
+            if let subOptions = dictionary.object(forKey: "verbOptions") as? NSArray{
+                
+                for thing in subOptions{
+                    let dict = thing as! NSDictionary
+                    
+                    if let title = dict.object(forKey: "title") as? String, let defaultsKey = dict.object(forKey: "userDefaults") as? String {
+                        print(title,defaultsKey)
+                        self.name = title
+                        self.isOn = UserDefaults.standard.bool(forKey: defaultsKey)
+                        self.defaultsKey = defaultsKey
+                        let thisOption = Option(name: title, defaultsKey: defaultsKey)
+                        options.append(thisOption)
+                    }
+                }
+            }
         }
-        
-        
+    
     }
     
 }
