@@ -31,6 +31,7 @@ class Options {
     var optionsMain: OptionsMain
     var name: String
     var isOn: Bool
+    var defaultsKey: String
     var myOptionMain: String
 
     
@@ -42,16 +43,17 @@ class Options {
         
         self.name = ""
         self.isOn = false
+        self.defaultsKey = ""
         
         guard let optionsPlistDict = Bundle.main.url(forResource: "optionsDict", withExtension: "plist") else {
             fatalError()
         }
-        guard let dictionart = NSDictionary(contentsOf: optionsPlistDict) else {
+        guard let dictionary = NSDictionary(contentsOf: optionsPlistDict) else {
             fatalError()
         }
         
         
-        if let subOptions = dictionart.object(forKey: myOptionMain) as? NSArray{
+        if let subOptions = dictionary.object(forKey: myOptionMain) as? NSArray{
             
             for thing in subOptions{
                 let dict = thing as! NSDictionary
@@ -60,6 +62,7 @@ class Options {
                     print(title,defaultsKey)
                     self.name = title
                     self.isOn = UserDefaults.standard.bool(forKey: defaultsKey)
+                    self.defaultsKey = defaultsKey
                     let thisOption = Option(name: title, defaultsKey: defaultsKey)
                     options.append(thisOption)
                 }
@@ -79,9 +82,11 @@ class Options {
 class Option {
     var name: String
     var isOn: Bool
+    var defaultsKey: String
     
     init(name: String, defaultsKey: String) {
         self.name = name
         self.isOn = UserDefaults.standard.bool(forKey: defaultsKey)
+        self.defaultsKey = defaultsKey
     }
 }

@@ -9,11 +9,6 @@
 import UIKit
 import Foundation
 
-//   let verbKeys = [
-//        "isGroup1On",
-//        "isGroup2On",
-//        "isGroup3On"
-//    ]
 
 
 class OptionsViewModel {
@@ -55,7 +50,9 @@ class OptionsViewModel {
             //set NSUD, set model,
             myOptions.options[cell.cellSwitch.tag].isOn = cell.cellSwitch.isOn
             print("changing \(cell.cellSwitch.tag) \(myOptions.options[cell.cellSwitch.tag].isOn)")
-            //UserDefaults.standard.set(myOptions.options[cell.cellSwitch.tag].isOn, forKey: optionKeys[cell.cellSwitch.tag])
+            UserDefaults.standard.set(myOptions.options[cell.cellSwitch.tag].isOn, forKey: myOptions.options[cell.cellSwitch.tag].defaultsKey)
+
+        
         
         return true
   

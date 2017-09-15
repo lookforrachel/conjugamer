@@ -69,7 +69,7 @@ class OptionsViewController: UITableViewController {
             performSegue(withIdentifier: "tensesSegue" , sender: self)
         case 1:
             segueOptions = .Pronouns
-            performSegue(withIdentifier: "pronounsSegue" , sender: self)
+            performSegue(withIdentifier: "verbsSegue" , sender: self)
         case 2:
             segueOptions = .Verbs
             performSegue(withIdentifier: "verbsSegue" , sender: self)

@@ -4,18 +4,217 @@
 <dict>
 	<key>tenseOptions</key>
 	<dict>
-		<key>Indicativ</key>
+		<key>indicatif</key>
 		<array>
 			<dict>
 				<key>userDefaults</key>
-				<string></string>
+				<string>isIndPreOn</string>
 				<key>title</key>
-				<string></string>
+				<string>présent</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isIndPCOn</string>
+				<key>title</key>
+				<string>passé composé</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isIndImpOn</string>
+				<key>title</key>
+				<string>imparfait</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isIndPQPOn</string>
+				<key>title</key>
+				<string>plus-que-parfait</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isIndPSOn</string>
+				<key>title</key>
+				<string>passé simple</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isIndPAOn</string>
+				<key>title</key>
+				<string>passé antérieur</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isIndFSOn</string>
+				<key>title</key>
+				<string>futur simple</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isIndFAOn</string>
+				<key>title</key>
+				<string>futur antérieur</string>
+			</dict>
+		</array>
+		<key>subjonctif</key>
+		<array>
+			<dict>
+				<key>userDefaults</key>
+				<string>isSubPreOn</string>
+				<key>title</key>
+				<string>présent</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isSubPasOn</string>
+				<key>title</key>
+				<string>passé</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isSubImpOn</string>
+				<key>title</key>
+				<string>imparfait</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isSubPQPOn</string>
+				<key>title</key>
+				<string>plus-que-parfait</string>
+			</dict>
+		</array>
+		<key>conditionnel</key>
+		<array>
+			<dict>
+				<key>userDefaults</key>
+				<string>isConPreOn</string>
+				<key>title</key>
+				<string>présent</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isConPas1On</string>
+				<key>title</key>
+				<string>passé première forme</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isConPas2On</string>
+				<key>title</key>
+				<string>passé deuxième forme</string>
+			</dict>
+		</array>
+		<key>impératif</key>
+		<array>
+			<dict>
+				<key>userDefaults</key>
+				<string>isImpPreOn</string>
+				<key>title</key>
+				<string>présent</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isImpPasOn</string>
+				<key>title</key>
+				<string>passé</string>
+			</dict>
+		</array>
+		<key>participe</key>
+		<array>
+			<dict>
+				<key>userDefaults</key>
+				<string>isPartPreOn</string>
+				<key>title</key>
+				<string>présent</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isPartPasOn</string>
+				<key>title</key>
+				<string>passé</string>
+			</dict>
+		</array>
+		<key>infinitif</key>
+		<array>
+			<dict>
+				<key>userDefaults</key>
+				<string>isInfPreOn</string>
+				<key>title</key>
+				<string>présent</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isInfPasOn</string>
+				<key>title</key>
+				<string>passé</string>
+			</dict>
+		</array>
+		<key>gérondif</key>
+		<array>
+			<dict>
+				<key>userDefaults</key>
+				<string>isGerPreOn</string>
+				<key>title</key>
+				<string>présent</string>
+			</dict>
+			<dict>
+				<key>userDefaults</key>
+				<string>isGerPasOn</string>
+				<key>title</key>
+				<string>passé</string>
 			</dict>
 		</array>
 	</dict>
 	<key>pronounOptions</key>
-	<array/>
+	<array>
+		<dict>
+			<key>userDefaults</key>
+			<string>isJeOn</string>
+			<key>title</key>
+			<string>Je</string>
+		</dict>
+		<dict>
+			<key>userDefaults</key>
+			<string>isTuOn</string>
+			<key>title</key>
+			<string>Tu</string>
+		</dict>
+		<dict>
+			<key>userDefaults</key>
+			<string>isIlOn</string>
+			<key>title</key>
+			<string>Il</string>
+		</dict>
+		<dict>
+			<key>userDefaults</key>
+			<string>isElleOn</string>
+			<key>title</key>
+			<string>Elle</string>
+		</dict>
+		<dict>
+			<key>userDefaults</key>
+			<string>isNousOn</string>
+			<key>title</key>
+			<string>Nous</string>
+		</dict>
+		<dict>
+			<key>userDefaults</key>
+			<string>isVousOn</string>
+			<key>title</key>
+			<string>Vous</string>
+		</dict>
+		<dict>
+			<key>userDefaults</key>
+			<string>isIlsOn</string>
+			<key>title</key>
+			<string>Ils</string>
+		</dict>
+		<dict>
+			<key>userDefaults</key>
+			<string>isEllesOn</string>
+			<key>title</key>
+			<string>Elles</string>
+		</dict>
+	</array>
 	<key>verbOptions</key>
 	<array>
 		<dict>
