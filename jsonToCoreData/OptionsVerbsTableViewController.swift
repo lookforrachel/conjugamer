@@ -131,48 +131,42 @@ class OptionsVerbsTableViewController: UITableViewController, cellSwitchDelegate
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        var optionsInSection:[Option] = [Option]()
-        if let sections = optionsVM.returnSections(){
-            
-            for myOption in optionsVM.returnOptions(){
-                
-                if (myOption.tensesSection == sections[section]){
-                    optionsInSection.append((myOption))
-                }
-                
-            }
-            
-        }
         
-        return (optionsInSection.count>0) ? optionsInSection.count : optionsVM.returnOptions().count;
+        if let sections = optionsVM.returnProcessedSections(){
+            let thisSection = sections[section]
+            return thisSection.count
+        } else {
+            return optionsVM.returnOptions().count;
+        }
+    
 
     }
     
     
-    func getOptionforIndexPath(indexPath:IndexPath)->Option{
-        let options = optionsVM.returnOptions()
-        if let sections = optionsVM.returnSections(){
-            //there are sections
-            let section = sections[indexPath.section]
-            var optionsInSection:[Option] = [Option]()
-                
-                for myOption in options{
-                    
-                    if (myOption.tensesSection == section){
-                        optionsInSection.append((myOption))
-                    }
-                    
-                }
-                
-            
-            return optionsInSection[indexPath.row];
-            
-        } else {
-            //print(options[indexPath.row])
-            return options[indexPath.row]
-        }
-        
-}
+//    func getOptionforIndexPath(indexPath:IndexPath)->Option{
+//        let options = optionsVM.returnOptions()
+//        if let sections = optionsVM.returnSections(){
+//            //there are sections
+//            let section = sections[indexPath.section]
+//            var optionsInSection:[Option] = [Option]()
+//                
+//                for myOption in options{
+//                    
+//                    if (myOption.tensesSection == section){
+//                        optionsInSection.append((myOption))
+//                    }
+//                    
+//                }
+//                
+//            
+//            return optionsInSection[indexPath.row];
+//            
+//        } else {
+//            //print(options[indexPath.row])
+//            return options[indexPath.row]
+//        }
+//        
+//}
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -191,14 +185,19 @@ class OptionsVerbsTableViewController: UITableViewController, cellSwitchDelegate
 //            
 //        }
 
-
-        let option = getOptionforIndexPath(indexPath: indexPath)
-        print("got option:", option)
+        var option:Option!
+        
+        if let options = optionsVM.returnProcessedSections(){
+            option = options[indexPath.section][indexPath.row]
+        } else {
+            option = optionsVM.returnOptions()[indexPath.row]
+        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "verbsCell", for: indexPath) as! optionsViewCell
         
         cell.cellSwitch.tag = Int("\(indexPath.section)\(indexPath.row)")!
         cell.cellLabel.text = option.name
+        
         cell.delegate = self
         
         
@@ -210,7 +209,7 @@ class OptionsVerbsTableViewController: UITableViewController, cellSwitchDelegate
 
     func switchUpdated(_ cellPassed:optionsViewCell) -> Void {
         let cell = cellPassed
-        let checkResponse = optionsVM.myCrazyCheckingFunction(cell: cell)
+        let checkResponse = optionsVM.myCrazyCheckingFunction(cell: cell,table:self.tableView)
         if (checkResponse){
             print("checking function returned true")
             return

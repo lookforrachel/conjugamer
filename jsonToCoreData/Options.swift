@@ -64,13 +64,13 @@ class Options {
                     let dict = thing as! [String:String]
                     
                     if let title = dict["title"], let defaultsKey = dict["userDefaults"] {
-                        print("title: \(title), defaultsKey: \(defaultsKey)")
+                        //print("title: \(title), defaultsKey: \(defaultsKey)")
                         //                        self.name = title
                         //                        self.isOn = UserDefaults.standard.bool(forKey: defaultsKey)
                         //                        self.defaultsKey = defaultsKey
                         let thisOption = Option(name: title, defaultsKey: defaultsKey,tensesSection: nil)
                         //innerArray.append(thisOption)
-                        print(thisOption.name)
+                        //print(thisOption.name)
                         options.append(thisOption)
                     }
                 }
@@ -87,7 +87,7 @@ class Options {
                 
                 
                 for (section,stuff) in subOptionsSections{
-                    print ("section: \(section)")
+                    //print ("section: \(section)")
                     //innerArray = []
                     
                     
@@ -95,7 +95,7 @@ class Options {
                     for arr in array! {
                         //                        print(arr["title"]!)
                         if let title = arr["title"], let defaultsKey = arr["userDefaults"] {
-                            print("title: \(title), defaultsKey: \(defaultsKey)")
+                            //print("title: \(title), defaultsKey: \(defaultsKey)")
                             //                            self.name = title
                             //                            self.isOn = UserDefaults.standard.bool(forKey: defaultsKey)
                             //                            self.defaultsKey = defaultsKey

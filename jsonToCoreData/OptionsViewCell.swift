@@ -15,7 +15,7 @@ class optionsViewCell: UITableViewCell {
     @IBOutlet weak var cellSwitch: UISwitch!
     var delegate:cellSwitchDelegate?
     
-    @IBAction func cellSwitchAction(_ sender: UISwitch) {
+    @IBAction func cellSwitchAction(_ sender: UITableViewCell) {
         delegate?.switchUpdated(self)
     }
 }
