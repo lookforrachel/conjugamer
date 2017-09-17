@@ -123,6 +123,11 @@ class OptionsViewController: UITableViewController {
         
         let options = OptionsViewModel(optionKey: segueOptions)
         
+        //deselect any selected rows
+        if let selectedRow = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedRow, animated: true)
+        }
+        
         if segue.identifier == "verbsSegue" {
             let optionsVerbsTableViewController: OptionsVerbsTableViewController = segue.destination as! OptionsVerbsTableViewController
             
