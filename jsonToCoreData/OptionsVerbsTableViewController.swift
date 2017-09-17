@@ -112,37 +112,98 @@ class OptionsVerbsTableViewController: UITableViewController, cellSwitchDelegate
     }
     
     // MARK: - Table view data source
-//    
+    
 //        override func numberOfSections(in tableView: UITableView) -> Int {
 //            // #warning Incomplete implementation, return the number of sections
-//            return 0
+//            return optionsVM.returnOptions().count;
+//
 //        }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return optionsVM.returnSections()?.count ?? 1
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let headings = optionsVM.returnSections()
+        let heading = headings?[section] ?? "Heading"
+        return heading
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-
-        return optionsVM.returnOptions().count;
+        var optionsInSection:[Option] = [Option]()
+        if let sections = optionsVM.returnSections(){
+            
+            for myOption in optionsVM.returnOptions(){
+                
+                if (myOption.tensesSection == sections[section]){
+                    optionsInSection.append((myOption))
+                }
+                
+            }
+            
+        }
         
-//        guard let optionsVM = self.optionsVM else {
-//            fatalError()
-//        }
-//        
-//        let rows = optionsVM.myOptions.options.count
-//        return rows
+        return (optionsInSection.count>0) ? optionsInSection.count : optionsVM.returnOptions().count;
+
     }
+    
+    
+    func getOptionforIndexPath(indexPath:IndexPath)->Option{
+        let options = optionsVM.returnOptions()
+        if let sections = optionsVM.returnSections(){
+            //there are sections
+            let section = sections[indexPath.section]
+            var optionsInSection:[Option] = [Option]()
+                
+                for myOption in options{
+                    
+                    if (myOption.tensesSection == section){
+                        optionsInSection.append((myOption))
+                    }
+                    
+                }
+                
+            
+            return optionsInSection[indexPath.row];
+            
+        } else {
+            //print(options[indexPath.row])
+            return options[indexPath.row]
+        }
+        
+}
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Configure the cell...
         
+//        var optionsInSection:[Option] = [Option]()
+//        if let sections = optionsVM.returnSections(){
+//            
+//            for myOption in optionsVM.returnOptions(){
+//                
+//                if (myOption.tensesSection == sections[section]){
+//                    optionsInSection.append((myOption))
+//                }
+//                
+//            }
+//            
+//        }
+
+
+        let option = getOptionforIndexPath(indexPath: indexPath)
+        print("got option:", option)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "verbsCell", for: indexPath) as! optionsViewCell
-        let options = optionsVM.returnOptions()
-        cell.cellSwitch.tag = indexPath.row
-        cell.cellLabel.text = options[indexPath.row].name
+        
+        cell.cellSwitch.tag = Int("\(indexPath.section)\(indexPath.row)")!
+        cell.cellLabel.text = option.name
         cell.delegate = self
         
         
-        cell.cellSwitch.isOn = optionsVM.returnOptions()[indexPath.row].isOn
-        print(myArray)
+        cell.cellSwitch.isOn = option.isOn
+      
         
         return cell
     }

@@ -14,18 +14,17 @@ import Foundation
 class OptionsViewModel {
     private var myOptions: Options
     
-    //private var optionKeys = [String]()
-    
-    init(optionKeys: OptionsMain){
-        self.myOptions = Options(optionsMain: optionKeys)
+    init(optionKey: OptionsMain){
+        self.myOptions = Options(optionsMain: optionKey)
         
-        //set optionKeys to something we processed out of myOptions
-        
-        //self.optionKeys = optionKeys
     }
     
     func returnOptions()->[Option]{
         return self.myOptions.options
+    }
+    
+    func returnSections()->[String]?{
+        return myOptions.keys
     }
     
     func myCrazyCheckingFunction(cell:optionsViewCell) -> Bool {

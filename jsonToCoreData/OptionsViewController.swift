@@ -66,12 +66,12 @@ class OptionsViewController: UITableViewController {
         switch selectedCell {
         case 0:
             segueOptions = .Tenses
-            performSegue(withIdentifier: "tensesSegue" , sender: self)
+            performSegue(withIdentifier: "verbsSegue" , sender: self)
         case 1:
             segueOptions = .Pronouns
             performSegue(withIdentifier: "verbsSegue" , sender: self)
         case 2:
-            segueOptions = .Tenses
+            segueOptions = .Verbs
             performSegue(withIdentifier: "verbsSegue" , sender: self)
         default:
             print("no row selected")
@@ -121,7 +121,7 @@ class OptionsViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let options = OptionsViewModel(optionKeys: segueOptions)
+        let options = OptionsViewModel(optionKey: segueOptions)
         
         if segue.identifier == "verbsSegue" {
             let optionsVerbsTableViewController: OptionsVerbsTableViewController = segue.destination as! OptionsVerbsTableViewController
