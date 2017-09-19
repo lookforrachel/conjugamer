@@ -10,9 +10,8 @@ import UIKit
 import CoreData
 
 class GamePlayViewController: UIViewController {
-
-    // TODO: set all defaults to true
-    // MARK: Properties    
+    
+    // MARK: Properties
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     //Verb Groups
     var predicateListVerb = [NSPredicate]()
@@ -25,20 +24,18 @@ class GamePlayViewController: UIViewController {
     let predicateJe = NSPredicate(format: "pronoun == 0")
     let predicateTu = NSPredicate(format: "pronoun == 1")
     let predicateIl = NSPredicate(format: "pronoun == 2")
-//    let predicateElle = NSPredicate(format: "pronoun == 2")
+    //    let predicateElle = NSPredicate(format: "pronoun == 2")
     let predicateNous = NSPredicate(format: "pronoun == 3")
     let predicateVous = NSPredicate(format: "pronoun == 4")
     let predicateIls = NSPredicate(format: "pronoun == 5")
-//    let predicateElles = NSPredicate(format: "pronoun == 5")
-    
-    //Tenses
+    //    let predicateElles = NSPredicate(format: "pronoun == 5")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,27 +43,27 @@ class GamePlayViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let isJeOn = UserDefaults.standard.bool(forKey: "isElleOn")
-        let isTuOn = UserDefaults.standard.bool(forKey: "isTuOn")
-        let isIlOn = UserDefaults.standard.bool(forKey: "isIlOn")
-        let isElleOn = UserDefaults.standard.bool(forKey: "isElleOn")
-        let isNousOn = UserDefaults.standard.bool(forKey: "isNousOn")
-        let isVousOn = UserDefaults.standard.bool(forKey: "isVousOn")
-        let isIlsOn = UserDefaults.standard.bool(forKey: "isIlsOn")
-        let isEllesOn = UserDefaults.standard.bool(forKey: "isEllesOn")
-
-                    print("je: \(isJeOn)")
-                    print("tu: \(isTuOn)")
-                    print("il: \(isIlOn)")
-                    print("elle: \(isElleOn)")
-                    print("nous: \(isNousOn)")
-                    print("vous: \(isVousOn)")
-                    print("ils: \(isIlsOn)")
-                    print("elles: \(isEllesOn)")
+//        let isJeOn = UserDefaults.standard.bool(forKey: "isJeOn")
+//        let isTuOn = UserDefaults.standard.bool(forKey: "isTuOn")
+//        let isIlOn = UserDefaults.standard.bool(forKey: "isIlOn")
+//        let isElleOn = UserDefaults.standard.bool(forKey: "isElleOn")
+//        let isNousOn = UserDefaults.standard.bool(forKey: "isNousOn")
+//        let isVousOn = UserDefaults.standard.bool(forKey: "isVousOn")
+//        let isIlsOn = UserDefaults.standard.bool(forKey: "isIlsOn")
+//        let isEllesOn = UserDefaults.standard.bool(forKey: "isEllesOn")
+//        
+//        print("je: \(isJeOn)")
+//        print("tu: \(isTuOn)")
+//        print("il: \(isIlOn)")
+//        print("elle: \(isElleOn)")
+//        print("nous: \(isNousOn)")
+//        print("vous: \(isVousOn)")
+//        print("ils: \(isIlsOn)")
+//        print("elles: \(isEllesOn)")
         
         setupFetchRequest()
     }
-
+    
     func setupFetchRequest(){
         
         // Verb Groups
@@ -75,14 +72,14 @@ class GamePlayViewController: UIViewController {
         let isGroup3On = UserDefaults.standard.bool(forKey: "isGroup3On")
         
         //Pronouns
-        let isJeOn = UserDefaults.standard.bool(forKey: "isElleOn")
+        let isJeOn = UserDefaults.standard.bool(forKey: "isJeOn")
         let isTuOn = UserDefaults.standard.bool(forKey: "isTuOn")
         let isIlOn = UserDefaults.standard.bool(forKey: "isIlOn")
-//        let isElleOn = UserDefaults.standard.bool(forKey: "isElleOn")
+        //        let isElleOn = UserDefaults.standard.bool(forKey: "isElleOn")
         let isNousOn = UserDefaults.standard.bool(forKey: "isNousOn")
         let isVousOn = UserDefaults.standard.bool(forKey: "isVousOn")
         let isIlsOn = UserDefaults.standard.bool(forKey: "isIlsOn")
-//        let isEllesOn = UserDefaults.standard.bool(forKey: "isEllesOn")
+        //        let isEllesOn = UserDefaults.standard.bool(forKey: "isEllesOn")
         
         //check all options booleans
         // Verb Groups
@@ -107,9 +104,9 @@ class GamePlayViewController: UIViewController {
         if isIlOn {
             predicateListPronoun.append(predicateIl)
         }
-//        if isElleOn {
-//            predicateListPronoun.append(predicateElle)
-//        }
+        //        if isElleOn {
+        //            predicateListPronoun.append(predicateElle)
+        //        }
         if isNousOn {
             predicateListPronoun.append(predicateNous)
         }
@@ -119,11 +116,12 @@ class GamePlayViewController: UIViewController {
         if isIlsOn {
             predicateListPronoun.append(predicateIls)
         }
-//        if isEllesOn {
-//            predicateListPronoun.append(predicateElles)
-//        }
-    
-        
+        //        if isEllesOn {
+        //            predicateListPronoun.append(predicateElles)
+        //        }
+//        
+//        print(predicateListPronoun)
+//        print(predicateListVerb)
         
         let verbRequest:NSFetchRequest<Conjugation> = Conjugation.fetchRequest()
         verbRequest.returnsObjectsAsFaults = false
@@ -133,12 +131,15 @@ class GamePlayViewController: UIViewController {
         
         //predicates
         let verbGroupCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateListVerb)
-
+        
         let pronounsCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateListPronoun)
         
         verbRequest.sortDescriptors = [sortDescriptor]
-
+        
         verbRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [verbGroupCompoundPredicate, pronounsCompoundPredicate])
+        
+        print(verbGroupCompoundPredicate)
+        print(pronounsCompoundPredicate)
         
         var conjugationArray = [Conjugation]()
         
@@ -155,23 +156,23 @@ class GamePlayViewController: UIViewController {
         }
     }
     
-//    func displayConjugations (verb:Verb) {
-//        
-//        if let conjugationList = verb.conjugation as? Set<Verb> {
-//            for conjugation in conjugationList {
-//                print(conjugation.conjugation!)
-//            }
-//        }
-//    }
-
-
+    //    func displayConjugations (verb:Verb) {
+    //
+    //        if let conjugationList = verb.conjugation as? Set<Verb> {
+    //            for conjugation in conjugationList {
+    //                print(conjugation.conjugation!)
+    //            }
+    //        }
+    //    }
     
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//        }
+    
+    
+    //    // MARK: - Navigation
+    //
+    //    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        // Get the new view controller using segue.destinationViewController.
+    //        // Pass the selected object to the new view controller.
+    //        }
     
 }

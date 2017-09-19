@@ -20,13 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //get defaults csv loaded flag
         let coreIsLoaded = UserDefaults.standard.bool(forKey: "coreIsLoaded")
+        
+        //set 1 option from each option menu on
+        if !coreIsLoaded {
+            UserDefaults.standard.set(true, forKey:"isIndPreOn")
+            UserDefaults.standard.set(true, forKey:"isJeOn")
+            UserDefaults.standard.set(true, forKey:"isGroup1On")
+            UserDefaults.standard.synchronize()
+        }
+        
         print((coreIsLoaded) ? "core already loaded, proceeding to view" : "preloading data")
 
         
         //if unset, preload data
-//        if(!coreIsLoaded){
-//            processJSON()
-//        }
+        if(!coreIsLoaded){
+            processJSON()
+        }
         
 //        removeData ()
 //        processJSON()
