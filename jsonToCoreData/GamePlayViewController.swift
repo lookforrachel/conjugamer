@@ -13,6 +13,7 @@ class GamePlayViewController: UIViewController {
     
     // MARK: Properties
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     //Verb Groups
     var predicateListVerb = [NSPredicate]()
     let predicateVerbGroup1 = NSPredicate(format: "verb.verbGroup == 1")
@@ -30,6 +31,52 @@ class GamePlayViewController: UIViewController {
     let predicateIls = NSPredicate(format: "pronoun == 5")
     //    let predicateElles = NSPredicate(format: "pronoun == 5")
     
+    
+    //Verb Mood
+    var predicateListTense = [NSPredicate]()
+    
+    let predicateMoodGer = NSPredicate(format: "verbMood == 0")
+    let predicatePart = NSPredicate(format: "verbMood == 1")
+    let predicateInd = NSPredicate(format: "verbMood == 2")
+    let predicateCon = NSPredicate(format: "verbMood == 3")
+    let predicateSub = NSPredicate(format: "verbMood == 4")
+    let predicateImp = NSPredicate(format: "verbMood == 5")
+    
+    //Tense
+    let predicatePre = NSPredicate(format: "tense == 0")
+    let predicateImpa = NSPredicate(format: "tense == 1")
+    let predicatePS = NSPredicate(format: "tense == 2")
+    let predicateFS = NSPredicate(format: "tense == 3")
+    
+    //Verb Mood & Tenses
+    
+
+    //Compound predicate
+    var predicateIndPre:NSCompoundPredicate?
+//    var predicateIndPC:NSCompoundPredicate?
+    var predicateIndImp:NSCompoundPredicate?
+//    var predicateIndPQP:NSCompoundPredicate?
+//    var predicateIndPS:NSCompoundPredicate?
+//    var predicateIndPA:NSCompoundPredicate?
+//    var predicateIndFS:NSCompoundPredicate?
+//    var predicateIndFA:NSCompoundPredicate?
+//    var predicateSubPre:NSCompoundPredicate?
+//    var predicateSubPas:NSCompoundPredicate?
+//    var predicateSubImp:NSCompoundPredicate?
+//    var predicateSubPQP:NSCompoundPredicate?
+//    var predicateConPre:NSCompoundPredicate?
+//    var predicateConPas1:NSCompoundPredicate?
+//    var predicateConPas2:NSCompoundPredicate?
+//    var predicateImpPre:NSCompoundPredicate?
+//    var predicateImpPas:NSCompoundPredicate?
+//    var predicatePartPre:NSCompoundPredicate?
+//    var predicatePartPas:NSCompoundPredicate?
+//    var predicateInfPre:NSCompoundPredicate?
+//    var predicateInfPas:NSCompoundPredicate?
+//    var predicateGerPre:NSCompoundPredicate?
+//    var predicateGerPas:NSCompoundPredicate?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,6 +108,9 @@ class GamePlayViewController: UIViewController {
 //        print("ils: \(isIlsOn)")
 //        print("elles: \(isEllesOn)")
         
+        predicateIndPre = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates:[predicateInd,predicatePre])
+        predicateIndImp = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates:[predicateInd,predicateImp])
+        
         setupFetchRequest()
     }
     
@@ -81,6 +131,10 @@ class GamePlayViewController: UIViewController {
         let isIlsOn = UserDefaults.standard.bool(forKey: "isIlsOn")
         //        let isEllesOn = UserDefaults.standard.bool(forKey: "isEllesOn")
         
+        //Pronouns
+        let isIndPreOn = UserDefaults.standard.bool(forKey: "isIndPreOn")
+        let isIndImpOn = UserDefaults.standard.bool(forKey: "isIndImpOn")
+
         //check all options booleans
         // Verb Groups
         if isGroup1On {
@@ -123,6 +177,16 @@ class GamePlayViewController: UIViewController {
 //        print(predicateListPronoun)
 //        print(predicateListVerb)
         
+        // Tenses
+        if isIndPreOn {
+            predicateListTense.append(predicateIndPre!)
+        }
+        if isIndImpOn {
+            predicateListTense.append(predicateIndImp!)
+        }
+
+
+        
         let verbRequest:NSFetchRequest<Conjugation> = Conjugation.fetchRequest()
         verbRequest.returnsObjectsAsFaults = false
         
@@ -134,12 +198,16 @@ class GamePlayViewController: UIViewController {
         
         let pronounsCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateListPronoun)
         
+        let tenseCompoundPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicateListTense)
+
+        
         verbRequest.sortDescriptors = [sortDescriptor]
         
-        verbRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [verbGroupCompoundPredicate, pronounsCompoundPredicate])
+        verbRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [verbGroupCompoundPredicate, pronounsCompoundPredicate, tenseCompoundPredicate])
         
         print(verbGroupCompoundPredicate)
         print(pronounsCompoundPredicate)
+        print(tenseCompoundPredicate)
         
         var conjugationArray = [Conjugation]()
         
