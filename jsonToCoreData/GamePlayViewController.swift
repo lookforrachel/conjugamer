@@ -56,24 +56,24 @@ class GamePlayViewController: UIViewController {
 //    var predicateIndPC:NSCompoundPredicate?
     var predicateIndImp:NSCompoundPredicate?
 //    var predicateIndPQP:NSCompoundPredicate?
-//    var predicateIndPS:NSCompoundPredicate?
+    var predicateIndPS:NSCompoundPredicate?
 //    var predicateIndPA:NSCompoundPredicate?
-//    var predicateIndFS:NSCompoundPredicate?
+    var predicateIndFS:NSCompoundPredicate?
 //    var predicateIndFA:NSCompoundPredicate?
-//    var predicateSubPre:NSCompoundPredicate?
+    var predicateSubPre:NSCompoundPredicate?
 //    var predicateSubPas:NSCompoundPredicate?
-//    var predicateSubImp:NSCompoundPredicate?
+    var predicateSubImp:NSCompoundPredicate?
 //    var predicateSubPQP:NSCompoundPredicate?
-//    var predicateConPre:NSCompoundPredicate?
+    var predicateConPre:NSCompoundPredicate?
 //    var predicateConPas1:NSCompoundPredicate?
 //    var predicateConPas2:NSCompoundPredicate?
-//    var predicateImpPre:NSCompoundPredicate?
+    var predicateImpPre:NSCompoundPredicate?
 //    var predicateImpPas:NSCompoundPredicate?
-//    var predicatePartPre:NSCompoundPredicate?
+    var predicatePartPre:NSCompoundPredicate?
 //    var predicatePartPas:NSCompoundPredicate?
-//    var predicateInfPre:NSCompoundPredicate?
+    var predicateInfPre:NSCompoundPredicate?
 //    var predicateInfPas:NSCompoundPredicate?
-//    var predicateGerPre:NSCompoundPredicate?
+    var predicateGerPre:NSCompoundPredicate?
 //    var predicateGerPas:NSCompoundPredicate?
 
 
@@ -89,24 +89,6 @@ class GamePlayViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-//        let isJeOn = UserDefaults.standard.bool(forKey: "isJeOn")
-//        let isTuOn = UserDefaults.standard.bool(forKey: "isTuOn")
-//        let isIlOn = UserDefaults.standard.bool(forKey: "isIlOn")
-//        let isElleOn = UserDefaults.standard.bool(forKey: "isElleOn")
-//        let isNousOn = UserDefaults.standard.bool(forKey: "isNousOn")
-//        let isVousOn = UserDefaults.standard.bool(forKey: "isVousOn")
-//        let isIlsOn = UserDefaults.standard.bool(forKey: "isIlsOn")
-//        let isEllesOn = UserDefaults.standard.bool(forKey: "isEllesOn")
-//        
-//        print("je: \(isJeOn)")
-//        print("tu: \(isTuOn)")
-//        print("il: \(isIlOn)")
-//        print("elle: \(isElleOn)")
-//        print("nous: \(isNousOn)")
-//        print("vous: \(isVousOn)")
-//        print("ils: \(isIlsOn)")
-//        print("elles: \(isEllesOn)")
         
         predicateIndPre = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates:[predicateInd,predicatePre])
         predicateIndImp = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates:[predicateInd,predicateImp])
@@ -133,8 +115,29 @@ class GamePlayViewController: UIViewController {
         
         //Pronouns
         let isIndPreOn = UserDefaults.standard.bool(forKey: "isIndPreOn")
+//        let isIndPCOn = UserDefaults.standard.bool(forKey: "isIndPCOn")
         let isIndImpOn = UserDefaults.standard.bool(forKey: "isIndImpOn")
-
+//        let isIndPQPOn = UserDefaults.standard.bool(forKey: "isIndPQPOn")
+//        let isIndPSOn = UserDefaults.standard.bool(forKey: "isIndPSOn")
+//        let isIndPAOn = UserDefaults.standard.bool(forKey: "isIndPAOn")
+//        let isIndFSOn = UserDefaults.standard.bool(forKey: "isIndFSOn")
+//        let isIndFAOn = UserDefaults.standard.bool(forKey: "isIndFAOn")
+//        let isSubPreOn = UserDefaults.standard.bool(forKey: "isSubPreOn")
+//        let isSubPasOn = UserDefaults.standard.bool(forKey: "isSubPasOn")
+//        let isSubImpOn = UserDefaults.standard.bool(forKey: "isSubImpOn")
+//        let isSubPQPOn = UserDefaults.standard.bool(forKey: "isSubPQPOn")
+//        let isConPreOn = UserDefaults.standard.bool(forKey: "isConPreOn")
+//        let isConPas1On = UserDefaults.standard.bool(forKey: "isConPas1On")
+//        let isConPas2On = UserDefaults.standard.bool(forKey: "isConPas2On")
+//        let isImpPreOn = UserDefaults.standard.bool(forKey: "isImpPreOn")
+//        let isImpPasOn = UserDefaults.standard.bool(forKey: "isImpPasOn")
+//        let isPartPreOn = UserDefaults.standard.bool(forKey: "isPartPreOn")
+//        let isPartPasOn = UserDefaults.standard.bool(forKey: "isPartPasOn")
+//        let isInfPreOn = UserDefaults.standard.bool(forKey: "isInfPreOn")
+//        let isInfPasOn = UserDefaults.standard.bool(forKey: "isInfPasOn")
+//        let isGerPreOn = UserDefaults.standard.bool(forKey: "isGerPreOn")
+//        let isGerPasOn = UserDefaults.standard.bool(forKey: "isGerPasOn")
+        
         //check all options booleans
         // Verb Groups
         if isGroup1On {
