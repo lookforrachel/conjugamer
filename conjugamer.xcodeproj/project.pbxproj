@@ -10,7 +10,7 @@
 		5D4D82C61F4F662A00D7B3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4D82C51F4F662A00D7B3EA /* AppDelegate.swift */; };
 		5D4D82C81F4F662A00D7B3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4D82C71F4F662A00D7B3EA /* ViewController.swift */; };
 		5D4D82CB1F4F662A00D7B3EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D4D82C91F4F662A00D7B3EA /* Main.storyboard */; };
-		5D4D82CE1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D4D82CC1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodeld */; };
+		5D4D82CE1F4F662A00D7B3EA /* conjugamer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D4D82CC1F4F662A00D7B3EA /* conjugamer.xcdatamodeld */; };
 		5D4D82D01F4F662A00D7B3EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D4D82CF1F4F662A00D7B3EA /* Assets.xcassets */; };
 		5D4D82D31F4F662A00D7B3EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D4D82D11F4F662A00D7B3EA /* LaunchScreen.storyboard */; };
 		5D4F322A1F64F69A0099DC02 /* OptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4F32291F64F69A0099DC02 /* OptionsViewModel.swift */; };
@@ -31,7 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5D4D82C21F4F662A00D7B3EA /* jsonToCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jsonToCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D4D82C21F4F662A00D7B3EA /* conjugamer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = conjugamer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D4D82C51F4F662A00D7B3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D4D82C71F4F662A00D7B3EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5D4D82CA1F4F662A00D7B3EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 				5D69D33D1F50F00C00946C73 /* Conjugation+CoreDataProperties.swift */,
 				5D69D33E1F50F00C00946C73 /* Verb+CoreDataClass.swift */,
 				5D69D33F1F50F00C00946C73 /* Verb+CoreDataProperties.swift */,
-				5D4D82C41F4F662A00D7B3EA /* jsonToCoreData */,
+				5D4D82C41F4F662A00D7B3EA /* conjugamer */,
 				5D4D82C31F4F662A00D7B3EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,12 +82,12 @@
 		5D4D82C31F4F662A00D7B3EA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5D4D82C21F4F662A00D7B3EA /* jsonToCoreData.app */,
+				5D4D82C21F4F662A00D7B3EA /* conjugamer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5D4D82C41F4F662A00D7B3EA /* jsonToCoreData */ = {
+		5D4D82C41F4F662A00D7B3EA /* conjugamer */ = {
 			isa = PBXGroup;
 			children = (
 				5D4D82C51F4F662A00D7B3EA /* AppDelegate.swift */,
@@ -107,17 +107,17 @@
 				5D668BF01F527D6F00E25217 /* verbsList.json */,
 				5D4D82D11F4F662A00D7B3EA /* LaunchScreen.storyboard */,
 				5D4D82D41F4F662A00D7B3EA /* Info.plist */,
-				5D4D82CC1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodeld */,
+				5D4D82CC1F4F662A00D7B3EA /* conjugamer.xcdatamodeld */,
 			);
-			path = jsonToCoreData;
+			path = conjugamer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5D4D82C11F4F662A00D7B3EA /* jsonToCoreData */ = {
+		5D4D82C11F4F662A00D7B3EA /* conjugamer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5D4D82D71F4F662A00D7B3EA /* Build configuration list for PBXNativeTarget "jsonToCoreData" */;
+			buildConfigurationList = 5D4D82D71F4F662A00D7B3EA /* Build configuration list for PBXNativeTarget "conjugamer" */;
 			buildPhases = (
 				5D4D82BE1F4F662A00D7B3EA /* Sources */,
 				5D4D82BF1F4F662A00D7B3EA /* Frameworks */,
@@ -127,9 +127,9 @@
 			);
 			dependencies = (
 			);
-			name = jsonToCoreData;
+			name = conjugamer;
 			productName = jsonToCoreData;
-			productReference = 5D4D82C21F4F662A00D7B3EA /* jsonToCoreData.app */;
+			productReference = 5D4D82C21F4F662A00D7B3EA /* conjugamer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -144,12 +144,12 @@
 				TargetAttributes = {
 					5D4D82C11F4F662A00D7B3EA = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = PK7RS8R8AP;
+						DevelopmentTeam = 3C42F7N9CQ;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 5D4D82BD1F4F662A00D7B3EA /* Build configuration list for PBXProject "jsonToCoreData" */;
+			buildConfigurationList = 5D4D82BD1F4F662A00D7B3EA /* Build configuration list for PBXProject "conjugamer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -162,7 +162,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5D4D82C11F4F662A00D7B3EA /* jsonToCoreData */,
+				5D4D82C11F4F662A00D7B3EA /* conjugamer */,
 			);
 		};
 /* End PBXProject section */
@@ -189,7 +189,7 @@
 			files = (
 				5DA656E81F58D1FF00F30A38 /* OptionsTensesTableViewController.swift in Sources */,
 				5DA656EA1F58D21300F30A38 /* OptionsPronounsTableViewController.swift in Sources */,
-				5D4D82CE1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodeld in Sources */,
+				5D4D82CE1F4F662A00D7B3EA /* conjugamer.xcdatamodeld in Sources */,
 				5D4D82C81F4F662A00D7B3EA /* ViewController.swift in Sources */,
 				5DD74F611F69A346004C46AF /* OptionsViewCell.swift in Sources */,
 				5DA656EC1F58D22600F30A38 /* OptionsVerbsTableViewController.swift in Sources */,
@@ -327,10 +327,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PK7RS8R8AP;
-				INFOPLIST_FILE = jsonToCoreData/Info.plist;
+				DEVELOPMENT_TEAM = 3C42F7N9CQ;
+				INFOPLIST_FILE = "$(SRCROOT)/conjugamer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lookforrachel.jsonToCoreData;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jossy.conjugamer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -340,10 +340,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PK7RS8R8AP;
-				INFOPLIST_FILE = jsonToCoreData/Info.plist;
+				DEVELOPMENT_TEAM = 3C42F7N9CQ;
+				INFOPLIST_FILE = "$(SRCROOT)/conjugamer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lookforrachel.jsonToCoreData;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jossy.conjugamer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -352,7 +352,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5D4D82BD1F4F662A00D7B3EA /* Build configuration list for PBXProject "jsonToCoreData" */ = {
+		5D4D82BD1F4F662A00D7B3EA /* Build configuration list for PBXProject "conjugamer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D4D82D51F4F662A00D7B3EA /* Debug */,
@@ -361,7 +361,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5D4D82D71F4F662A00D7B3EA /* Build configuration list for PBXNativeTarget "jsonToCoreData" */ = {
+		5D4D82D71F4F662A00D7B3EA /* Build configuration list for PBXNativeTarget "conjugamer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D4D82D81F4F662A00D7B3EA /* Debug */,
@@ -373,13 +373,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5D4D82CC1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodeld */ = {
+		5D4D82CC1F4F662A00D7B3EA /* conjugamer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				5D4D82CD1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodel */,
 			);
 			currentVersion = 5D4D82CD1F4F662A00D7B3EA /* jsonToCoreData.xcdatamodel */;
-			path = jsonToCoreData.xcdatamodeld;
+			path = conjugamer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
