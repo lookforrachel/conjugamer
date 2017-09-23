@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <dict>
+        <key>ref</key>
+        <string>verbMood == 0</string>
+        <key>name</key>
+        <string>predicateGer</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>verbMood == 1</string>
+        <key>name</key>
+        <string>predicatePart</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>verbMood == 2</string>
+        <key>name</key>
+        <string>predicateInd</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>verbMood == 3</string>
+        <key>name</key>
+        <string>predicateCon</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>verbMood == 4</string>
+        <key>name</key>
+        <string>predicateSub</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>verbMood == 5</string>
+        <key>name</key>
+        <string>predicateImp</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>tense == 0</string>
+        <key>name</key>
+        <string>predicatePre</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>tense == 1</string>
+        <key>name</key>
+        <string>predicateImpa</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>tense == 2</string>
+        <key>name</key>
+        <string>predicatePS</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>tense == 3</string>
+        <key>name</key>
+        <string>predicateFS</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>pronoun == 0</string>
+        <key>name</key>
+        <string>predicateJe</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>pronoun == 1</string>
+        <key>name</key>
+        <string>predicateTu</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>pronoun == 2</string>
+        <key>name</key>
+        <string>predicateIl</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>pronoun == 2</string>
+        <key>name</key>
+        <string>predicateElle</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>pronoun == 3</string>
+        <key>name</key>
+        <string>predicateNous</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>pronoun == 4</string>
+        <key>name</key>
+        <string>predicateVous</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>pronoun == 5</string>
+        <key>name</key>
+        <string>predicateIls</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>pronoun == 5</string>
+        <key>name</key>
+        <string>predicateElles</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>verb.verbGroup == 3</string>
+        <key>name</key>
+        <string>predicateVerbGroup1</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>verb.verbGroup == 2</string>
+        <key>name</key>
+        <string>predicateVerbGroup2</string>
+    </dict>
+    <dict>
+        <key>ref</key>
+        <string>verb.verbGroup == 1</string>
+        <key>name</key>
+        <string>predicateVerbGroup1</string>
+    </dict>
+</array>
+</plist>
