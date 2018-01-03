@@ -90,10 +90,13 @@ class GamePlayViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        predicateIndPre = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates:[predicateInd,predicatePre])
-        predicateIndImp = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates:[predicateInd,predicateImp])
+        let predicateModel = GamePlayPredicates()
         
-        setupFetchRequest()
+        
+//        predicateIndPre = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates:[predicateInd,predicatePre])
+//        predicateIndImp = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates:[predicateInd,predicateImp])
+//        
+//        setupFetchRequest()
     }
     
     func setupFetchRequest(){
