@@ -98,8 +98,8 @@ class OptionsViewModel {
         }
         
         
-        //print("changing \(cell.cellSwitch.tag) \(myOptions.options[cell.cellSwitch.tag].isOn)")
-        
+        print("changing \(cell.cellSwitch.tag) \(myOptions.options[cell.cellSwitch.tag].isOn)")
+        print("\(cell.cellSwitch.isOn), forKey: \(defaultsKey)")
         UserDefaults.standard.set(cell.cellSwitch.isOn, forKey: defaultsKey)
         
         

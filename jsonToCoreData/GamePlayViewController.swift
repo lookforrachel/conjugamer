@@ -35,7 +35,7 @@ class GamePlayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("hello world")
         // Do any additional setup after loading the view.
     }
 
@@ -68,7 +68,7 @@ class GamePlayViewController: UIViewController {
     }
 
     func setupFetchRequest(){
-        
+        print("oh, hello")
         // Verb Groups
         let isGroup1On = UserDefaults.standard.bool(forKey: "isGroup1On")
         let isGroup2On = UserDefaults.standard.bool(forKey: "isGroup2On")
@@ -144,25 +144,29 @@ class GamePlayViewController: UIViewController {
         
         do {
             try conjugationArray = moc.fetch(verbRequest)
-            
+            //print("conjugation: \(conjugationArray)")
         } catch {
             print(error)
         }
-        
+        //print("seemed to work \(conjugationArray)")
         for conjugation in conjugationArray {
-            print("conjugation: \(conjugation.conjugation!)")
-            //                    displayConjugations(verb:verb)
+            if let verb = conjugation.verb{
+                displayConjugations(verb:verb)
+            }
+            
         }
     }
     
-//    func displayConjugations (verb:Verb) {
-//        
-//        if let conjugationList = verb.conjugation as? Set<Verb> {
-//            for conjugation in conjugationList {
-//                print(conjugation.conjugation!)
-//            }
-//        }
-//    }
+    func displayConjugations (verb:Verb) {
+        
+        if let conjugationList = verb.conjugation as? Set<Verb> {
+            for conjugation in conjugationList {
+                print(conjugation.conjugation!)
+            }
+        } else {
+            print("pass")
+        }
+    }
 
 
     

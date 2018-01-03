@@ -24,13 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         //if unset, preload data
-//        if(!coreIsLoaded){
-//            processJSON()
-//        }
+        if(!coreIsLoaded){
+            processJSON()
+        }
         
-//        removeData ()
+//        removeData()
 //        processJSON()
-
+//
 //        let moc = persistentContainer.viewContext
 //
 //        let verbRequest:NSFetchRequest<Verb> = Verb.fetchRequest()

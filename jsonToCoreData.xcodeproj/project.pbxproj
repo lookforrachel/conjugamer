@@ -141,7 +141,7 @@
 				TargetAttributes = {
 					5D4D82C11F4F662A00D7B3EA = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = PK7RS8R8AP;
+						DevelopmentTeam = 3C42F7N9CQ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -323,10 +323,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PK7RS8R8AP;
+				DEVELOPMENT_TEAM = 3C42F7N9CQ;
 				INFOPLIST_FILE = jsonToCoreData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lookforrachel.jsonToCoreData;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jossy.rachel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -336,10 +336,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PK7RS8R8AP;
+				DEVELOPMENT_TEAM = 3C42F7N9CQ;
 				INFOPLIST_FILE = jsonToCoreData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lookforrachel.jsonToCoreData;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jossy.rachel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
