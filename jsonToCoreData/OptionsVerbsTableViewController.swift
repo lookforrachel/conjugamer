@@ -125,7 +125,7 @@ class OptionsVerbsTableViewController: UITableViewController, cellSwitchDelegate
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let headings = optionsVM.returnSections()
-        let heading = headings?[section] ?? "Heading"
+        let heading = headings?[section]
         return heading
     }
     

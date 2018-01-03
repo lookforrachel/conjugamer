@@ -20,6 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //get defaults csv loaded flag
         let coreIsLoaded = UserDefaults.standard.bool(forKey: "coreIsLoaded")
+        
+        //set 1 option from each option menu on
+        if !coreIsLoaded {
+            UserDefaults.standard.set(true, forKey:"isIndPreOn")
+            UserDefaults.standard.set(true, forKey:"isJeOn")
+            UserDefaults.standard.set(true, forKey:"isGroup1On")
+            UserDefaults.standard.synchronize()
+        }
+        
         print((coreIsLoaded) ? "core already loaded, proceeding to view" : "preloading data")
 
         
@@ -231,28 +240,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         fatalError("no indFSIls")
                     }
                     
-                    guard let indConJe = item["indicatif|conditionnel|je"] else {
-                        fatalError("no indConJe")
+                    guard let conPreJe = item["indicatif|conditionnel|je"] else {
+                        fatalError("no conPreJe")
                     }
                     
-                    guard let indConTu = item["indicatif|conditionnel|tu"] else {
-                        fatalError("no indConTu")
+                    guard let conPreTu = item["indicatif|conditionnel|tu"] else {
+                        fatalError("no conPreTu")
                     }
                     
-                    guard let indConIl = item["indicatif|conditionnel|il"] else {
-                        fatalError("no indConIl")
+                    guard let conPreIl = item["indicatif|conditionnel|il"] else {
+                        fatalError("no conPreIl")
                     }
                     
-                    guard let indConNous = item["indicatif|conditionnel|nous"] else {
-                        fatalError("no indConNous")
+                    guard let conPreNous = item["indicatif|conditionnel|nous"] else {
+                        fatalError("no conPreNous")
                     }
                     
-                    guard let indConVous = item["indicatif|conditionnel|vous"] else {
-                        fatalError("no indConVous")
+                    guard let conPreVous = item["indicatif|conditionnel|vous"] else {
+                        fatalError("no conPreVous")
                     }
                     
-                    guard let indConIls = item["indicatif|conditionnel|ils"] else {
-                        fatalError("no indConIls")
+                    guard let conPreIls = item["indicatif|conditionnel|ils"] else {
+                        fatalError("no conPreIls")
                     }
                     
                     guard let subPreJe = item["subjonctif|présent|je"] else {
@@ -303,16 +312,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         fatalError("no subImpIls")
                     }
                     
-                    guard let impTu = item["impératif|tu"] else {
-                        fatalError("no impTu")
+                    guard let impPreTu = item["impératif|tu"] else {
+                        fatalError("no impPreTu")
                     }
                     
-                    guard let impNous = item["impératif|nous"] else {
-                        fatalError("no impNous")
+                    guard let impPreNous = item["impératif|nous"] else {
+                        fatalError("no impPreNous")
                     }
                     
-                    guard let impVous = item["impératif|vous"] else {
-                        fatalError("no impVous")
+                    guard let impPreVous = item["impératif|vous"] else {
+                        fatalError("no impPreVous")
                     }
                     
 
@@ -362,7 +371,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let conjugationObjectPartPre = Conjugation(context: moc)
                     conjugationObjectPartPre.conjugation = partPre
                     conjugationObjectPartPre.verbMood = 1
-//                    conjugationObjectPartPre.tense = 
+                    conjugationObjectPartPre.tense = 0
 //                    conjugationObjectPartPre.pronoun =
                     
                     verbObject.addToConjugation(conjugationObjectPartPre)
@@ -371,7 +380,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let conjugationObjectPartPas = Conjugation(context: moc)
                     conjugationObjectPartPas.conjugation = partPas
                     conjugationObjectPartPas.verbMood = 1
-//                    conjugationObjectPartPas.tense =
+                    conjugationObjectPartPas.tense = 2
 //                    conjugationObjectPartPas.pronoun =
                     
                     verbObject.addToConjugation(conjugationObjectPartPas)
@@ -592,56 +601,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     verbObject.addToConjugation(conjugationObjectIndFSIls)
                     
-                    // IndConJe object initialization
+                    // ConPreJe object initialization
                     let conjugationObjectIndConJe = Conjugation(context: moc)
-                    conjugationObjectIndConJe.conjugation = indConJe
-                    conjugationObjectIndConJe.verbMood = 2
-                    conjugationObjectIndConJe.tense = 4
+                    conjugationObjectIndConJe.conjugation = conPreJe
+                    conjugationObjectIndConJe.verbMood = 3
+                    conjugationObjectIndConJe.tense = 0
                     conjugationObjectIndConJe.pronoun = 0
                     
                     verbObject.addToConjugation(conjugationObjectIndConJe)
                     
-                    // IndConTu object initialization
+                    // ConPreTu object initialization
                     let conjugationObjectIndConTu = Conjugation(context: moc)
-                    conjugationObjectIndConTu.conjugation = indConTu
-                    conjugationObjectIndConTu.verbMood = 2
-                    conjugationObjectIndConTu.tense = 4
+                    conjugationObjectIndConTu.conjugation = conPreTu
+                    conjugationObjectIndConTu.verbMood = 3
+                    conjugationObjectIndConTu.tense = 0
                     conjugationObjectIndConTu.pronoun = 1
                     
                     verbObject.addToConjugation(conjugationObjectIndConTu)
                     
-                    // IndConIl object initialization
+                    // ConPreIl object initialization
                     let conjugationObjectIndConIl = Conjugation(context: moc)
-                    conjugationObjectIndConIl.conjugation = indConIl
-                    conjugationObjectIndConIl.verbMood = 2
-                    conjugationObjectIndConIl.tense = 4
+                    conjugationObjectIndConIl.conjugation = conPreIl
+                    conjugationObjectIndConIl.verbMood = 3
+                    conjugationObjectIndConIl.tense = 0
                     conjugationObjectIndConIl.pronoun = 2
                     
                     verbObject.addToConjugation(conjugationObjectIndConIl)
                     
-                    // IndConNous object initialization
+                    // ConPreNous object initialization
                     let conjugationObjectIndConNous = Conjugation(context: moc)
-                    conjugationObjectIndConNous.conjugation = indConNous
-                    conjugationObjectIndConNous.verbMood = 2
-                    conjugationObjectIndConNous.tense = 4
+                    conjugationObjectIndConNous.conjugation = conPreNous
+                    conjugationObjectIndConNous.verbMood = 3
+                    conjugationObjectIndConNous.tense = 0
                     conjugationObjectIndConNous.pronoun = 3
                     
                     verbObject.addToConjugation(conjugationObjectIndConNous)
                     
-                    // IndConVous object initialization
+                    // ConPreVous object initialization
                     let conjugationObjectIndConVous = Conjugation(context: moc)
-                    conjugationObjectIndConVous.conjugation = indConVous
-                    conjugationObjectIndConVous.verbMood = 2
-                    conjugationObjectIndConVous.tense = 4
+                    conjugationObjectIndConVous.conjugation = conPreVous
+                    conjugationObjectIndConVous.verbMood = 3
+                    conjugationObjectIndConVous.tense = 0
                     conjugationObjectIndConVous.pronoun = 4
                     
                     verbObject.addToConjugation(conjugationObjectIndConVous)
                     
-                    // IndConIls object initialization
+                    // ConPreIls object initialization
                     let conjugationObjectIndConIls = Conjugation(context: moc)
-                    conjugationObjectIndConIls.conjugation = indConIls
-                    conjugationObjectIndConIls.verbMood = 2
-                    conjugationObjectIndConIls.tense = 4
+                    conjugationObjectIndConIls.conjugation = conPreIls
+                    conjugationObjectIndConIls.verbMood = 3
+                    conjugationObjectIndConIls.tense = 0
                     conjugationObjectIndConIls.pronoun = 5
                     
                     verbObject.addToConjugation(conjugationObjectIndConIls)
@@ -649,7 +658,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubPreJe object initialization
                     let conjugationObjectSubPreJe = Conjugation(context: moc)
                     conjugationObjectSubPreJe.conjugation = subPreJe
-                    conjugationObjectSubPreJe.verbMood = 3
+                    conjugationObjectSubPreJe.verbMood = 4
                     conjugationObjectSubPreJe.tense = 0
                     conjugationObjectSubPreJe.pronoun = 0
                     
@@ -658,7 +667,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubPreTu object initialization
                     let conjugationObjectSubPreTu = Conjugation(context: moc)
                     conjugationObjectSubPreTu.conjugation = subPreTu
-                    conjugationObjectSubPreTu.verbMood = 3
+                    conjugationObjectSubPreTu.verbMood = 4
                     conjugationObjectSubPreTu.tense = 0
                     conjugationObjectSubPreTu.pronoun = 1
                     
@@ -667,7 +676,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubPreIl object initialization
                     let conjugationObjectSubPreIl = Conjugation(context: moc)
                     conjugationObjectSubPreIl.conjugation = subPreIl
-                    conjugationObjectSubPreIl.verbMood = 3
+                    conjugationObjectSubPreIl.verbMood = 4
                     conjugationObjectSubPreIl.tense = 0
                     conjugationObjectSubPreIl.pronoun = 2
                     
@@ -676,7 +685,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubPreNous object initialization
                     let conjugationObjectSubPreNous = Conjugation(context: moc)
                     conjugationObjectSubPreNous.conjugation = subPreNous
-                    conjugationObjectSubPreNous.verbMood = 3
+                    conjugationObjectSubPreNous.verbMood = 4
                     conjugationObjectSubPreNous.tense = 0
                     conjugationObjectSubPreNous.pronoun = 3
                     
@@ -685,7 +694,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubPreVous object initialization
                     let conjugationObjectSubPreVous = Conjugation(context: moc)
                     conjugationObjectSubPreVous.conjugation = subPreVous
-                    conjugationObjectSubPreVous.verbMood = 3
+                    conjugationObjectSubPreVous.verbMood = 4
                     conjugationObjectSubPreVous.tense = 0
                     conjugationObjectSubPreVous.pronoun = 4
                     
@@ -694,7 +703,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubPreIls object initialization
                     let conjugationObjectSubPreIls = Conjugation(context: moc)
                     conjugationObjectSubPreIls.conjugation = subPreIls
-                    conjugationObjectSubPreIls.verbMood = 3
+                    conjugationObjectSubPreIls.verbMood = 4
                     conjugationObjectSubPreIls.tense = 0
                     conjugationObjectSubPreIls.pronoun = 5
                     
@@ -703,7 +712,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubImpJe object initialization
                     let conjugationObjectSubImpJe = Conjugation(context: moc)
                     conjugationObjectSubImpJe.conjugation = subImpJe
-                    conjugationObjectSubImpJe.verbMood = 3
+                    conjugationObjectSubImpJe.verbMood = 4
                     conjugationObjectSubImpJe.tense = 1
                     conjugationObjectSubImpJe.pronoun = 0
                     
@@ -712,7 +721,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubImpTu object initialization
                     let conjugationObjectSubImpTu = Conjugation(context: moc)
                     conjugationObjectSubImpTu.conjugation = subImpTu
-                    conjugationObjectSubImpTu.verbMood = 3
+                    conjugationObjectSubImpTu.verbMood = 4
                     conjugationObjectSubImpTu.tense = 1
                     conjugationObjectSubImpTu.pronoun = 1
                     
@@ -721,7 +730,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubImpIl object initialization
                     let conjugationObjectSubImpIl = Conjugation(context: moc)
                     conjugationObjectSubImpIl.conjugation = subImpIl
-                    conjugationObjectSubImpIl.verbMood = 3
+                    conjugationObjectSubImpIl.verbMood = 4
                     conjugationObjectSubImpIl.tense = 1
                     conjugationObjectSubImpIl.pronoun = 2
                     
@@ -730,7 +739,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubImpNous object initialization
                     let conjugationObjectSubImpNous = Conjugation(context: moc)
                     conjugationObjectSubImpNous.conjugation = subImpNous
-                    conjugationObjectSubImpNous.verbMood = 3
+                    conjugationObjectSubImpNous.verbMood = 4
                     conjugationObjectSubImpNous.tense = 1
                     conjugationObjectSubImpNous.pronoun = 3
                     
@@ -739,7 +748,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubImpVous object initialization
                     let conjugationObjectSubImpVous = Conjugation(context: moc)
                     conjugationObjectSubImpVous.conjugation = subImpVous
-                    conjugationObjectSubImpVous.verbMood = 3
+                    conjugationObjectSubImpVous.verbMood = 4
                     conjugationObjectSubImpVous.tense = 1
                     conjugationObjectSubImpVous.pronoun = 4
                     
@@ -748,35 +757,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // SubImpIls object initialization
                     let conjugationObjectSubImpIls = Conjugation(context: moc)
                     conjugationObjectSubImpIls.conjugation = subImpIls
-                    conjugationObjectSubImpIls.verbMood = 3
+                    conjugationObjectSubImpIls.verbMood = 4
                     conjugationObjectSubImpIls.tense = 1
                     conjugationObjectSubImpIls.pronoun = 5
                     
                     verbObject.addToConjugation(conjugationObjectSubImpIls)
                     
-                    // ImpTu object initialization
+                    // ImpPreTu object initialization
                     let conjugationObjectImpTu = Conjugation(context: moc)
-                    conjugationObjectImpTu.conjugation = impTu
-                    conjugationObjectImpTu.verbMood = 4
-//                    conjugationObjectImpTu.tense =
+                    conjugationObjectImpTu.conjugation = impPreTu
+                    conjugationObjectImpTu.verbMood = 5
+                    conjugationObjectImpTu.tense = 0
                     conjugationObjectImpTu.pronoun = 1
                     
                     verbObject.addToConjugation(conjugationObjectImpTu)
                     
-                    // ImpNous object initialization
+                    // ImpPreNous object initialization
                     let conjugationObjectImpNous = Conjugation(context: moc)
-                    conjugationObjectImpNous.conjugation = impNous
-                    conjugationObjectImpNous.verbMood = 4
-//                    conjugationObjectImpNous.tense =
+                    conjugationObjectImpNous.conjugation = impPreNous
+                    conjugationObjectImpNous.verbMood = 5
+                    conjugationObjectImpNous.tense = 0
                     conjugationObjectImpNous.pronoun = 3
                     
                     verbObject.addToConjugation(conjugationObjectImpNous)
                     
-                    // ImpVous object initialization
+                    // ImpPreVous object initialization
                     let conjugationObjectImpVous = Conjugation(context: moc)
-                    conjugationObjectImpVous.conjugation = impVous
-                    conjugationObjectImpVous.verbMood = 4
-//                    conjugationObjectImpVous.tense =
+                    conjugationObjectImpVous.conjugation = impPreVous
+                    conjugationObjectImpVous.verbMood = 5
+                    conjugationObjectImpVous.tense = 0
                     conjugationObjectImpVous.pronoun = 4
                     
                     verbObject.addToConjugation(conjugationObjectImpVous)
