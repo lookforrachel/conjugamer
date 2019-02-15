@@ -11,6 +11,17 @@ import CoreData
 
 class GamePlayViewController: UIViewController {
     
+    // MARK: IB
+    
+    @IBOutlet weak var inputTextField: UITextField!
+    
+    @IBOutlet weak var verbLabel: UILabel!
+    
+    @IBOutlet weak var tenseLabel: UILabel!
+    
+    @IBOutlet weak var pronounLabel: UILabel!
+    
+    @IBOutlet weak var actionButton: UIButton!
     // MARK: Properties
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -273,8 +284,9 @@ class GamePlayViewController: UIViewController {
 
 extension GamePlayViewController : GameplayPredicatesDelegate{
     
-    func done() {
+    func dataReady() {
         print("done in delegate method \(gamePlayPredicated)")
+    
     }
     
 }

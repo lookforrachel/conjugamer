@@ -12,7 +12,7 @@ import UIKit
 
 
 protocol GameplayPredicatesDelegate{
-    func done()
+    func dataReady()
 }
 
 class GamePlayPredicates {
@@ -119,7 +119,7 @@ class GamePlayPredicates {
             //                    displayConjugations(verb:verb)
         }
         print("done in thingy")
-        delegate?.done()
+        delegate?.dataReady()
         
         
     }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Qu-cx-e3H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Qu-cx-e3H">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,13 +13,13 @@
         <!--verbs-->
         <scene sceneID="Jvh-pT-jPl">
             <objects>
-                <tableViewController title="verbs" id="iLs-dJ-XoI" customClass="OptionsVerbsTableViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="verbs" id="iLs-dJ-XoI" customClass="OptionsVerbsTableViewController" customModule="conjugamer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qzn-Kv-hK4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="verbsCell" id="10X-NP-Kza" customClass="optionsViewCell" customModule="jsonToCoreData" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="verbsCell" id="10X-NP-Kza" customClass="optionsViewCell" customModule="conjugamer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="10X-NP-Kza" id="e6H-F7-2r3">
@@ -84,7 +84,7 @@
         <!--View Controller-->
         <scene sceneID="Nb9-SU-G0q">
             <objects>
-                <viewController id="Fhc-SU-XmY" customClass="ViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Fhc-SU-XmY" customClass="ViewController" customModule="conjugamer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ruV-ws-HjG"/>
                         <viewControllerLayoutGuide type="bottom" id="lkX-Do-d1z"/>
@@ -129,7 +129,7 @@
         <!--Game Play View Controller-->
         <scene sceneID="le5-7o-bZw">
             <objects>
-                <viewController id="ner-wq-Idt" customClass="GamePlayViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ner-wq-Idt" customClass="GamePlayViewController" customModule="conjugamer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mt2-PR-xte"/>
                         <viewControllerLayoutGuide type="bottom" id="Ek6-7k-MdI"/>
@@ -137,17 +137,75 @@
                     <view key="view" contentMode="scaleToFill" id="MH9-TP-tu0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nCq-sx-RAx">
+                                <rect key="frame" x="66" y="319" width="293" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfp-7U-3Q8">
+                                <rect key="frame" x="66" y="289" width="293" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaU-Mh-BLh">
+                                <rect key="frame" x="16" y="318.5" width="42" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNz-Jd-UgU">
+                                <rect key="frame" x="187" y="175" width="43.5" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKb-aj-Ke1">
+                                <rect key="frame" x="66" y="357" width="293" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="82k-tg-wpY"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nCq-sx-RAx" firstAttribute="centerY" secondItem="MH9-TP-tu0" secondAttribute="centerY" id="2j7-CP-VCu"/>
+                            <constraint firstItem="Vfp-7U-3Q8" firstAttribute="top" secondItem="fNz-Jd-UgU" secondAttribute="bottom" constant="93" id="5B2-KE-3TR"/>
+                            <constraint firstItem="qKb-aj-Ke1" firstAttribute="top" secondItem="nCq-sx-RAx" secondAttribute="bottom" constant="8" id="6nz-fz-mbl"/>
+                            <constraint firstItem="IaU-Mh-BLh" firstAttribute="top" secondItem="nCq-sx-RAx" secondAttribute="top" id="8TF-iK-HXl"/>
+                            <constraint firstItem="IaU-Mh-BLh" firstAttribute="height" secondItem="nCq-sx-RAx" secondAttribute="height" id="EgB-P1-2xi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vfp-7U-3Q8" secondAttribute="trailing" id="K2p-U6-Bzs"/>
+                            <constraint firstItem="nCq-sx-RAx" firstAttribute="leading" secondItem="IaU-Mh-BLh" secondAttribute="trailing" constant="8" id="b2G-iU-IJb"/>
+                            <constraint firstItem="Vfp-7U-3Q8" firstAttribute="width" secondItem="nCq-sx-RAx" secondAttribute="width" id="gcJ-Ru-GRj"/>
+                            <constraint firstItem="fNz-Jd-UgU" firstAttribute="leading" secondItem="MH9-TP-tu0" secondAttribute="leadingMargin" constant="171" id="hrV-zF-cre"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="IaU-Mh-BLh" secondAttribute="leading" id="kC2-JH-dNE"/>
+                            <constraint firstItem="nCq-sx-RAx" firstAttribute="top" secondItem="Vfp-7U-3Q8" secondAttribute="bottom" constant="8.5" id="ml2-lr-hK8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qKb-aj-Ke1" secondAttribute="trailing" id="nl7-F5-hdG"/>
+                            <constraint firstItem="Vfp-7U-3Q8" firstAttribute="leading" secondItem="MH9-TP-tu0" secondAttribute="leadingMargin" constant="50" id="oUg-Un-tin"/>
+                            <constraint firstItem="qKb-aj-Ke1" firstAttribute="leading" secondItem="MH9-TP-tu0" secondAttribute="leadingMargin" constant="50" id="ruQ-yP-Fbb"/>
+                            <constraint firstItem="fNz-Jd-UgU" firstAttribute="top" secondItem="mt2-PR-xte" secondAttribute="bottom" constant="111" id="ucK-jQ-ka7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nCq-sx-RAx" secondAttribute="trailing" id="veq-jb-32V"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="actionButton" destination="qKb-aj-Ke1" id="YK6-pv-iTZ"/>
+                        <outlet property="inputTextField" destination="nCq-sx-RAx" id="WGB-z4-1jr"/>
+                        <outlet property="pronounLabel" destination="IaU-Mh-BLh" id="6qx-fW-Yv4"/>
+                        <outlet property="tenseLabel" destination="Vfp-7U-3Q8" id="wrm-VJ-LpZ"/>
+                        <outlet property="verbLabel" destination="fNz-Jd-UgU" id="sDc-mN-8AY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cip-Xu-5l0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="393" y="777"/>
+            <point key="canvasLocation" x="-356" y="791"/>
         </scene>
         <!--Options-->
         <scene sceneID="43v-4B-80o">
             <objects>
-                <tableViewController title="Options" id="RFg-s2-dRX" customClass="OptionsViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Options" id="RFg-s2-dRX" customClass="OptionsViewController" customModule="conjugamer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7u9-jM-BnG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,11 +215,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="naP-4u-qYZ" id="b9N-rD-VLo">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OWf-5p-AnA">
-                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -174,11 +232,11 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aob-tW-4X2" id="Q2T-8X-KQ5">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WT2-u1-2hz">
-                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -191,11 +249,11 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bfa-DW-O8o" id="Ngs-gJ-Baz">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NaV-UL-TXM">
-                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -225,7 +283,7 @@
         <!--tenses-->
         <scene sceneID="RV3-y4-xCo">
             <objects>
-                <tableViewController title="tenses" id="kft-rq-F0k" customClass="OptionsTensesTableViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="tenses" id="kft-rq-F0k" customClass="OptionsTensesTableViewController" customModule="conjugamer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6zp-Js-cSw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -965,7 +1023,7 @@
         <!--pronouns-->
         <scene sceneID="iK5-Hu-g9o">
             <objects>
-                <tableViewController title="pronouns" id="bsG-Dv-x2K" customClass="OptionsPronounsTableViewController" customModule="jsonToCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="pronouns" id="bsG-Dv-x2K" customClass="OptionsPronounsTableViewController" customModule="conjugamer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XmH-4f-bnU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
