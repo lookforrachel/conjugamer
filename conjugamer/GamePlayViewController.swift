@@ -287,6 +287,8 @@ extension GamePlayViewController : GameplayPredicatesDelegate{
     func dataReady() {
         print("done in delegate method \(gamePlayPredicated)")
     
+        verbLabel.text = "helloooo"
+        
     }
     
 }
