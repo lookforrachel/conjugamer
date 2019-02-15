@@ -11,9 +11,15 @@ import CoreData
 import UIKit
 
 
+protocol GameplayPredicatesDelegate{
+    func done()
+}
+
 class GamePlayPredicates {
     
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var delegate:GameplayPredicatesDelegate?
     
     //Verb Mood
     var predicateListTense = [NSPredicate]()
@@ -112,7 +118,8 @@ class GamePlayPredicates {
             print("conjugation: \(conjugation.conjugation!)")
             //                    displayConjugations(verb:verb)
         }
-        
+        print("done in thingy")
+        delegate?.done()
         
         
     }

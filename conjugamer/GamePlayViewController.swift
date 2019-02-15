@@ -14,6 +14,8 @@ class GamePlayViewController: UIViewController {
     // MARK: Properties
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    var gamePlayPredicated:GamePlayPredicates!
+    
     //Verb Groups
     var predicateListVerb = [NSPredicate]()
     let predicateVerbGroup1 = NSPredicate(format: "verb.verbGroup == 1")
@@ -80,6 +82,11 @@ class GamePlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gamePlayPredicated = GamePlayPredicates()
+        gamePlayPredicated.delegate = self
+        let predicates = gamePlayPredicated.combineMoodTense()
+        
+        gamePlayPredicated.setupFetchRequest(predicates:predicates)
         // Do any additional setup after loading the view.
     }
     
@@ -89,15 +96,18 @@ class GamePlayViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        let predicateModel = GamePlayPredicates()
-        
+       
         
 //        predicateIndPre = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates:[predicateInd,predicatePre])
 //        predicateIndImp = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates:[predicateInd,predicateImp])
 //        
 //        setupFetchRequest()
     }
+    
+ 
+    
+    
+    
     
     func setupFetchRequest(){
         
@@ -228,6 +238,16 @@ class GamePlayViewController: UIViewController {
             print("conjugation: \(conjugation.conjugation!)")
             //                    displayConjugations(verb:verb)
         }
+        print("done in gpvc")
+        gotConjugations(arr: conjugationArray)
+        
+    }
+    
+    
+    func gotConjugations(arr:[Conjugation]){
+        
+        
+        print("processing donem got \(arr.count) items")
     }
     
     //    func displayConjugations (verb:Verb) {
@@ -243,10 +263,18 @@ class GamePlayViewController: UIViewController {
     
     //    // MARK: - Navigation
     //
-    //    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //    // In a storyboard-based applicatioENn, you will often want to do a little preparation before navigation
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     //        // Get the new view controller using segue.destinationViewController.
     //        // Pass the selected object to the new view controller.
     //        }
+    
+}
+
+extension GamePlayViewController : GameplayPredicatesDelegate{
+    
+    func done() {
+        print("done in delegate method \(gamePlayPredicated)")
+    }
     
 }
